@@ -1,0 +1,106 @@
+\babel@toc {english}{}\relax 
+\contentsline {section}{\numberline {1}从正十七边形到三条路线}{5}{}%
+\contentsline {subsection}{\numberline {1.1}正十七边形与分圆方程的由来}{5}{}%
+\contentsline {subsection}{\numberline {1.2}需要用到的四件工具}{6}{}%
+\contentsline {subsubsection}{\numberline {1.2.1}模$P$的乘法群与数论阶}{6}{}%
+\contentsline {subsubsection}{\numberline {1.2.2}原根与编号表}{6}{}%
+\contentsline {subsubsection}{\numberline {1.2.3}本原单位根}{7}{}%
+\contentsline {subsubsection}{\numberline {1.2.4}Lagrange 预解式}{7}{}%
+\contentsline {subsection}{\numberline {1.3}三条路线共用的套路：把根写成预解式的线性组合}{8}{}%
+\contentsline {section}{\numberline {2}两条一次开方的路线：全阶法与半阶法}{9}{}%
+\contentsline {subsection}{\numberline {2.1}全阶法：一次开$P-1$次方写出全部根}{9}{}%
+\contentsline {subsubsection}{\numberline {2.1.1}算法}{9}{}%
+\contentsline {subsubsection}{\numberline {2.1.2}五次的计算：一次开四次方}{10}{}%
+\contentsline {subsubsection}{\numberline {2.1.3}计算量}{10}{}%
+\contentsline {subsection}{\numberline {2.2}半阶法：借助共轭配对把开方次数减半}{11}{}%
+\contentsline {subsubsection}{\numberline {2.2.1}算法}{11}{}%
+\contentsline {subsubsection}{\numberline {2.2.2}十七次的计算：一次开八次方}{12}{}%
+\contentsline {subsubsection}{\numberline {2.2.3}七次的计算：辅助根恰好是三次单位根}{12}{}%
+\contentsline {subsubsection}{\numberline {2.2.4}计算量}{15}{}%
+\contentsline {subsection}{\numberline {2.3}转折：两条路线都没有把根式开完}{16}{}%
+\contentsline {section}{\numberline {3}周期下降法：逐层下降的根式解}{17}{}%
+\contentsline {subsection}{\numberline {3.1}方法总述}{17}{}%
+\contentsline {subsubsection}{\numberline {3.1.1}周期：把根分块}{17}{}%
+\contentsline {subsubsection}{\numberline {3.1.2}块乘法的计数系数}{18}{}%
+\contentsline {subsubsection}{\numberline {3.1.3}周期方程：由计数写出块和的极小多项式}{19}{}%
+\contentsline {subsubsection}{\numberline {3.1.4}两个预制映射}{19}{}%
+\contentsline {subsubsection}{\numberline {3.1.5}三个表与符号的闭式写法}{20}{}%
+\contentsline {subsubsection}{\numberline {3.1.6}每层要做的六步}{21}{}%
+\contentsline {subsubsection}{\numberline {3.1.7}三条手算约定}{21}{}%
+\contentsline {subsubsection}{\numberline {3.1.8}与另外两条路线的关系}{22}{}%
+\contentsline {subsection}{\numberline {3.2}第$r$层上逐步计算的展开}{22}{}%
+\contentsline {subsubsection}{\numberline {3.2.1}第 2 步之一：写块表}{22}{}%
+\contentsline {subsubsection}{\numberline {3.2.2}第 2 步之二：填权重表}{22}{}%
+\contentsline {subsubsection}{\numberline {3.2.3}第 3 步：折叠、求值与系数}{23}{}%
+\contentsline {subsubsection}{\numberline {3.2.4}第 4 步：开方与反演}{24}{}%
+\contentsline {subsection}{\numberline {3.3}层与层之间的迭代：整层的恢复}{24}{}%
+\contentsline {subsubsection}{\numberline {3.3.1}上一层交出来的清单}{24}{}%
+\contentsline {subsubsection}{\numberline {3.3.2}这一层要还回去的清单}{24}{}%
+\contentsline {subsubsection}{\numberline {3.3.3}块的结构}{25}{}%
+\contentsline {subsubsection}{\numberline {3.3.4}三条恢复途径}{25}{}%
+\contentsline {subsubsection}{\numberline {3.3.5}逐块核对块内和}{26}{}%
+\contentsline {subsection}{\numberline {3.4}十三次的计算：先开三次根，再开二次根}{26}{}%
+\contentsline {subsubsection}{\numberline {3.4.1}第 0 步：两张表}{26}{}%
+\contentsline {subsubsection}{\numberline {3.4.2}第 1 层：$L_1=3$，$D_1=3$}{26}{}%
+\contentsline {subsubsection}{\numberline {3.4.3}第 2 层：$L_2=2$，$D_2=6=H$}{28}{}%
+\contentsline {subsubsection}{\numberline {3.4.4}第 6 步：收尾}{30}{}%
+\contentsline {subsection}{\numberline {3.5}十七次的计算：三层二次根式}{31}{}%
+\contentsline {subsubsection}{\numberline {3.5.1}第 0 步：两张表}{31}{}%
+\contentsline {subsubsection}{\numberline {3.5.2}第 1 层：$L_1=2$}{31}{}%
+\contentsline {subsubsection}{\numberline {3.5.3}第 2 层：$L_2=2$，$D_2=4$}{32}{}%
+\contentsline {subsubsection}{\numberline {3.5.4}第 3 层：$L_3=2$，$D_3=8=H$}{33}{}%
+\contentsline {subsubsection}{\numberline {3.5.5}第 6 步：收尾}{35}{}%
+\contentsline {subsection}{\numberline {3.6}收尾：从实迹到每个单位根的实部与虚部}{35}{}%
+\contentsline {subsection}{\numberline {3.7}计算流程的图示}{37}{}%
+\contentsline {subsection}{\numberline {3.8}每层计算后的验算清单}{38}{}%
+\contentsline {subsection}{\numberline {3.9}与半阶法的换算}{38}{}%
+\contentsline {subsection}{\numberline {3.10}低次单位根的取值表}{39}{}%
+\contentsline {subsection}{\numberline {3.11}三条路线的比较}{39}{}%
+\contentsline {section}{\numberline {4}嵌套根式可开方性的判定}{41}{}%
+\contentsline {subsection}{\numberline {4.1}问题的提出与两种「可去」的定义}{41}{}%
+\contentsline {subsubsection}{\numberline {4.1.1}记号}{41}{}%
+\contentsline {subsection}{\numberline {4.2}预备知识：数域、嵌入、范数、赋值与单位}{42}{}%
+\contentsline {subsubsection}{\numberline {4.2.1}数域、折叠与表示唯一性}{42}{}%
+\contentsline {subsubsection}{\numberline {4.2.2}嵌入（影子）与范数}{42}{}%
+\contentsline {subsubsection}{\numberline {4.2.3}赋值、素理想与无平方因子部分}{43}{}%
+\contentsline {subsubsection}{\numberline {4.2.4}单位与单位根}{43}{}%
+\contentsline {subsection}{\numberline {4.3}必要条件与否证证书的来源}{44}{}%
+\contentsline {subsection}{\numberline {4.4}两个主定理}{44}{}%
+\contentsline {subsubsection}{\numberline {4.4.1}两层大公式}{44}{}%
+\contentsline {subsubsection}{\numberline {4.4.2}Landau 单项式引理}{45}{}%
+\contentsline {subsubsection}{\numberline {4.4.3}在 $\mathscr {K}(\omega _n)$ 中检验的危险与挽救}{46}{}%
+\contentsline {subsection}{\numberline {4.5}完备判定：主定理与主算法}{46}{}%
+\contentsline {subsubsection}{\numberline {4.5.1}D2 的完备判据}{47}{}%
+\contentsline {subsubsection}{\numberline {4.5.2}候选 $c$ 的枚举}{47}{}%
+\contentsline {subsubsection}{\numberline {4.5.3}候选 $c$ 与生成元的相依}{48}{}%
+\contentsline {subsection}{\numberline {4.6}六步手算法}{48}{}%
+\contentsline {subsubsection}{\numberline {4.6.1}流程总览}{48}{}%
+\contentsline {subsubsection}{\numberline {4.6.2}第 0 步：定域与定向}{48}{}%
+\contentsline {subsubsection}{\numberline {4.6.3}第 1 步：范数快筛}{48}{}%
+\contentsline {subsubsection}{\numberline {4.6.4}第 2 步：两层特判}{49}{}%
+\contentsline {subsubsection}{\numberline {4.6.5}第 3 步：D1 正面搜索}{49}{}%
+\contentsline {subsubsection}{\numberline {4.6.6}第 4 步：D2 搜索}{49}{}%
+\contentsline {subsubsection}{\numberline {4.6.7}第 5 步：进阶否证}{49}{}%
+\contentsline {subsubsection}{\numberline {4.6.8}第 6 步：精确验证（必做）}{49}{}%
+\contentsline {subsubsection}{\numberline {4.6.9}工具箱}{50}{}%
+\contentsline {subsubsection}{\numberline {4.6.10}一页速查表}{50}{}%
+\contentsline {subsection}{\numberline {4.7}六个算例的完整裁决}{50}{}%
+\contentsline {subsubsection}{\numberline {4.7.1}$\sqrt {3+2\sqrt 2}$：D1 成立}{51}{}%
+\contentsline {subsubsection}{\numberline {4.7.2}$\sqrt {2-\sqrt 3}$：D1 失败，D2 成功}{51}{}%
+\contentsline {subsubsection}{\numberline {4.7.3}$\sqrt {2-2^{1/7}}$：D1 失败，D2 成功}{51}{}%
+\contentsline {subsubsection}{\numberline {4.7.4}$\sqrt [3]{2-\sqrt 3+2\cdot 2^{1/5}}$：D1 与 D2 双双失败}{52}{}%
+\contentsline {subsubsection}{\numberline {4.7.5}$\sqrt {2+\sqrt 3+\sqrt [3]{3+\sqrt 5}}$：D1 与 D2 双双失败}{53}{}%
+\contentsline {subsubsection}{\numberline {4.7.6}$\sqrt [3]{\sqrt [3]2-1}$（Ramanujan）：D1 失败，D2 成功}{53}{}%
+\contentsline {subsection}{\numberline {4.8}复数参与进来时的情形}{54}{}%
+\contentsline {subsection}{\numberline {4.9}补充算例：几个根号相加的情形}{54}{}%
+\contentsline {subsection}{\numberline {4.10}三个容易被忽略的技术要点}{55}{}%
+\contentsline {section}{\numberline {A}附录}{57}{}%
+\contentsline {subsection}{\numberline {A.1}分圆部分的记号表}{57}{}%
+\contentsline {subsection}{\numberline {A.2}全书字母分工表}{59}{}%
+\contentsline {subsubsection}{\numberline {A.2.1}字母分工总则}{59}{}%
+\contentsline {subsubsection}{\numberline {A.2.2}分圆部分}{60}{}%
+\contentsline {subsubsection}{\numberline {A.2.3}根式去嵌套部分}{63}{}%
+\contentsline {subsubsection}{\numberline {A.2.4}两部分之间的字母复用}{64}{}%
+\contentsline {subsection}{\numberline {A.3}与三套原始记号的对照}{64}{}%
+\contentsline {subsection}{\numberline {A.4}术语速查}{65}{}%
+\contentsline {subsection}{\numberline {A.5}参考文献}{66}{}%

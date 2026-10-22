@@ -1,0 +1,1540 @@
+# -*- coding: utf-8 -*-
+r"""
+周期下降法标准形计算器 v3
+=========================
+
+输入奇素数 p（或任意 n ≥ 2），按《单位根的周期下降解法》：
+
+  1. 标准素分解：把 h = (p-1)/2 分解成素因子序列 ℓ₁ℓ₂…ℓ_s（奇素数由大到小，
+     最后排 2），写出子群链 H_0 ⊃ H_1 ⊃ … ⊃ H_s 与各层周期表、分解表；
+  2. 周期下降 / 逐层开方：θ^{(j)}_{a,k} = Σ_t ω_ℓ^{-kt} β^{(a)}_t，
+     (θ^{(j)}_{a,k})^ℓ = u^{(j)}_{a,k} = τ^k(u^{(j)}_{a,1}) ∈ Q(ω_ℓ)，
+     再按反演公式一层层升回去，直到 Λ_a = 2cos(2πa/p)；
+  3. 输出全部是具体根式（ω_ℓ 也展开成 Λ^{(ℓ)} 与 √(2-Λ^{(ℓ)}) 的显式形式），
+     预解式的分支由因子 ω_ℓ^{s} 显式记录（s 由数值分支核对唯一确定）。
+  4. 生成 .tex 并调用 pdflatex 编译，扫描日志确认没有超界（Overfull）。
+
+用法
+    python dis.py                    # 交互输入
+    python dis.py 11                 # 直接算 11
+    python dis.py 13 --no-pdf        # 只生成 .tex
+    python dis.py --selftest         # 2..30 数值自检 + 与手稿具体根式对照
+    python dis.py 23 -o D:\输出       # 指定输出根目录
+    python dis.py 29 --cap 400000    # 放宽展开规模上限
+"""
+
+import cmath
+import math
+import os
+import re
+import subprocess
+import sys
+import time
+from fractions import Fraction
+
+sys.setrecursionlimit(20000)
+
+# ======================================================================
+# 数论工具
+# ======================================================================
+
+
+def factorize(n):
+    f, d = {}, 2
+    while d * d <= n:
+        while n % d == 0:
+            f[d] = f.get(d, 0) + 1
+            n //= d
+        d += 1
+    if n > 1:
+        f[n] = f.get(n, 0) + 1
+    return f
+
+
+def is_prime(n):
+    if n < 2:
+        return False
+    if n % 2 == 0:
+        return n == 2
+    d = 3
+    while d * d <= n:
+        if n % d == 0:
+            return False
+        d += 2
+    return True
+
+
+def primitive_root(p):
+    fs = list(factorize(p - 1))
+    for g in range(2, p):
+        if all(pow(g, (p - 1) // q, p) != 1 for q in fs):
+            return g
+    raise ValueError("找不到模 %d 的原根" % p)
+
+
+def level_order(h):
+    """h 的素因子序列 ℓ₁…ℓ_s：奇素数从大到小，最后排 2"""
+    f = factorize(h)
+    odd = []
+    for q in sorted([q for q in f if q != 2], reverse=True):
+        odd += [q] * f[q]
+    return odd + [2] * f.get(2, 0)
+
+
+def inv_mod(a, m):
+    a %= m
+    for x in range(1, m):
+        if (a * x) % m == 1:
+            return x
+    raise ValueError("模 %d 不可逆" % m)
+
+
+def lam_index(n, t):
+    """2cos(2πt/n) 的下标 t̄ ∈ 1..(n-1)//2；t ≡ 0 时返回 0（代表数值 2）"""
+    t %= n
+    if t == 0:
+        return 0
+    return min(t, n - t)
+
+
+# ---- 名字（一律带模数标签，杜绝不同模数之间的撞名）------------------
+
+def kE(mod, j, a):
+    return r"\eta^{(%d)}_{%d}@%d" % (j, a, mod)
+
+
+def kU(mod, j, a, k):
+    return r"u^{(%d)}_{%d,%d}@%d" % (j, a, k, mod)
+
+
+def kT(mod, j, a, k):
+    return r"\theta^{(%d)}_{%d,%d}@%d" % (j, a, k, mod)
+
+
+def kLAM(mod, a):
+    return r"\Lambda^{(%d)}_{%d}@%d" % (mod, a, mod)
+
+
+def disp(key):
+    """去掉内部标签，得到打印用的名字"""
+    i = key.find("@")
+    return key[:i] if i >= 0 else key
+
+
+# ======================================================================
+# Z[ζ_p]
+# ======================================================================
+
+
+class ZRing:
+    """长度 p-1 的整系数表，第 i 项是 ζ^i（i=0..p-2）的系数；ζ^{p-1} 已折叠。"""
+
+    def __init__(self, p):
+        self.p = p
+        self.n = p - 1
+
+    def zero(self):
+        return [0] * self.n
+
+    def one(self):
+        v = [0] * self.n
+        v[0] = 1
+        return v
+
+    @staticmethod
+    def is_zero(a):
+        return not any(a)
+
+    def add(self, a, b):
+        return [x + y for x, y in zip(a, b)]
+
+    def smul(self, k, a):
+        return [k * x for x in a]
+
+    def fold(self, raw):
+        p, n = self.p, self.n
+        out = [0] * n
+        special = 0
+        for e, c in enumerate(raw):
+            if c:
+                e2 = e % p
+                if e2 == p - 1:
+                    special += c
+                else:
+                    out[e2] += c
+        if special:
+            for i in range(n):
+                out[i] -= special
+        return out
+
+    def mul(self, a, b):
+        p = self.p
+        raw = [0] * (2 * p)
+        for i, x in enumerate(a):
+            if x:
+                for j, y in enumerate(b):
+                    if y:
+                        e = i + j
+                        if e >= p:
+                            e -= p
+                        raw[e] += x * y
+        return self.fold(raw)
+
+    def sigma(self, a, k):
+        raw = [0] * self.p
+        for i, c in enumerate(a):
+            if c:
+                raw[(i * k) % self.p] += c
+        return self.fold(raw)
+
+    def period_vec(self, H, a):
+        raw = [0] * self.p
+        for b in H:
+            raw[(a * b) % self.p] += 1
+        return self.fold(raw)
+
+    def period_coeffs(self, c, reps, H):
+        """把被固定在该层域中的元素 c 写成 Σ_{a∈reps} d_a·η(aH)，并重建核对。"""
+        c0 = c[0]
+        d = {}
+        for a in reps:
+            d[a] = -c0 if a == 1 else c[a] - c0
+        acc = self.zero()
+        for a in reps:
+            if d[a]:
+                acc = self.add(acc, self.smul(d[a], self.period_vec(H, a)))
+        if list(acc) != list(c):
+            raise AssertionError("周期系数提取失败：元素不在该层域中？")
+        return d
+
+
+# ======================================================================
+# Z[ζ_p][ω]/(Φ_ℓ(ω))
+# ======================================================================
+
+
+class OmegaRing:
+    def __init__(self, Z, ell):
+        self.Z = Z
+        self.ell = ell
+        self.d = ell - 1
+
+    def zero(self):
+        return [self.Z.zero() for _ in range(self.d)]
+
+    def one(self):
+        v = [self.Z.zero() for _ in range(self.d)]
+        v[0] = self.Z.one()
+        return v
+
+    def reduce(self, cur):
+        Z, d = self.Z, self.d
+        cur = [list(x) for x in cur]
+        need = 2 * d + 2
+        if len(cur) < need:
+            cur += [Z.zero() for _ in range(need - len(cur))]
+        for e in range(len(cur) - 1, d - 1, -1):
+            ce = cur[e]
+            if Z.is_zero(ce):
+                continue
+            neg = Z.smul(-1, ce)
+            for i in range(d):
+                cur[e - d + i] = Z.add(cur[e - d + i], neg)
+        return cur[:d]
+
+    def omega_pow(self, k):
+        k %= self.ell
+        c = [self.Z.zero() for _ in range(self.ell)]
+        c[k] = self.Z.one()
+        return self.reduce(c)
+
+    def add(self, a, b):
+        return [self.Z.add(x, y) for x, y in zip(a, b)]
+
+    def scale(self, a, z):
+        return [self.Z.mul(x, z) for x in a]
+
+    def mul(self, a, b):
+        Z, d = self.Z, self.d
+        cur = [Z.zero() for _ in range(2 * d - 1)]
+        for i, x in enumerate(a):
+            if Z.is_zero(x):
+                continue
+            for j, y in enumerate(b):
+                if Z.is_zero(y):
+                    continue
+                cur[i + j] = Z.add(cur[i + j], Z.mul(x, y))
+        return self.reduce(cur)
+
+    def pow(self, a, k):
+        r = self.one()
+        b = [list(x) for x in a]
+        while k:
+            if k & 1:
+                r = self.mul(r, b)
+            k >>= 1
+            if k:
+                b = self.mul(b, b)
+        return r
+
+
+# ======================================================================
+# 层结构
+# ======================================================================
+
+
+class Levels:
+    def __init__(self, p, g=None):
+        self.p = p
+        self.h = (p - 1) // 2
+        self.g = g if g else primitive_root(p)
+        self.order = level_order(self.h)
+        self.m = [1]
+        for q in self.order:
+            self.m.append(self.m[-1] * q)
+        self.s = len(self.order)
+        self.H = []
+        for j in range(self.s + 1):
+            mj = self.m[j]
+            H = set()
+            for t in range(self.h // mj):
+                x = pow(self.g, mj * t, p)
+                H.add(x)
+                H.add(p - x)
+            self.H.append(H)
+        self.reps, self.coset = [], []
+        for j in range(self.s + 1):
+            seen, reps = set(), []
+            for a in range(1, p):
+                if a in seen:
+                    continue
+                reps.append(a)
+                for b in self.H[j]:
+                    seen.add((a * b) % p)
+            self.reps.append(reps)
+            arr = [0] * p
+            for a in reversed(range(1, p)):
+                for b in self.H[j]:
+                    arr[(a * b) % p] = a
+            self.coset.append(arr)
+        self.parent = [None] * (self.s + 1)
+        self.tindex = [None] * (self.s + 1)
+        for j in range(1, self.s + 1):
+            mp, ell = self.m[j - 1], self.order[j - 1]
+            par, tidx = {}, {}
+            for r in self.reps[j - 1]:
+                for t in range(ell):
+                    child = self.coset[j][(r * pow(self.g, mp * t, p)) % p]
+                    par[child] = r
+                    tidx[child] = t
+            self.parent[j], self.tindex[j] = par, tidx
+
+    def kids(self, j):
+        """第 j 层的子周期（母周期 a = 1 的那一组），下标 t 与反演公式的 t 一致"""
+        return [self.coset[j][pow(self.g, self.m[j - 1] * t, self.p)]
+                for t in range(self.order[j - 1])]
+
+    def d_of(self, a):
+        for d in range(self.h):
+            if pow(self.g, d, self.p) == a % self.p:
+                return d
+        raise ValueError("编号表越界")
+
+
+# ======================================================================
+# 下降（精确数据层）
+# ======================================================================
+
+
+class Descent:
+    def __init__(self, p, g=None):
+        if p == 2 or not is_prime(p):
+            raise ValueError("Descent 只处理奇素数")
+        self.p = p
+        self.L = Levels(p, g)
+        self.Z = ZRing(p)
+        self.steps = []
+
+    def period_vec(self, j, a):
+        return self.Z.period_vec(self.L.H[j], a)
+
+    def u_block(self, j, a):
+        """u^{(j)}_{a,1}：基块的 u 经 σ_a 作用（a 跑第 j-1 层的陪集代表）"""
+        Z, L = self.Z, self.L
+        st = self.steps[j - 1]
+        if a == 1:
+            return st["u"], st["coef"]
+        u = [Z.sigma(c, a) for c in st["u"]]
+        coef = [Z.period_coeffs(c, L.reps[j - 1], L.H[j - 1]) for c in u]
+        return u, coef
+
+    def run(self, verbose=False):
+        L, Z = self.L, self.Z
+        for j in range(1, L.s + 1):
+            ell = L.order[j - 1]
+            R = OmegaRing(Z, ell)
+            kids = L.kids(j)
+            betas = [self.period_vec(j, a) for a in kids]
+            theta = R.zero()
+            for t, b in enumerate(betas):
+                theta = R.add(theta, R.scale(R.omega_pow((-t) % ell), b))
+            u = R.pow(theta, ell)
+            gen = pow(L.g, L.m[j - 1], L.p)
+            for c in u:
+                if Z.sigma(c, gen) != c:
+                    raise AssertionError("第 %d 步：u 的系数不在上一层域中" % j)
+            coef = [Z.period_coeffs(c, L.reps[j - 1], L.H[j - 1]) for c in u]
+            self.steps.append(dict(j=j, ell=ell, kids=kids, betas=betas,
+                                   theta=theta, u=u, coef=coef))
+            if verbose:
+                print("    第 %d 步（ℓ=%d）完成" % (j, ell))
+        return self
+
+    def verify(self):
+        """θ^ℓ=u、反演公式、Λ_a=2cos(2πa/p) 的数值核对（精确数据层）"""
+        L, p = self.L, self.p
+        z = cmath.exp(2j * cmath.pi / p)
+        worst = 0.0
+        for j in range(1, L.s + 1):
+            ell = L.order[j - 1]
+            w = cmath.exp(2j * cmath.pi / ell)
+            st = self.steps[j - 1]
+            V = [sum(z ** ((a * b) % p) for b in L.H[j]) for a in st["kids"]]
+            th = [sum(w ** (-k * t) * V[t] for t in range(ell)) for k in range(ell)]
+            base = [sum(z ** ((a * b) % p) for b in L.H[j - 1]) for a in L.reps[j - 1]]
+            idx = {r: i for i, r in enumerate(L.reps[j - 1])}
+            for k in range(ell):
+                val = 0j
+                for i, co in enumerate(st["coef"]):
+                    val += sum(c * base[idx[r]] for r, c in co.items()) * w ** (i * k)
+                if k == 0:
+                    want = base[idx[1]]
+                    worst = max(worst, abs(th[0] - want) / max(1.0, abs(want)))
+                else:
+                    worst = max(worst, abs(th[k] ** ell - val) / max(1.0, abs(val)))
+            for t in range(ell):
+                back = sum(w ** (t * k) * th[k] for k in range(ell)) / ell
+                worst = max(worst, abs(back - V[t]) / max(1.0, abs(V[t])))
+        for a in L.reps[-1]:
+            got = sum(z ** ((a * b) % p) for b in L.H[-1])
+            worst = max(worst, abs(got - 2 * cmath.cos(2 * cmath.pi * a / p)))
+        return worst
+
+
+# ======================================================================
+# 表达式树
+#   ('Q',Fraction) ('I',) ('OM',ℓ,k) ('R',d,base) ('P',(…)) ('S',(…)) ('N',名字)
+# ======================================================================
+
+
+def QF(fr):
+    return ("Q", fr)
+
+
+def Q(a, b=1):
+    return ("Q", Fraction(a, b))
+
+
+II = ("I",)
+
+
+def OM(ell, k):
+    """ω_ℓ^k（ℓ 为素数）"""
+    k %= ell
+    if ell == 2:
+        return Q(-1) if k == 1 else Q(1)
+    if k == 0:
+        return Q(1)
+    return ("OM", ell, k)
+
+
+def NM(name):
+    return ("N", name)
+
+
+def SU(*ts):
+    """和式（顺带把有理项合并，免得出现 √(2+1) 这种）"""
+    flat, rat = [], Fraction(0)
+    for t in ts:
+        if t[0] == "S":
+            for u in t[1]:
+                if u[0] == "Q":
+                    rat += u[1]
+                else:
+                    flat.append(u)
+        elif t[0] == "Q":
+            rat += t[1]
+        else:
+            flat.append(t)
+    out = ([QF(rat)] if rat != 0 else []) + flat
+    if not out:
+        return Q(0)
+    if len(out) == 1:
+        return out[0]
+    return ("S", tuple(out))
+
+
+def PR(*fs):
+    flat = []
+    for f in fs:
+        if f[0] == "P":
+            flat += list(f[1])
+        elif f[0] == "Q":
+            if f[1] == 0:
+                return Q(0)
+            if f[1] == 1:
+                continue
+            flat.append(f)
+        else:
+            flat.append(f)
+    if not flat:
+        return Q(1)
+    rat = Fraction(1)
+    rest = []
+    for f in flat:
+        if f[0] == "Q":
+            rat *= f[1]
+        else:
+            rest.append(f)
+    if rat == 0:
+        return Q(0)
+    if not rest:
+        return Q(rat)
+    if rat != 1:
+        rest = [QF(rat)] + rest
+    if len(rest) == 1:
+        return rest[0]
+    return ("P", tuple(rest))
+
+
+def _pull_dth_power(num, den, d):
+    """从 num/den 中提出 d 次方因子，返回 (提出的有理数, 剩下的有理数)"""
+    out = Fraction(1)
+    for _ in range(40):
+        done = False
+        rn = int(round(abs(num) ** (1.0 / d))) if num else 1
+        for c in range(max(2, rn - 2), rn + 3):
+            if num and num % (c ** d) == 0:
+                num //= c ** d
+                out *= c
+                done = True
+                break
+        rd = int(round(den ** (1.0 / d))) if den else 1
+        for c in range(max(2, rd - 2), rd + 3):
+            if den and den % (c ** d) == 0:
+                den //= c ** d
+                out /= c
+                done = True
+                break
+        if not done:
+            break
+    return out, Fraction(num, den)
+
+
+def _term_rat_rest(t):
+    """把一个项拆成（有理系数，其余部分 or None）"""
+    if t[0] == "Q":
+        return t[1], None
+    if t[0] == "P":
+        rat, rest = Fraction(1), []
+        for f in t[1]:
+            if f[0] == "Q":
+                rat *= f[1]
+            else:
+                rest.append(f)
+        return rat, (rest[0] if len(rest) == 1 else PR(*rest))
+    return Fraction(1), t
+
+
+def distribute(ex, depth=0):
+    """只把有理系数乘进和式（不做完全展开），便于合并同类项"""
+    if depth > 30:
+        return ex
+    op = ex[0]
+    if op == "S":
+        return SU(*[distribute(t, depth + 1) for t in ex[1]])
+    if op == "P":
+        fs = [distribute(f, depth + 1) for f in ex[1]]
+        rat, others = Fraction(1), []
+        for f in fs:
+            if f[0] == "Q":
+                rat *= f[1]
+            else:
+                others.append(f)
+        if len(others) == 1 and others[0][0] == "S" and rat != 1:
+            return SU(*[PR(QF(rat), t) for t in others[0][1]])
+        return PR(QF(rat), *others) if others else QF(rat)
+    if op == "R":
+        return ROOT(ex[1], distribute(ex[2], depth + 1))
+    return ex
+
+
+def _as_qsqrt(base):
+    """把 base 识别成 A + B√m（A、B 为有理数，m 无平方因子）；失败返回 None"""
+    terms = base[1] if base[0] == "S" else (base,)
+    A, B, m, dens = Fraction(0), Fraction(0), None, set()
+    for t in terms:
+        rat, rest = _term_rat_rest(t)
+        if rest is None:
+            A += rat
+            dens.add(rat.denominator)
+            continue
+        if rest[0] == "R" and rest[1] == 2 and rest[2][0] == "Q" and rest[2][1] > 0:
+            mm = int(rest[2][1])
+            for q in range(2, 100):
+                while mm % (q * q) == 0:
+                    mm //= q * q
+            if m is None:
+                m = mm
+            elif m != mm:
+                return None
+            B += rat
+            dens.add(rat.denominator)
+            continue
+        return None
+    if m is None:
+        return None
+    C = 1
+    for dd in dens:
+        C = C * dd // math.gcd(C, dd)
+    return A, B, m, C
+
+
+def ROOT(d, base):
+    """d 次根，按"正实主支"化简并给出规范写法：
+
+    · d = 2：√(-a) → √a·i；√((5-√5)/2) 之类改写成 √(10-2√5)/2（与手稿一致）；
+    · d 为奇数、被开方数是负有理数：写成 -√[d]{|a|}（实数根，与打印式一致）；
+    · 有理数因子按完全 d 次幂提出。
+    """
+    if d == 2 and base[0] == "Q" and base[1] < 0:
+        return PR(ROOT(2, QF(-base[1])), II)
+    if d == 2:
+        info = _as_qsqrt(base)
+        if info is not None:
+            A, B, m, C = info
+            if C > 1 and B != 0:
+                inner = collect(distribute(PR(QF(Fraction(C * C)),
+                                               SU(QF(A), PR(QF(B), ("R", 2, Q(m)))))))
+                return PR(QF(Fraction(1, C)), ROOT(2, inner))
+    if base[0] == "Q":
+        fr = base[1]
+        pull, rest = _pull_dth_power(fr.numerator, fr.denominator, d)
+        if rest == 0:
+            return Q(0)
+        if rest < 0 and d % 2 == 1:
+            return PR(QF(-pull), ROOT(d, QF(-rest)))
+        if rest < 0:
+            return ("R", d, base)
+        if rest == 1:
+            return QF(pull)
+        root_rest = int(round(rest ** (1.0 / d)))
+        if root_rest ** d == rest:
+            return QF(pull * root_rest)
+        if pull != 1:
+            return PR(QF(pull), ("R", d, base))
+        return ("R", d, base)
+    if base[0] == "P":
+        rat = Fraction(1)
+        rest = []
+        for f in base[1]:
+            if f[0] == "Q":
+                rat *= f[1]
+            else:
+                rest.append(f)
+        if rat != 1:
+            pull, inner = _pull_dth_power(rat.numerator, rat.denominator, d)
+            newbase = PR(QF(inner), *rest) if rest else QF(inner)
+            return PR(QF(pull), ROOT(d, newbase))
+        return ("R", d, base)
+    return ("R", d, base)
+
+
+# ---- LaTeX 打印 ------------------------------------------------------
+
+
+def tex_rat(fr):
+    if fr.denominator == 1:
+        return str(fr.numerator)
+    if fr.numerator < 0:
+        return r"-\frac{%d}{%d}" % (-fr.numerator, fr.denominator)
+    return r"\frac{%d}{%d}" % (fr.numerator, fr.denominator)
+
+
+def tex(e, prec=0):
+    op = e[0]
+    if op == "Q":
+        return tex_rat(e[1])
+    if op == "I":
+        return "i"
+    if op == "N":
+        return disp(e[1])
+    if op == "OM":
+        return r"\omega_{%d}^{%d}" % (e[1], e[2])
+    if op == "R":
+        d, base = e[1], e[2]
+        return r"\sqrt{%s}" % tex(base) if d == 2 else \
+            r"\sqrt[%d]{%s}" % (d, tex(base))
+    if op == "P":
+        out = []
+        prev_digit = False
+        for i, f in enumerate(e[1]):
+            if i == 0 and f[0] == "Q" and f[1].denominator == 1 \
+                    and abs(f[1].numerator) == 1:
+                # ±1 只留符号：-\sqrt{3} 而不是 -1\sqrt{3}
+                if f[1].numerator < 0:
+                    out.append("-")
+                prev_digit = False
+                continue
+            s = tex(f, 0)
+            if f[0] == "S" and len(f[1]) > 1:
+                s = r"\left(%s\right)" % s
+            cur_digit = f[0] == "Q" and f[1].denominator == 1
+            if i and prev_digit and cur_digit:
+                out.append(r"\cdot")
+            out.append(s)
+            prev_digit = cur_digit
+        s = "".join(out)
+        return r"\left(%s\right)" % s if prec >= 3 else s
+    if op == "S":
+        parts = []
+        for i, t in enumerate(e[1]):
+            neg, body = split_sign(t)
+            s = tex(body, 1)
+            if i == 0:
+                parts.append(("-" if neg else "") + s)
+            else:
+                parts.append((" - " if neg else " + ") + s)
+        s = "".join(parts)
+        return r"\left(%s\right)" % s if prec >= 2 else s
+    raise ValueError("未知节点：%s" % (op,))
+
+
+def split_sign(t):
+    if t[0] == "Q":
+        return (t[1] < 0), (QF(-t[1]) if t[1] < 0 else t)
+    if t[0] == "P":
+        fs = list(t[1])
+        for i, f in enumerate(fs):
+            if f[0] == "Q":
+                if f[1] < 0:
+                    fs[i] = QF(-f[1])
+                    return True, PR(*fs)
+                return False, t
+        return False, t
+    return False, t
+
+
+def skey(e):
+    """结构键（比 tex 严格）：不同模数的同名量绝不会被并到一起"""
+    op = e[0]
+    if op == "Q":
+        fr = e[1]
+        return "Q%d/%d" % (fr.numerator, fr.denominator)
+    if op == "I":
+        return "I"
+    if op in ("N", "OM"):
+        return "%s:%s" % (op, "-".join(map(str, e[1:])))
+    if op == "R":
+        return "R%d:%s" % (e[1], skey(e[2]))
+    return "%s(%s)" % (op, "|".join(skey(x) for x in e[1]))
+
+
+def collect(ex):
+    """递归合并同类项（按去掉有理系数后的「结构核」分组）"""
+    ex = distribute(ex)
+    op = ex[0]
+    if op == "P":
+        return PR(*[collect(f) for f in ex[1]])
+    if op == "R":
+        return ROOT(ex[1], collect(ex[2]))
+    if op != "S":
+        return ex
+    groups, order = {}, []
+    for t in ex[1]:
+        t = collect(t)
+        rat, kernel = _term_rat_rest(t)
+        if kernel is None:
+            kernel = Q(1)
+        key = skey(kernel)
+        if key not in groups:
+            groups[key] = [kernel, Fraction(0)]
+            order.append(key)
+        groups[key][1] += rat
+    out = []
+    for key in order:
+        kernel, rat = groups[key]
+        if rat == 0:
+            continue
+        out.append(kernel if rat == 1 else PR(QF(rat), kernel))
+    return SU(*out)
+
+
+def node_count(e):
+    op = e[0]
+    if op in ("Q", "I", "N", "OM"):
+        return 1
+    if op == "R":
+        return 1 + node_count(e[2])
+    return 1 + sum(node_count(x) for x in e[1])
+
+
+def count_names(e):
+    """展开后仍残留的命名量个数（应为 0，表示是具体根式）"""
+    op = e[0]
+    if op == "N":
+        return 1
+    if op in ("Q", "I", "OM"):
+        return 0
+    if op == "R":
+        return count_names(e[2])
+    return sum(count_names(x) for x in e[1])
+
+
+def expand(ex, defs, limit=200000):
+    """把命名量与 ω 节点全部换成显式根式；超过规模上限时保留名字。
+
+    名字一律带模数标签，定义表因此无环；这里仍保留循环检测，
+    一旦真的出现循环会给出可读报错，而不是 RecursionError。
+    """
+    cnt = [0]
+
+    def rec(e, path):
+        op = e[0]
+        if op == "N":
+            key = e[1]
+            if key not in defs:
+                return e
+            if key in path:
+                raise RuntimeError("展开时检测到循环引用：%s" % disp(key))
+            if cnt[0] > limit:
+                return e
+            cnt[0] += 1
+            return rec(defs[key], path + [key])
+        if cnt[0] > limit:
+            return e
+        if op == "OM":
+            ell, k = e[1], e[2]
+            kbar = lam_index(ell, k)
+            second = lam_index(ell, 2 * k)
+            eps = 1 if (k % ell) <= ell // 2 else -1
+            radic = Q(2) if second == 0 else \
+                SU(Q(2), PR(Q(-1), NM(kLAM(ell, second))))
+            body = SU(PR(QF(Fraction(1, 2)), NM(kLAM(ell, kbar))),
+                      PR(QF(Fraction(eps, 2)), ROOT(2, radic), II))
+            cnt[0] += 1
+            return rec(body, path)
+        if op == "R":
+            inner = rec(e[2], path)
+            cnt[0] += 1
+            return ROOT(e[1], inner)
+        if op == "P":
+            return PR(*[rec(f, path) for f in e[1]])
+        if op == "S":
+            return SU(*[rec(t, path) for t in e[1]])
+        return e
+
+    return rec(ex, [])
+
+
+def ev(ex, defs, _path=None):
+    """数值求值（一律主支；与打印式同约定）"""
+    op = ex[0]
+    if op == "Q":
+        return complex(float(ex[1]))
+    if op == "I":
+        return 1j
+    if op == "OM":
+        return cmath.exp(2j * cmath.pi * ex[2] / ex[1])
+    if op == "N":
+        key = ex[1]
+        if key not in defs:
+            raise KeyError("未定义的量：%s" % disp(key))
+        if _path is None:
+            _path = []
+        if key in _path:
+            raise RuntimeError("求值时检测到循环引用：%s" % disp(key))
+        return ev(defs[key], defs, _path + [key])
+    if op == "S":
+        return sum(ev(t, defs, _path) for t in ex[1])
+    if op == "P":
+        r = 1 + 0j
+        for f in ex[1]:
+            r *= ev(f, defs, _path)
+        return r
+    if op == "R":
+        return ev(ex[2], defs, _path) ** (1.0 / ex[1])
+    raise ValueError("未知节点：%s" % (op,))
+
+
+# ======================================================================
+# 装配
+# ======================================================================
+
+
+class Builder:
+    _cache = {}
+
+    def __new__(cls, n):
+        if n in cls._cache:
+            return cls._cache[n]
+        obj = object.__new__(cls)
+        cls._cache[n] = obj
+        obj._init(n)
+        return obj
+
+    def _init(self, n):
+        self.n = n
+        self.defs = {}
+        self.shift = {}            # (j,a,k) -> (s, 残差)
+        self.branch_res = 0.0
+        self.is_prime_n = is_prime(n) and n > 2
+        if n == 2:
+            self.des = self.L = self.p = None
+            return
+        if self.is_prime_n:
+            self.p = n
+            self.des = Descent(n).run()
+            self.L = self.des.L
+            self._define_prime()
+        else:
+            self.des = self.L = self.p = None
+            self._define_composite()
+
+    def define(self, key, ex):
+        self.defs[key] = ex
+        return NM(key)
+
+    # ---- 素数：完整下降 ----
+    def _define_prime(self):
+        p, L = self.p, self.L
+        self.define(kE(p, 0, 1), Q(-1))            # 第 0 层：全部非零剩余之和 = -1
+        for ell in sorted(set(L.order)):           # 并入辅助素数的定义表
+            if ell != 2:
+                self.defs.update(Builder(ell).defs)
+        for j in range(1, L.s + 1):
+            ell = L.order[j - 1]
+            for a in L.reps[j - 1]:
+                u_, coef = self.des.u_block(j, a)
+                for k in range(1, ell):
+                    terms = []
+                    for i, co in enumerate(coef):
+                        if not co:
+                            continue
+                        cex = SU(*[PR(QF(Fraction(c)), NM(kE(p, j - 1, r)))
+                                   for r, c in sorted(co.items())])
+                        terms.append(PR(cex, OM(ell, (i * k) % ell)))
+                    self.define(kU(p, j, a, k), collect(SU(*terms)))
+                    self.define(kT(p, j, a, k), ROOT(ell, NM(kU(p, j, a, k))))
+                for k in range(1, ell):            # 分支核对：θ = ω_ℓ^{s}·√[ℓ]{u}
+                    self._set_branch(j, a, k)
+            for b in L.reps[j]:
+                par, t = L.parent[j][b], L.tindex[j][b]
+                terms = [NM(kE(p, j - 1, par))]
+                for k in range(1, ell):
+                    terms.append(PR(OM(ell, (k * t) % ell), NM(kT(p, j, par, k))))
+                self.define(kE(p, j, b),
+                            PR(QF(Fraction(1, ell)), collect(SU(*terms))))
+        for a in L.reps[-1]:
+            self.define(kLAM(p, a), NM(kE(p, L.s, a)))
+
+    def _theta_true(self, j, a, k):
+        """θ^{(j)}_{a,k} = Σ_t ω_ℓ^{-kt} σ_a(η^{(j)}_{c_t}) 的真值（数值）"""
+        L, p = self.L, self.p
+        ell = L.order[j - 1]
+        z = cmath.exp(2j * cmath.pi / p)
+        w = cmath.exp(2j * cmath.pi / ell)
+        Hj = sorted(L.H[j])
+        acc = 0j
+        for t, kid in enumerate(L.kids(j)):
+            V = sum(z ** ((a * kid * b) % p) for b in Hj)
+            acc += w ** ((-k * t) % ell) * V
+        return acc
+
+    def _set_branch(self, j, a, k):
+        """把 θ^{(j)}_{a,k} = √[ℓ]{u} 校正到真值所在的分支：θ = ω_ℓ^{s}·√[ℓ]{u}。
+
+        参考值取"与打印式完全同一约定"的展开结果，因此打印出来的式子
+        按主支求值恰好等于真值。
+        """
+        if (j, a, k) in self.shift:
+            return self.shift[(j, a, k)][0]
+        L = self.L
+        ell = L.order[j - 1]
+        tk = kT(self.p, j, a, k)
+        ex = collect(expand(NM(tk), self.defs, limit=400000))
+        ref = ev(ex, self.defs)
+        want = self._theta_true(j, a, k)
+        if abs(ref) < 1e-300 or abs(want) < 1e-300:
+            self.shift[(j, a, k)] = (0, 0.0)
+            return 0
+        w = cmath.exp(2j * cmath.pi / ell)
+        ratio = want / ref
+        s = int(round(cmath.phase(ratio) * ell / (2 * cmath.pi))) % ell
+        res = abs(ratio / w ** s - 1)
+        self.shift[(j, a, k)] = (s, res)
+        self.branch_res = max(self.branch_res, res)
+        if s:
+            self.defs[tk] = PR(OM(ell, s), self.defs[tk])
+        return s
+
+    # ---- 合数：并入所有子问题（各素数幂）的定义 ----
+    def _define_composite(self):
+        n = self.n
+        f = factorize(n)
+        for q, e in sorted(f.items()):
+            for k in range(1, e + 1):
+                m = q ** k
+                if m != n:
+                    self.defs.update(Builder(m).defs)
+
+    # ---- 全部单位根 ----
+    def omega(self, t):
+        n = self.n
+        t %= n
+        if t == 0:
+            return Q(1)
+        if n == 2:
+            return Q(-1)
+        if self.is_prime_n:
+            p, L = self.p, self.L
+            tb = lam_index(p, t)
+            eps = 1 if t <= L.h else -1
+            s2 = lam_index(p, 2 * tb)
+            radic = Q(2) if s2 == 0 else \
+                SU(Q(2), PR(Q(-1), NM(kLAM(p, s2))))
+            return SU(PR(QF(Fraction(1, 2)), NM(kLAM(p, tb))),
+                      PR(QF(Fraction(eps, 2)), ROOT(2, radic), II))
+        f = factorize(n)
+        qs = [q ** e for q, e in sorted(f.items())]
+        if len(qs) == 1:                          # 素数幂 p^k
+            p = sorted(f)[0]
+            k = f[p]
+            prev = qs[0] // p
+            if prev == 1:
+                return Builder(p).omega(t)
+            if t % prev == 0:
+                return Builder(prev).omega(t // prev)
+            b = t % prev
+            signed = b if b <= prev // 2 else b - prev
+            m = (t - signed) // prev
+            a = (m * p ** (k - 2)) % prev
+            return PR(Builder(prev).omega(a), ROOT(p, Builder(prev).omega(b)))
+        fs = []                                   # 互素因子：CRT 相乘
+        for q in qs:
+            s = (t * inv_mod((n // q) % q, q)) % q
+            fs.append(Builder(q).omega(s))
+        return PR(*fs)
+
+
+# ======================================================================
+# LaTeX
+# ======================================================================
+
+
+PREAMBLE = r"""\documentclass[UTF8]{ctexart}
+\usepackage{geometry}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{adjustbox}
+\usepackage{fancyhdr}
+\newcommand{\fitmath}[1]{\begin{center}\adjustbox{max width=\linewidth, max totalheight=0.42\textheight}{$\displaystyle #1$}\end{center}}
+\geometry{a4paper,scale=0.78}
+\setlength{\headheight}{16pt}
+\setlength{\emergencystretch}{3em}
+\allowdisplaybreaks
+\pagestyle{fancy}
+\fancyhead[L]{%(title)s}
+\begin{document}
+\rmfamily
+\title{\textbf{\huge %(title)s}}
+\date{}
+\maketitle
+"""
+
+
+def width_estimate(s):
+    w, i, n = 0.0, 0, len(s)
+    while i < n:
+        c = s[i]
+        if c == "\\":
+            j = i + 1
+            while j < n and s[j].isalpha():
+                j += 1
+            cmd = s[i:j]
+            w += 2.0 if cmd == r"\frac" else (1.2 if cmd == r"\sqrt" else 0.6)
+            i = j
+        elif c in "{}":
+            i += 1
+        elif c.isalpha():
+            w += 1.0
+            i += 1
+        elif c.isdigit():
+            w += 0.55
+            i += 1
+        else:
+            w += 0.7
+            i += 1
+    return w
+
+
+class TexDoc:
+    """只做两件事：往行表里塞内容；对每一行做美元号配对自检。
+
+    所有公式一律走 \fitmath（文本模式里的 adjustbox 自动缩放盒），
+    所以数学表达式无论多宽多高都不会超界；散文行一律写得很短。
+    """
+
+    def __init__(self, budget=88.0):
+        self.lines = []
+        self.budget = budget
+        self.warnings = []
+
+    def add(self, s=""):
+        if "$$" in s or s.count("$") % 2:
+            self.warnings.append(s.strip()[:120])
+            if "$$" in s:
+                s = s.replace("$$", "$ $")
+        self.lines.append(s)
+
+    def text(self, s):
+        self.add(s + "\n")
+
+    def sec(self, t):
+        self.add(r"\section*{%s}" % t)
+
+    def sub(self, t):
+        self.add(r"\subsection*{%s}" % t)
+
+    def _emit_line(self, s):
+        self.add(r"\fitmath{%s}" % s)
+        self.add()
+
+
+def wrap_pieces(doc, lhs, pieces, per_line=8):
+    """把若干 LaTeX 片段按行宽与个数折成若干 \\fitmath 行，保证不超界。"""
+    lhs = lhs.rstrip()
+    head = lhs + (" " if lhs.endswith("=") else " = ")
+    if not pieces:
+        doc._emit_line(head + "0")
+        return
+    lines, cur, cnt = [], "", 0
+    for i, pc in enumerate(pieces):
+        piece = pc.lstrip("+") if i == 0 else pc
+        cand = piece if not cur else cur + piece
+        if cur and (cnt >= per_line or width_estimate(cand) > doc.budget):
+            lines.append(cur)
+            cur, cnt = piece, 1
+        else:
+            cur, cnt = cand, cnt + 1
+    if cur:
+        lines.append(cur)
+    for i, ln in enumerate(lines):
+        doc._emit_line((head if i == 0 else r"\quad ") + ln)
+
+
+def term_pieces(ex):
+    if ex[0] == "S":
+        out = []
+        for t in ex[1]:
+            neg, body = split_sign(t)
+            out.append(("-" if neg else "+") + tex(body))
+        return out
+    return [tex(ex)]
+
+
+def display_terms(doc, lhs, ex, per_line=8):
+    wrap_pieces(doc, lhs, term_pieces(ex), per_line=per_line)
+
+
+def pieces_of_zetas(p, H, a):
+    return [r"\zeta^{%d}" % e for e in sorted({(a * b) % p for b in H})]
+
+
+# ======================================================================
+# 文档生成
+# ======================================================================
+
+
+def aux_sections(doc, b, done):
+    """写出用到的全部辅助素数（含递归）的显式结果"""
+    if not b.is_prime_n:
+        for q in sorted(factorize(b.n)):
+            if q != 2:
+                aux_sections(doc, Builder(q), done)
+        return
+    for ell in sorted(set(b.L.order)):
+        if ell == 2 or ell in done:
+            continue
+        ab = Builder(ell)
+        aux_sections(doc, ab, done)
+        done.add(ell)
+        doc.sub(r"辅助问题 $p = %d$（供 $\omega_{%d}^{k}$ 使用）" % (ell, ell))
+        doc.text(r"$h = %d$，$g = %d$，层阶 $%s$。" %
+                 (ab.L.h, ab.L.g,
+                  (r"\times".join(str(q) for q in ab.L.order) if ab.L.order else "1")))
+        for a in ab.L.reps[-1]:
+            ex = collect(expand(NM(kLAM(ell, a)), ab.defs))
+            display_terms(doc, r"\Lambda^{(%d)}_{%d} = " % (ell, a), ex)
+        doc.text(r"$\omega_{%d}^{k} = \frac{1}{2}\Lambda^{(%d)}_{\bar k}"
+                 r" + \frac{\varepsilon_k}{2}\sqrt{2-\Lambda^{(%d)}_{\overline{2k}}}\,i$。"
+                 % (ell, ell, ell))
+
+
+def make_document(n, brief=False, cap=200000):
+    b = Builder(n)
+    doc = TexDoc()
+    doc.add(PREAMBLE % {"title": "%d 次单位根的根式解" % n})
+
+    # ---------- 1 参数与标准素分解 ----------
+    doc.sec("参数与标准素分解")
+    if n == 2:
+        doc.text(r"$\omega_{2}^{1} = -1$。")
+    elif b.is_prime_n:
+        p, L = b.p, b.L
+        doc.text(r"$p = %d$，$h = (p-1)/2 = %d$，模 $%d$ 的最小原根 $g = %d$。" %
+                 (p, L.h, p, L.g))
+        doc.text(r"$h$ 的标准素分解：$h = %s$，子群链共 $%d$ 层。" %
+                 ((r"\times".join(str(q) for q in L.order) if L.order else "1"), L.s))
+        doc.text(r"$m_0 = 1$" + "".join(r"，$m_{%d} = %d$" % (i + 1, m)
+                                        for i, m in enumerate(L.m[1:])) + "。")
+        doc.text(r"各层子群 $H_j = \{\pm g^{m_j t}\}$，其中 $H_0$ 是全部 $%d$ 个非零剩余："
+                 % (p - 1))
+        for j in range(1, L.s + 1):
+            doc._emit_line(r"H_{%d} = \{%s\}" %
+                           (j, r",\,".join(map(str, sorted(L.H[j])))))
+        doc.text(r"各层周期 $\eta^{(j)}_{a} = \sum_{b \in H_j}\zeta^{ab}$（$a$ 取陪集代表）。")
+    else:
+        f = factorize(n)
+        doc.text(r"$n = %s$。" % r"\times".join(
+            ("%d^{%d}" % (q, e)) if e > 1 else str(q) for q, e in sorted(f.items())))
+        doc.text(r"合数按算术基本定理归约：素数幂用主支 $p$ 次根递推，")
+        doc.text(r"互素因子用 CRT 相乘：")
+        doc._emit_line(r"\omega_{n}^{t} = \prod_i \omega_{q_i}^{s_i},\qquad"
+                       r" s_i \equiv t\,(n/q_i)^{-1} \pmod{q_i}")
+
+    # ---------- 2 各层周期与分解表 ----------
+    if b.is_prime_n:
+        L = b.L
+        p = b.p
+        doc.sec("各层周期与分解表")
+        for j in range(L.s + 1):
+            doc.sub(r"第 $%d$ 层：%d 个周期" % (j, len(L.reps[j])))
+            if j == 0:
+                doc.text(r"$H_0$ 是全部 $%d$ 个非零剩余，故 $\eta^{(0)}_{1} = -1$。"
+                         % (p - 1))
+                continue
+            for a in L.reps[j]:
+                wrap_pieces(doc, r"\eta^{(%d)}_{%d} = " % (j, a),
+                            [("+" if i else "") + t for i, t in
+                             enumerate(pieces_of_zetas(p, L.H[j], a))],
+                            per_line=8)
+        doc.sub(r"分解表：每个母周期拆成 $\ell_j$ 个子周期")
+        for j in range(1, L.s + 1):
+            for r in L.reps[j - 1]:
+                kids = [r"\eta^{(%d)}_{%d}" % (j, L.coset[j][
+                    (r * pow(L.g, L.m[j - 1] * t, L.p)) % L.p])
+                    for t in range(L.order[j - 1])]
+                wrap_pieces(doc, r"\eta^{(%d)}_{%d} = " % (j - 1, r),
+                            [("+" if i else "") + k for i, k in enumerate(kids)],
+                            per_line=8)
+            doc.text(r"（第 $%d$ 层，$\ell = %d$。）" % (j, L.order[j - 1]))
+
+    # ---------- 3 辅助单位根 ----------
+    doc.sec("辅助单位根")
+    doc.text(r"$\ell = 2$ 时 $\omega_{2}^{1} = -1$。")
+    doc.text(r"$\ell \geq 3$ 时按主支：")
+    doc._emit_line(r"\omega_{\ell}^{k} = \frac{\Lambda^{(\ell)}_{\bar k}}{2}"
+                   r" + \frac{\varepsilon_k}{2}\sqrt{2-\Lambda^{(\ell)}_{\overline{2k}}}\,i")
+    doc.text(r"其中 $\varepsilon_k = \operatorname{sgn}\sin(2\pi k/\ell)$，"
+             r"$\bar k = \min(k,\ell-k)$。")
+    aux_sections(doc, b, set())
+
+    # ---------- 4 逐层开方 ----------
+    if b.is_prime_n:
+        L, p = b.L, b.p
+        doc.sec("逐层开方")
+        doc.text(r"每一步把母周期 $\eta^{(j-1)}_{a}$ 分解成 $\ell$ 个子周期"
+                 r" $\beta^{(a)}_{t}$。")
+        doc.text(r"预解式取离散 Fourier 变换：")
+        doc._emit_line(r"\theta^{(j)}_{a,k} = \sum_{t=0}^{\ell-1}"
+                       r"\omega_{\ell}^{-kt}\beta^{(a)}_{t}")
+        doc._emit_line(r"\left(\theta^{(j)}_{a,k}\right)^{\ell} = u^{(j)}_{a,k}"
+                       r" = \tau^{k}\left(u^{(j)}_{a,1}\right)")
+        doc._emit_line(r"\eta^{(j)}_{b(t)} = \frac{1}{\ell}\left(\eta^{(j-1)}_{a}"
+                       r" + \sum_{k=1}^{\ell-1}\omega_{\ell}^{kt}"
+                       r"\theta^{(j)}_{a,k}\right)")
+        doc.text(r"（$\tau$ 把 $\omega_{\ell}$ 送到 $\omega_{\ell}^{k}$；$b(t)$ 为第 $t$ 个子周期。）")
+        doc.text(r"开方一律取正实主支；预解式的分支由因子 $\omega_{\ell}^{s}$ 记录（见报告里的分支表）。")
+        for j in range(1, L.s + 1):
+            ell = L.order[j - 1]
+            doc.sub(r"第 $%d$ 步（$\ell = %d$，%d 个母周期）"
+                    % (j, ell, len(L.reps[j - 1])))
+            for a in L.reps[j - 1]:
+                if brief and a != 1:
+                    continue
+                if kU(p, j, a, 1) not in b.defs:
+                    continue
+                ex1 = collect(expand(NM(kU(p, j, a, 1)), b.defs, limit=cap))
+                if count_names(ex1):
+                    ex1 = collect(b.defs[kU(p, j, a, 1)])
+                display_terms(doc, r"u^{(%d)}_{%d,1} = " % (j, a), ex1)
+                exth = collect(expand(NM(kT(p, j, a, 1)), b.defs, limit=cap))
+                if count_names(exth):
+                    exth = collect(b.defs[kT(p, j, a, 1)])
+                display_terms(doc, r"\theta^{(%d)}_{%d,1} = " % (j, a), exth)
+
+    # ---------- 5 实部数值 ----------
+    doc.sec("实部数值")
+    if b.is_prime_n:
+        for a in b.L.reps[-1]:
+            ex = collect(expand(NM(kLAM(b.p, a)), b.defs, limit=cap))
+            display_terms(doc, r"\Lambda_{%d} = 2\cos\frac{2\pi\cdot %d}{%d} = "
+                               % (a, a, b.p), ex)
+    elif n == 2:
+        doc.text(r"$\Lambda_{1} = 2\cos\pi = -2$。")
+    else:
+        doc.text(r"合数情形的实部由各因子相乘得到，直接看下一节的写开结果。")
+
+    # ---------- 6 全部单位根 ----------
+    doc.sec("全部单位根")
+    if b.is_prime_n:
+        doc.text(r"最终形式：")
+        doc._emit_line(r"\omega_{n}^{t} = \frac{\Lambda_{\bar t}}{2}"
+                       r" + \frac{\varepsilon_t}{2}\sqrt{2-\Lambda_{\overline{2t}}}\,i,"
+                       r"\qquad \Lambda_{\bar t} = 2\cos\frac{2\pi\bar t}{n}")
+        doc.text(r"其中 $\bar t = \min(t, n-t)$，"
+                 r"$\varepsilon_t = \operatorname{sgn}\sin(2\pi t/n)$。")
+        doc.text(r"以下逐一写开（全部为具体根式）：")
+    else:
+        doc.text(r"以下逐一写开（合数情形已由 CRT 归约为因子次单位根之积）：")
+    for t in range(1, n):
+        ex = collect(expand(b.omega(t), b.defs, limit=cap))
+        if count_names(ex):
+            doc.warnings.append("n = %d 的 ω^%d 展开超出规模上限，保留了命名量" % (n, t))
+        display_terms(doc, r"\omega_{%d}^{%d} = " % (n, t), ex)
+
+    doc.add(r"\end{document}")
+    return "\n".join(doc.lines), doc.warnings
+
+
+# ======================================================================
+# 编译与检查
+# ======================================================================
+
+
+def compile_pdf(tex_path, workdir, passes=2):
+    """编译若干遍；返回 (是否成功, 日志, 出错处 .tex 原文, Overfull 计数)"""
+    logs = []
+    for _ in range(max(1, passes)):
+        try:
+            p = subprocess.run(["pdflatex", "-interaction=nonstopmode",
+                                "-halt-on-error", os.path.basename(tex_path)],
+                               cwd=workdir, stdout=subprocess.PIPE,
+                               stderr=subprocess.STDOUT, timeout=7200)
+            logs.append(p.stdout.decode("utf-8", "replace"))
+        except FileNotFoundError:
+            return False, "找不到 pdflatex：请安装 MiKTeX/TeX Live 并把 bin 加入 PATH。", [], 0
+        except Exception as e:
+            return False, "pdflatex 调用失败：%r\n%s" % (e, "\n".join(logs)), [], 0
+    last = logs[-1]
+    ok = ("! " not in last) and ("Output written" in last)
+    n_over = len(re.findall(r"Overfull \\[hv]box", last))
+    hints = []
+    try:
+        with open(tex_path, encoding="utf-8") as f:
+            src = f.read().splitlines()
+    except Exception:
+        src = []
+    for m in re.finditer(r"^l\.(\d+)", last, re.M):
+        ln = int(m.group(1))
+        for k in range(max(1, ln - 2), min(len(src), ln + 2) + 1):
+            hints.append("%4d: %s" % (k, src[k - 1]))
+        hints.append("")
+    return ok, "\n".join(logs), hints, n_over
+
+
+# ======================================================================
+# 自检
+# ======================================================================
+
+
+def branch_res_of(b):
+    if b.n == 2:
+        return 0.0
+    if b.is_prime_n:
+        return b.branch_res
+    return max(branch_res_of(Builder(q))
+               for q in sorted(set(factorize(b.n))) if q > 2)
+
+
+def check_n(n, verbose=True, cap=200000):
+    b = Builder(n)
+    worst, left = 0.0, 0
+    for t in range(n):
+        ex = collect(expand(b.omega(t), b.defs, limit=cap))
+        left = max(left, count_names(ex))
+        worst = max(worst, abs(ev(ex, b.defs) - cmath.exp(2j * cmath.pi * t / n)))
+    if b.des is not None:
+        worst = max(worst, b.des.verify())
+    bres = branch_res_of(b)
+    if verbose:
+        print("  n = %-3d 最大偏差 %.3e  分支残差 %.1e  残留命名量 %d"
+              % (n, worst, bres, left))
+    return worst, left, bres
+
+
+def anchors(verbose=True):
+    """与手稿中出现过的具体根式对照（一级开方对象）"""
+    ok = True
+    r3 = cmath.sqrt(3)
+    b7 = Builder(7)
+    got7 = ev(b7.defs[kU(7, 1, 1, 1)], b7.defs) / 7
+    if abs(got7 - (0.5 + 1.5j * r3)) > 1e-8:
+        ok = False
+    b13 = Builder(13)
+    got13 = ev(b13.defs[kU(13, 1, 1, 1)], b13.defs) / 13
+    if abs(got13 - (-2.5 + 1.5j * r3)) > 1e-8:
+        ok = False
+    r5 = cmath.sqrt(5)
+    b11 = Builder(11)
+    X2 = (-178 - 50 * r5 + (65 - 25 * r5) * cmath.sqrt(10 + 2 * r5) * 1j) / 8
+    got11 = ev(b11.defs[kU(11, 1, 1, 1)], b11.defs) / 11
+    if abs(got11 - X2) > 1e-8:
+        ok = False
+    if verbose:
+        print("  u(7,1,1)/7   = %.10f%+.10fi" % (got7.real, got7.imag))
+        print("  u(13,1,1)/13 = %.10f%+.10fi" % (got13.real, got13.imag))
+        print("  u(11,1,1)/11 = %.10f%+.10fi（手稿 X_11^2）" % (got11.real, got11.imag))
+        print("  与手稿具体根式对照：" + ("通过" if ok else "不一致"))
+    return ok
+
+
+def selftest():
+    print("== 2..30 次单位根自检（与《单位根的排序》的覆盖范围一致）==")
+    bad = []
+    for n in range(2, 31):
+        try:
+            w, left, bres = check_n(n)
+            if w > 1e-8 or left:
+                bad.append(n)
+        except Exception as e:
+            print("  n = %-3d 失败：%r" % (n, e))
+            bad.append(n)
+    anchors()
+    print("未通过：%s" % (bad if bad else "无"))
+    return bad
+
+
+# ======================================================================
+# 主程序
+# ======================================================================
+
+
+def run_one(n, outroot=None, pdf=True, brief=False, cap=200000):
+    outroot = outroot or os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                                      "运行结果")
+    workdir = os.path.join(outroot, "%s_n%d" % (time.strftime("%Y%m%d-%H%M%S"), n))
+    os.makedirs(workdir, exist_ok=True)
+    print("== 计算 n = %d 的全部单位根 ==" % n)
+    t0 = time.time()
+    texsrc, warns = make_document(n, brief=brief, cap=cap)
+    tex_path = os.path.join(workdir, "单位根_n%d.tex" % n)
+    with open(tex_path, "w", encoding="utf-8") as f:
+        f.write(texsrc)
+    print("  已写出 %s（%.1f KB，%.2f s）" %
+          (tex_path, len(texsrc.encode("utf-8")) / 1024.0, time.time() - t0))
+
+    rep = []
+    if warns:
+        rep.append("排版/规模提示 %d 处：" % len(warns))
+        rep += ["  " + w for w in warns]
+        print("  [提示] %d 处，详见 报告.txt" % len(warns))
+
+    worst, left, bres = check_n(n, cap=cap)
+    rep.append("表达式求值 vs exp(2πit/n) 的最大偏差：%.3e" % worst)
+    rep.append("预解式分支核对的最大残差：%.3e" % bres)
+    rep.append("展开后残留的命名量（应为 0）：%d" % left)
+
+    b = Builder(n)
+    if b.is_prime_n and b.shift:
+        rep.append("分支表 θ^{(j)}_{a,k} = ω_ℓ^{s}·√[ℓ]{u}：")
+        rep.append("  " + "，".join("(j=%d,a=%d,k=%d):s=%d"
+                                    % (kk[0], kk[1], kk[2], vv[0])
+                                    for kk, vv in sorted(b.shift.items())))
+
+    ok_anchor = anchors(verbose=True)
+    rep.append("与手稿具体根式对照：%s" % ("通过" if ok_anchor else "不一致"))
+
+    if pdf:
+        ok, log, hints, n_over = compile_pdf(tex_path, workdir)
+        with open(os.path.join(workdir, "编译日志.txt"), "w",
+                  encoding="utf-8") as f:
+            f.write(log)
+        rep.append("pdflatex：%s；Overfull 计数 = %d%s" %
+                   ("成功" if ok else "失败", n_over,
+                    "（有超界！）" if n_over else "（无超界）"))
+        print("  " + rep[-1])
+        if not ok:
+            for ln in log.splitlines():
+                if ln.startswith("!"):
+                    print("  " + ln)
+            if hints:
+                print("  —— 出错处的 .tex 原文 ——")
+                for h in hints[:40]:
+                    print("  " + h)
+                rep.append("出错处 .tex 原文：")
+                rep += hints[:60]
+
+    with open(os.path.join(workdir, "报告.txt"), "w", encoding="utf-8") as f:
+        f.write("\n".join(rep) + "\n")
+    print("  输出目录：%s" % workdir)
+    return worst
+
+
+def ask_n():
+    while True:
+        try:
+            s = input("请输入 n（奇素数，或任意 n ≥ 2；q 退出）：").strip()
+        except EOFError:
+            return None
+        if s.lower() in ("q", "quit", "exit"):
+            return None
+        if s.isdigit() and int(s) >= 2:
+            return int(s)
+        print("  请输入 ≥ 2 的整数。")
+
+
+def main(argv):
+    args = list(argv[1:])
+    outroot, pdf, brief, cap = None, True, False, 200000
+    if "--no-pdf" in args:
+        pdf = False
+        args.remove("--no-pdf")
+    if "--brief" in args:
+        brief = True
+        args.remove("--brief")
+    if "--cap" in args:
+        i = args.index("--cap")
+        cap = int(args[i + 1])
+        del args[i:i + 2]
+    if "-o" in args:
+        i = args.index("-o")
+        outroot = args[i + 1]
+        del args[i:i + 2]
+    if "--selftest" in args:
+        selftest()
+        return 0
+    n = None
+    for a in args:
+        if a.isdigit():
+            n = int(a)
+    if n is None:
+        n = ask_n()
+        if n is None:
+            return 1
+    run_one(n, outroot=outroot, pdf=pdf, brief=brief, cap=cap)
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main(sys.argv))

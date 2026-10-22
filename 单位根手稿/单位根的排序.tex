@@ -1,0 +1,759 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage[margin=2.5cm]{geometry}
+\allowdisplaybreaks
+\title{Ordering of Unit Roots}
+\date{}
+\begin{document}
+\maketitle
+
+1.Convention $\omega_{n}^{0}=\omega_{n}^{n}=1$
+
+\begin{enumerate}
+\item \[ \omega_{2}^{1}=-1 \]
+
+\item \[ \omega_{3}^{1}=\frac{-1+\sqrt{3}i}{2} \]
+\[ \omega_{3}^{2}=\frac{-1-\sqrt{3}i}{2} \]
+
+\item \[ \omega_{4}^{1}=i \]
+\[ \omega_{4}^{2}=\omega_{2}^{1} \]
+\[ \omega_{4}^{3}=-i \]
+
+\item \[ \omega_{5}^{1}=\frac{-1+\sqrt{5}+\sqrt{10+\sqrt{5}}i}{4} \]
+\[ \omega_{5}^{2}=\frac{-1+\sqrt{5}+\sqrt{10-\sqrt{5}}i}{4} \]
+
+\[ \omega_{5}^{3}=\frac{-1-\sqrt{5}-\sqrt{10-\sqrt{5}}i}{4} \]
+\[ \omega_{5}^{4}=\frac{-1+\sqrt{5}-\sqrt{10+\sqrt{5}}i}{4} \]
+
+\item \[ \omega_{6}^{1}=\frac{1+\sqrt{3}i}{2} \]
+\[ \omega_{6}^{2}=\omega_{3}^{1} \]
+\[ \omega_{6}^{3}=\omega_{2}^{1} \]
+
+\[ \omega_{6}^{4}=\omega_{3}^{2} \]
+\[ \omega_{6}^{5}=\frac{1-\sqrt{3}i}{2} \]
+
+\item \[ \vec{\mathrm{A}}_{7}=\sqrt[3]{7}\left[ \begin{matrix} \sqrt[3]{\frac{1+3\sqrt{3}i}{2}} \\ \sqrt[3]{\frac{1-3\sqrt{3}i}{2}} \end{matrix} \right] \]
+\[ \vec{\Omega}_{3}^{0}=\left[ \begin{matrix} 1 & 1 \end{matrix} \right] \]
+\[ \vec{\Omega}_{3}^{1}=\left[ \begin{matrix} \omega_{3}^{1} & \omega_{3}^{2} \end{matrix} \right] \]
+\[ \vec{\Omega}_{3}^{2}=\left[ \begin{matrix} \omega_{3}^{2} & \omega_{3}^{1} \end{matrix} \right] \]
+
+\[ \omega_{7}^{1}=\frac{-1+\vec{\Omega}_{3}^{0}\cdot\vec{\mathrm{A}}_{7}+\sqrt{21-3\vec{\Omega}_{3}^{2}\cdot\vec{\mathrm{A}}_{7}}i}{6} \]
+\[ \omega_{7}^{2}=\frac{-1+\vec{\Omega}_{3}^{2}\cdot\vec{\mathrm{A}}_{7}+\sqrt{21-3\vec{\Omega}_{3}^{1}\cdot\vec{\mathrm{A}}_{7}}i}{6} \]
+
+\[ \omega_{7}^{3}=\frac{-1+\vec{\Omega}_{3}^{1}\cdot\vec{\mathrm{A}}_{7}+\sqrt{21-3\vec{\Omega}_{3}^{0}\cdot\vec{\mathrm{A}}_{7}}i}{6} \]
+\[ \omega_{7}^{4}=\frac{-1+\vec{\Omega}_{3}^{1}\cdot\vec{\mathrm{A}}_{7}-\sqrt{21-3\vec{\Omega}_{3}^{0}\cdot\vec{\mathrm{A}}_{7}}i}{6} \]
+
+\[ \omega_{7}^{5}=\frac{-1+\vec{\Omega}_{3}^{2}\cdot\vec{\mathrm{A}}_{7}-\sqrt{21-3\vec{\Omega}_{3}^{1}\cdot\vec{\mathrm{A}}_{7}}i}{6} \]
+\[ \omega_{7}^{6}=\frac{-1+\vec{\Omega}_{3}^{0}\cdot\vec{\mathrm{A}}_{7}-\sqrt{21-3\vec{\Omega}_{3}^{2}\cdot\vec{\mathrm{A}}_{7}}i}{6} \]
+
+\item \[ \omega_{8}^{1}=\frac{\sqrt{2}+\sqrt{2}i}{2} \]
+\[ \omega_{8}^{2}=\omega_{4}^{1} \]
+\[ \omega_{8}^{3}=\frac{-\sqrt{2}+\sqrt{2}i}{2} \]
+\[ \omega_{8}^{4}=\omega_{2}^{1} \]
+
+\[ \omega_{8}^{5}=\frac{-\sqrt{2}-\sqrt{2}i}{2} \]
+\[ \omega_{8}^{6}=\omega_{4}^{3} \]
+\[ \omega_{8}^{7}=\frac{\sqrt{2}-\sqrt{2}i}{2} \]
+
+\item \[ \omega_{9}^{1}=\sqrt[3]{\omega_{3}^{1}} \]
+\[ \omega_{9}^{2}=\omega_{3}^{1}\sqrt[3]{\omega_{3}^{2}} \]
+\[ \omega_{9}^{3}=\omega_{3}^{1} \]
+
+\[ \omega_{9}^{4}=\omega_{3}^{1}\sqrt[3]{\omega_{3}^{1}} \]
+\[ \omega_{9}^{5}=\omega_{3}^{2}\sqrt[3]{\omega_{3}^{2}} \]
+\[ \omega_{9}^{6}=\omega_{3}^{2} \]
+
+\[ \omega_{9}^{7}=\omega_{3}^{2}\sqrt[3]{\omega_{3}^{1}} \]
+\[ \omega_{9}^{8}=\sqrt[3]{\omega_{3}^{2}} \]
+
+\end{enumerate}
+
+10.
+\[ \omega_{10}^{1}=\frac{1+\sqrt{5}+\sqrt{10-2\sqrt{5}}i}{4} \]
+\[ \omega_{10}^{2}=\omega_{5}^{1} \]
+\[ \omega_{10}^{3}=\frac{1-\sqrt{5}+\sqrt{10+2\sqrt{5}}i}{4} \]
+\[ \omega_{10}^{4}=\omega_{5}^{2} \]
+\[ \omega_{10}^{5}=\omega_{2}^{1} \]
+\[ \omega_{10}^{6}=\omega_{5}^{3} \]
+
+\[ \omega_{10}^{7}=\frac{1-\sqrt{5}-\sqrt{10+2\sqrt{5}}i}{4} \]
+\[ \omega_{10}^{8}=\omega_{5}^{4} \]
+\[ \omega_{10}^{9}=\frac{1+\sqrt{5}-\sqrt{10-2\sqrt{5}}i}{4} \]
+
+11. $X_{11}^{1}=\frac{-178+50\sqrt{5}+(65+25\sqrt{5})\sqrt{10-2\sqrt{5}}i}{8}$
+
+\[ X_{11}^{2}=\frac{-178-50\sqrt{5}+(65-25\sqrt{5})\sqrt{10+2\sqrt{5}}i}{8} \]
+
+\[ \vec{\mathrm{A}}_{11}=\sqrt[5]{11}\left[ \begin{matrix} \sqrt[5]{X_{11}^{1}} \\ \sqrt[5]{\bar{X}_{11}^{1}} \\ \sqrt[5]{X_{11}^{2}} \\ \sqrt[5]{\bar{X}_{11}^{2}} \end{matrix} \right] \]
+\[ \vec{\Omega}_{5}^{0}=\left[ \begin{matrix} 1 & 1 & \omega_{5}^{2} & \omega_{5}^{3} \end{matrix} \right] \]
+\[ \vec{\Omega}_{5}^{1}=\left[ \begin{matrix} \omega_{5}^{1} & \omega_{5}^{4} & 1 & 1 \end{matrix} \right] \]
+
+\[ \vec{\Omega}_{5}^{2}=\left[ \begin{matrix} \omega_{5}^{2} & \omega_{5}^{3} & \omega_{5}^{3} & \omega_{5}^{2} \end{matrix} \right] \]
+\[ \vec{\Omega}_{5}^{3}=\left[ \begin{matrix} \omega_{5}^{3} & \omega_{5}^{2} & \omega_{5}^{1} & \omega_{5}^{4} \end{matrix} \right] \]
+\[ \vec{\Omega}_{5}^{4}=\left[ \begin{matrix} \omega_{5}^{4} & \omega_{5}^{1} & \omega_{5}^{4} & \omega_{5}^{1} \end{matrix} \right] \]
+
+\[ \omega_{11}^{1}=\frac{-1+\vec{\Omega}_{5}^{4}\cdot\vec{\mathrm{A}}_{11}+\sqrt{55-5\vec{\Omega}_{5}^{1}\cdot\vec{\mathrm{A}}_{11}}i}{10} \]
+\[ \omega_{11}^{2}=\frac{-1+\vec{\Omega}_{5}^{1}\cdot\vec{\mathrm{A}}_{11}+\sqrt{55-5\vec{\Omega}_{5}^{3}\cdot\vec{\mathrm{A}}_{11}}i}{10} \]
+
+\[ \omega_{11}^{3}=\frac{-1+\vec{\Omega}_{5}^{0}\cdot\vec{\mathrm{A}}_{11}+\sqrt{55-5\vec{\Omega}_{5}^{2}\cdot\vec{\mathrm{A}}_{11}}i}{10} \]
+\[ \omega_{11}^{4}=\frac{-1+\vec{\Omega}_{5}^{3}\cdot\vec{\mathrm{A}}_{11}+\sqrt{55-5\vec{\Omega}_{5}^{0}\cdot\vec{\mathrm{A}}_{11}}i}{10} \]
+
+\[ \omega_{11}^{5}=\frac{-1+\vec{\Omega}_{5}^{2}\cdot\vec{\mathrm{A}}_{11}+\sqrt{55-5\vec{\Omega}_{5}^{4}\cdot\vec{\mathrm{A}}_{11}}i}{10} \]
+\[ \omega_{11}^{6}=\frac{-1+\vec{\Omega}_{5}^{2}\cdot\vec{\mathrm{A}}_{11}-\sqrt{55-5\vec{\Omega}_{5}^{4}\cdot\vec{\mathrm{A}}_{11}}i}{10} \]
+
+\[ \omega_{11}^{7}=\frac{-1+\vec{\Omega}_{5}^{3}\cdot\vec{\mathrm{A}}_{11}-\sqrt{55-5\vec{\Omega}_{5}^{0}\cdot\vec{\mathrm{A}}_{11}}i}{10} \]
+\[ \omega_{11}^{8}=\frac{-1+\vec{\Omega}_{5}^{0}\cdot\vec{\mathrm{A}}_{11}-\sqrt{55-5\vec{\Omega}_{5}^{2}\cdot\vec{\mathrm{A}}_{11}}i}{10} \]
+
+\[ \omega_{11}^{9}=\frac{-1+\vec{\Omega}_{5}^{1}\cdot\vec{\mathrm{A}}_{11}-\sqrt{55-5\vec{\Omega}_{5}^{3}\cdot\vec{\mathrm{A}}_{11}}i}{10} \]
+\[ \omega_{11}^{10}=\frac{-1+\vec{\Omega}_{5}^{4}\cdot\vec{\mathrm{A}}_{11}-\sqrt{55-5\vec{\Omega}_{5}^{1}\cdot\vec{\mathrm{A}}_{11}}i}{10} \]
+
+12.
+\[ \omega_{12}^{1}=\frac{\sqrt{3}+i}{2} \]
+\[ \omega_{12}^{2}=\omega_{6}^{1} \]
+\[ \omega_{12}^{3}=\omega_{4}^{1} \]
+\[ \omega_{12}^{4}=\omega_{3}^{1} \]
+
+\[ \omega_{12}^{5}=\frac{-\sqrt{3}+i}{2} \]
+\[ \omega_{12}^{6}=\omega_{2}^{1} \]
+\[ \omega_{12}^{7}=\frac{-\sqrt{3}-i}{2} \]
+\[ \omega_{12}^{8}=\omega_{3}^{2} \]
+
+\[ \omega_{12}^{9}=\omega_{4}^{3} \]
+\[ \omega_{12}^{10}=\omega_{6}^{5} \]
+\[ \omega_{12}^{11}=\frac{\sqrt{3}-i}{2} \]
+
+13.
+\[ \vec{\mathrm{A}}_{13}=\sqrt[3]{13}\left[ \begin{matrix} \sqrt[3]{\frac{-5+3\sqrt{3}i}{2}} \\ \sqrt[3]{\frac{-5-3\sqrt{3}i}{2}} \end{matrix} \right] \]
+\[ \vec{\Lambda}_{13}^{1}=\left[ \begin{matrix} \frac{1+3\sqrt{3}i}{2} & \frac{1-3\sqrt{3}i}{2} \end{matrix} \right] \]
+
+\[ \vec{\Lambda}_{13}^{2}=\left[ \begin{matrix} \frac{-5-\sqrt{3}i}{2} & \frac{-5+\sqrt{3}i}{2} \end{matrix} \right] \]
+\[ \vec{\Lambda}_{13}^{3}=\left[ \begin{matrix} 2-\sqrt{3}i & 2+\sqrt{3}i \end{matrix} \right] \]
+
+\[ \omega_{13}^{1}=\frac{-1+\vec{\Omega}_{3}^{2}\cdot\vec{\mathrm{A}}_{13}+\sqrt{39+3\vec{\Lambda}_{13}^{3}\cdot\vec{\mathrm{A}}_{13}}+\sqrt{78-6\vec{\Omega}_{3}^{0}\cdot\vec{\mathrm{A}}_{13}-6\sqrt{39+3\vec{\Lambda}_{13}^{1}\cdot\vec{\mathrm{A}}_{13}}}i}{12} \]
+
+\[ \omega_{13}^{2}=\frac{-1+\vec{\Omega}_{3}^{0}\cdot\vec{\mathrm{A}}_{13}+\sqrt{39+3\vec{\Lambda}_{13}^{1}\cdot\vec{\mathrm{A}}_{13}}+\sqrt{78-6\vec{\Omega}_{3}^{1}\cdot\vec{\mathrm{A}}_{13}-6\sqrt{39+3\vec{\Lambda}_{13}^{2}\cdot\vec{\mathrm{A}}_{13}}}i}{12} \]
+
+\[ \omega_{13}^{3}=\frac{-1+\vec{\Omega}_{3}^{0}\cdot\vec{\mathrm{A}}_{13}-\sqrt{39+3\vec{\Lambda}_{13}^{3}\cdot\vec{\mathrm{A}}_{13}}+\sqrt{78-6\vec{\Omega}_{3}^{1}\cdot\vec{\mathrm{A}}_{13}+6\sqrt{39+3\vec{\Lambda}_{13}^{2}\cdot\vec{\mathrm{A}}_{13}}}i}{12} \]
+
+\[ \omega_{13}^{4}=\frac{-1+\vec{\Omega}_{3}^{1}\cdot\vec{\mathrm{A}}_{13}+\sqrt{39+3\vec{\Lambda}_{13}^{2}\cdot\vec{\mathrm{A}}_{13}}+\sqrt{78-6\vec{\Omega}_{3}^{2}\cdot\vec{\mathrm{A}}_{13}+6\sqrt{39+3\vec{\Lambda}_{13}^{3}\cdot\vec{\mathrm{A}}_{13}}}i}{12} \]
+
+\[ \omega_{13}^{5}=\frac{-1+\vec{\Omega}_{3}^{2}\cdot\vec{\mathrm{A}}_{13}-\sqrt{39+3\vec{\Lambda}_{13}^{3}\cdot\vec{\mathrm{A}}_{13}}+\sqrt{78-6\vec{\Omega}_{3}^{0}\cdot\vec{\mathrm{A}}_{13}+6\sqrt{39+3\vec{\Lambda}_{13}^{1}\cdot\vec{\mathrm{A}}_{13}}}i}{12} \]
+
+\[ \omega_{13}^{6}=\frac{-1+\vec{\Omega}_{3}^{1}\cdot\vec{\mathrm{A}}_{13}-\sqrt{39+3\vec{\Lambda}_{13}^{2}\cdot\vec{\mathrm{A}}_{13}}+\sqrt{78-6\vec{\Omega}_{3}^{2}\cdot\vec{\mathrm{A}}_{13}-6\sqrt{39+3\vec{\Lambda}_{13}^{3}\cdot\vec{\mathrm{A}}_{13}}}i}{12} \]
+
+\[ \omega_{13}^{7}=\frac{-1+\vec{\Omega}_{3}^{1}\cdot\vec{\mathrm{A}}_{13}-\sqrt{39+3\vec{\Lambda}_{13}^{2}\cdot\vec{\mathrm{A}}_{13}}-\sqrt{78-6\vec{\Omega}_{3}^{2}\cdot\vec{\mathrm{A}}_{13}-6\sqrt{39+3\vec{\Lambda}_{13}^{3}\cdot\vec{\mathrm{A}}_{13}}}i}{12} \]
+
+\[ \omega_{13}^{8}=\frac{-1+\vec{\Omega}_{3}^{2}\cdot\vec{\mathrm{A}}_{13}-\sqrt{39+3\vec{\Lambda}_{13}^{3}\cdot\vec{\mathrm{A}}_{13}}-\sqrt{78-6\vec{\Omega}_{3}^{0}\cdot\vec{\mathrm{A}}_{13}-6\sqrt{39+3\vec{\Lambda}_{13}^{1}\cdot\vec{\mathrm{A}}_{13}}}i}{12} \]
+
+\[ \omega_{13}^{9}=\frac{-1+\vec{\Omega}_{3}^{1}\cdot\vec{\mathrm{A}}_{13}+\sqrt{39+3\vec{\Lambda}_{13}^{2}\cdot\vec{\mathrm{A}}_{13}}-\sqrt{78-6\vec{\Omega}_{3}^{2}\cdot\vec{\mathrm{A}}_{13}+6\sqrt{39+3\vec{\Lambda}_{13}^{3}\cdot\vec{\mathrm{A}}_{13}}}i}{12} \]
+
+\[ \omega_{13}^{10}=\frac{-1+\vec{\Omega}_{3}^{0}\cdot\vec{\mathrm{A}}_{13}-\sqrt{39+3\vec{\Lambda}_{13}^{3}\cdot\vec{\mathrm{A}}_{13}}-\sqrt{78-6\vec{\Omega}_{3}^{1}\cdot\vec{\mathrm{A}}_{13}+6\sqrt{39+3\vec{\Lambda}_{13}^{2}\cdot\vec{\mathrm{A}}_{13}}}i}{12} \]
+
+\[ \omega_{13}^{11}=\frac{-1+\vec{\Omega}_{3}^{0}\cdot\vec{\mathrm{A}}_{13}+\sqrt{39+3\vec{\Lambda}_{13}^{1}\cdot\vec{\mathrm{A}}_{13}}-\sqrt{78-6\vec{\Omega}_{3}^{1}\cdot\vec{\mathrm{A}}_{13}-6\sqrt{39+3\vec{\Lambda}_{13}^{2}\cdot\vec{\mathrm{A}}_{13}}}i}{12} \]
+
+\[ \omega_{13}^{12}=\frac{-1+\vec{\Omega}_{3}^{2}\cdot\vec{\mathrm{A}}_{13}+\sqrt{39+3\vec{\Lambda}_{13}^{3}\cdot\vec{\mathrm{A}}_{13}}-\sqrt{78-6\vec{\Omega}_{3}^{0}\cdot\vec{\mathrm{A}}_{13}-6\sqrt{39+3\vec{\Lambda}_{13}^{1}\cdot\vec{\mathrm{A}}_{13}}}i}{12} \]
+
+\begin{enumerate}
+\item \[ \omega_{14}^{1}=-\omega_{7}^{4} \]
+\[ \omega_{14}^{2}=\omega_{7}^{1} \]
+\[ \omega_{14}^{3}=-\omega_{7}^{5} \]
+\[ \omega_{14}^{4}=\omega_{7}^{2} \]
+
+\[ \omega_{14}^{5}=-\omega_{7}^{6} \]
+\[ \omega_{14}^{6}=\omega_{7}^{3} \]
+\[ \omega_{14}^{7}=\omega_{2}^{1} \]
+\[ \omega_{14}^{8}=\omega_{7}^{4} \]
+
+\[ \omega_{14}^{9}=-\omega_{7}^{1} \]
+\[ \omega_{14}^{10}=\omega_{7}^{5} \]
+\[ \omega_{14}^{11}=-\omega_{7}^{2} \]
+\[ \omega_{14}^{12}=\omega_{7}^{6} \]
+
+\[ \omega_{14}^{13}=-\omega_{7}^{3} \]
+
+\item \[ \omega_{15}^{1}=\frac{1+\sqrt{5}+\sqrt{30-6\sqrt{5}}+(\sqrt{3}+\sqrt{15}-\sqrt{10-2\sqrt{5}})i}{8} \]
+
+\[ \omega_{15}^{2}=\frac{1-\sqrt{5}+\sqrt{30+6\sqrt{5}}+(-\sqrt{3}+\sqrt{15}+\sqrt{10+2\sqrt{5}})i}{8} \]
+
+\[ \omega_{15}^{3}=\omega_{5}^{1} \]
+
+\[ \omega_{15}^{4}=\frac{1+\sqrt{5}-\sqrt{30-6\sqrt{5}}+(\sqrt{3}+\sqrt{15}+\sqrt{10-2\sqrt{5}})i}{8} \]
+
+\[ \omega_{15}^{5}=\omega_{3}^{1} \]
+
+\[ \omega_{15}^{6}=\omega_{5}^{2} \]
+
+\[ \omega_{15}^{7}=\frac{1-\sqrt{5}-\sqrt{30+6\sqrt{5}}+(\sqrt{3}-\sqrt{15}+\sqrt{10+2\sqrt{5}})i}{8} \]
+
+\[ \omega_{15}^{8}=\frac{1-\sqrt{5}-\sqrt{30+6\sqrt{5}}-(\sqrt{3}-\sqrt{15}+\sqrt{10+2\sqrt{5}})i}{8} \]
+
+\[ \omega_{15}^{9}=\omega_{5}^{3} \]
+
+\[ \omega_{15}^{10}=\omega_{3}^{2} \]
+
+\[ \omega_{15}^{11}=\frac{1+\sqrt{5}-\sqrt{30-6\sqrt{5}}-(\sqrt{3}+\sqrt{15}+\sqrt{10-2\sqrt{5}})i}{8} \]
+
+\[ \omega_{15}^{12}=\omega_{5}^{4} \]
+
+\[ \omega_{15}^{13}=\frac{1-\sqrt{5}+\sqrt{30+6\sqrt{5}}-(-\sqrt{3}+\sqrt{15}+\sqrt{10+2\sqrt{5}})i}{8} \]
+
+\[ \omega_{15}^{14}=\frac{1+\sqrt{5}+\sqrt{30-6\sqrt{5}}-(\sqrt{3}+\sqrt{15}-\sqrt{10-2\sqrt{5}})i}{8} \]
+
+\item \[ \omega_{16}^{1}=\frac{\sqrt{2+\sqrt{2}}+\sqrt{2-\sqrt{2}}i}{2} \]
+\[ \omega_{16}^{2}=\omega_{8}^{1} \]
+\[ \omega_{16}^{3}=\frac{\sqrt{2-\sqrt{2}}+\sqrt{2+\sqrt{2}}i}{2} \]
+
+\[ \omega_{16}^{4}=\omega_{4}^{1} \]
+\[ \omega_{16}^{5}=\frac{-\sqrt{2-\sqrt{2}}+\sqrt{2+\sqrt{2}}i}{2} \]
+\[ \omega_{16}^{6}=\omega_{8}^{3} \]
+
+\[ \omega_{16}^{7}=\frac{-\sqrt{2+\sqrt{2}}+\sqrt{2-\sqrt{2}}i}{2} \]
+\[ \omega_{16}^{8}=\omega_{2}^{1} \]
+\[ \omega_{16}^{9}=\frac{-\sqrt{2+\sqrt{2}}-\sqrt{2-\sqrt{2}}i}{2} \]
+
+\[ \omega_{16}^{10}=\omega_{8}^{5} \]
+\[ \omega_{16}^{11}=\frac{-\sqrt{2-\sqrt{2}}-\sqrt{2+\sqrt{2}}i}{2} \]
+\[ \omega_{16}^{12}=\omega_{4}^{3} \]
+
+\[ \omega_{16}^{13}=\frac{\sqrt{2-\sqrt{2}}-\sqrt{2+\sqrt{2}}i}{2} \]
+\[ \omega_{16}^{14}=\omega_{8}^{7} \]
+\[ \omega_{16}^{15}=\frac{\sqrt{2+\sqrt{2}}-\sqrt{2-\sqrt{2}}i}{2} \]
+
+\item \[ X_{17}^{1}=17+4\sqrt{17} \]
+\[ X_{17}^{2}=17-4\sqrt{17} \]
+
+\[ Y_{17}^{1}=13+3\sqrt{17} \]
+\[ Y_{17}^{2}=13-3\sqrt{17} \]
+
+\[ \Lambda_{17}^{1}=5-\sqrt{17} \]
+\[ \Lambda_{17}^{2}=5+\sqrt{17} \]
+
+\end{enumerate}
+
+18.
+\[ \omega_{17}^{1}=\frac{-1+\sqrt{17}+\Lambda_{17}^{1}\sqrt{X_{17}^{1}}+2\sqrt{4+Y_{17}^{1}(1-\sqrt{X_{17}^{2}})}+2\sqrt{34-2\sqrt{17}+2\Lambda_{17}^{1}\sqrt{X_{17}^{1}}+4\sqrt{4+Y_{17}^{1}(1+\sqrt{X_{17}^{2}})}}i}{16} \]
+\[ \omega_{17}^{2}=\frac{-1+\sqrt{17}-\Lambda_{17}^{1}\sqrt{X_{17}^{1}}+2\sqrt{4+Y_{17}^{1}(1+\sqrt{X_{17}^{2}})}+2\sqrt{34-2\sqrt{17}-2\Lambda_{17}^{1}\sqrt{X_{17}^{1}}+4\sqrt{4+Y_{17}^{1}(1-\sqrt{X_{17}^{2}})}}i}{16} \]
+\[ \omega_{17}^{3}=\frac{-1+\sqrt{17}+\Lambda_{17}^{2}\sqrt{X_{17}^{2}}+2\sqrt{4+Y_{17}^{2}(1+\sqrt{X_{17}^{1}})}+2\sqrt{34+2\sqrt{17}+2\Lambda_{17}^{2}\sqrt{X_{17}^{2}}-4\sqrt{4+Y_{17}^{2}(1-\sqrt{X_{17}^{1}})}}i}{16} \]
+\[ \omega_{17}^{4}=\frac{-1+\sqrt{17}+\Lambda_{17}^{1}\sqrt{X_{17}^{1}}-2\sqrt{4+Y_{17}^{1}(1-\sqrt{X_{17}^{2}})}-2\sqrt{34-2\sqrt{17}+2\Lambda_{17}^{1}\sqrt{X_{17}^{1}}-4\sqrt{4+Y_{17}^{1}(1+\sqrt{X_{17}^{2}})}}i}{16} \]
+\[ \omega_{17}^{5}=\frac{-1+\sqrt{17}+\Lambda_{17}^{2}\sqrt{X_{17}^{2}}-2\sqrt{4+Y_{17}^{2}(1+\sqrt{X_{17}^{1}})}+2\sqrt{34+2\sqrt{17}+2\Lambda_{17}^{2}\sqrt{X_{17}^{2}}+4\sqrt{4+Y_{17}^{2}(1-\sqrt{X_{17}^{1}})}}i}{16} \]
+\[ \omega_{17}^{6}=\frac{-1+\sqrt{17}-\Lambda_{17}^{2}\sqrt{X_{17}^{2}}+2\sqrt{4+Y_{17}^{2}(1-\sqrt{X_{17}^{1}})}+2\sqrt{34+2\sqrt{17}-2\Lambda_{17}^{2}\sqrt{X_{17}^{2}}+4\sqrt{4+Y_{17}^{2}(1+\sqrt{X_{17}^{1}})}}i}{16} \]
+\[ \omega_{17}^{7}=\frac{-1+\sqrt{17}-\Lambda_{17}^{2}\sqrt{X_{17}^{2}}-2\sqrt{4+Y_{17}^{2}(1-\sqrt{X_{17}^{1}})}+2\sqrt{34+2\sqrt{17}-2\Lambda_{17}^{2}\sqrt{X_{17}^{2}}-4\sqrt{4+Y_{17}^{2}(1+\sqrt{X_{17}^{1}})}}i}{16} \]
+\[ \omega_{17}^{8}=\frac{-1+\sqrt{17}-\Lambda_{17}^{1}\sqrt{X_{17}^{1}}-2\sqrt{4+Y_{17}^{1}(1+\sqrt{X_{17}^{2}})}+2\sqrt{34-2\sqrt{17}-2\Lambda_{17}^{1}\sqrt{X_{17}^{1}}-4\sqrt{4+Y_{17}^{1}(1-\sqrt{X_{17}^{2}})}}i}{16} \]
+\[ \omega_{17}^{9}=\frac{-1+\sqrt{17}-\Lambda_{17}^{1}\sqrt{X_{17}^{1}}-2\sqrt{4+Y_{17}^{1}(1+\sqrt{X_{17}^{2}})}-2\sqrt{34-2\sqrt{17}-2\Lambda_{17}^{1}\sqrt{X_{17}^{1}}-4\sqrt{4+Y_{17}^{1}(1-\sqrt{X_{17}^{2}})}}i}{16} \]
+\[ \omega_{17}^{10}=\frac{-1+\sqrt{17}-\Lambda_{17}^{2}\sqrt{X_{17}^{2}}-2\sqrt{4+Y_{17}^{2}(1-\sqrt{X_{17}^{1}})}-2\sqrt{34+2\sqrt{17}-2\Lambda_{17}^{2}\sqrt{X_{17}^{2}}-4\sqrt{4+Y_{17}^{2}(1+\sqrt{X_{17}^{1}})}}i}{16} \]
+\[ \omega_{17}^{11}=\frac{-1+\sqrt{17}-\Lambda_{17}^{2}\sqrt{X_{17}^{2}}+2\sqrt{4+Y_{17}^{2}(1-\sqrt{X_{17}^{1}})}-2\sqrt{34+2\sqrt{17}-2\Lambda_{17}^{2}\sqrt{X_{17}^{2}}+4\sqrt{4+Y_{17}^{2}(1+\sqrt{X_{17}^{1}})}}i}{16} \]
+\[ \omega_{17}^{12}=\frac{-1+\sqrt{17}+\Lambda_{17}^{2}\sqrt{X_{17}^{2}}-2\sqrt{4+Y_{17}^{2}(1+\sqrt{X_{17}^{1}})}-2\sqrt{34+2\sqrt{17}+2\Lambda_{17}^{2}\sqrt{X_{17}^{2}}+4\sqrt{4+Y_{17}^{2}(1-\sqrt{X_{17}^{1}})}}i}{16} \]
+\[ \omega_{17}^{13}=\frac{-1+\sqrt{17}+\Lambda_{17}^{1}\sqrt{X_{17}^{1}}-2\sqrt{4+Y_{17}^{1}(1-\sqrt{X_{17}^{2}})}+2\sqrt{34-2\sqrt{17}+2\Lambda_{17}^{1}\sqrt{X_{17}^{1}}-4\sqrt{4+Y_{17}^{1}(1+\sqrt{X_{17}^{2}})}}i}{16} \]
+\[ \omega_{17}^{14}=\frac{-1+\sqrt{17}+\Lambda_{17}^{2}\sqrt{X_{17}^{2}}+2\sqrt{4+Y_{17}^{2}(1+\sqrt{X_{17}^{1}})}-2\sqrt{34+2\sqrt{17}+2\Lambda_{17}^{2}\sqrt{X_{17}^{2}}-4\sqrt{4+Y_{17}^{2}(1-\sqrt{X_{17}^{1}})}}i}{16} \]
+\[ \omega_{17}^{15}=\frac{-1+\sqrt{17}-\Lambda_{17}^{1}\sqrt{X_{17}^{1}}+2\sqrt{4+Y_{17}^{1}(1+\sqrt{X_{17}^{2}})}-2\sqrt{34-2\sqrt{17}-2\Lambda_{17}^{1}\sqrt{X_{17}^{1}}+4\sqrt{4+Y_{17}^{1}(1-\sqrt{X_{17}^{2}})}}i}{16} \]
+\[ \omega_{17}^{16}=\frac{-1+\sqrt{17}+\Lambda_{17}^{1}\sqrt{X_{17}^{1}}+2\sqrt{4+Y_{17}^{1}(1-\sqrt{X_{17}^{2}})}-2\sqrt{34-2\sqrt{17}+2\Lambda_{17}^{1}\sqrt{X_{17}^{1}}+4\sqrt{4+Y_{17}^{1}(1+\sqrt{X_{17}^{2}})}}i}{16} \]
+\[ \omega_{18}^{1}=-\omega_{9}^{5} \]
+\[ \omega_{18}^{2}=\omega_{9}^{1} \]
+\[ \omega_{18}^{3}=\omega_{6}^{1} \]
+\[ \omega_{18}^{4}=\omega_{9}^{2} \]
+
+\[ \omega_{18}^{5}=-\omega_{9}^{7} \]
+\[ \omega_{18}^{6}=\omega_{3}^{1} \]
+\[ \omega_{18}^{7}=-\omega_{9}^{8} \]
+\[ \omega_{18}^{8}=\omega_{9}^{4} \]
+
+\[ \omega_{18}^{9}=\omega_{2}^{1} \]
+\[ \omega_{18}^{10}=\omega_{9}^{5} \]
+\[ \omega_{18}^{11}=-\omega_{9}^{1} \]
+\[ \omega_{18}^{12}=\omega_{3}^{2} \]
+
+\[ \omega_{18}^{13}=-\omega_{9}^{2} \]
+\[ \omega_{18}^{14}=\omega_{9}^{7} \]
+\[ \omega_{18}^{15}=\omega_{6}^{5} \]
+\[ \omega_{18}^{16}=\omega_{9}^{8} \]
+
+\[ \omega_{18}^{17}=-\omega_{9}^{4} \]
+
+19.
+\[ \vec{\mathrm{A}}_{19}=\sqrt[3]{19}\left[ \begin{matrix} \sqrt[3]{\frac{7+3\sqrt{3}i}{2}} \\ \sqrt[3]{\frac{7-3\sqrt{3}i}{2}} \end{matrix} \right] \]
+\[ \vec{\mathrm{M}}_{19}^{1}=\left[ \begin{matrix} \frac{37-3\sqrt{3}i}{2} & \frac{37+3\sqrt{3}i}{2} \end{matrix} \right] \]
+
+\[ \vec{\mathrm{M}}_{19}^{2}=\left[ \begin{matrix} \frac{-23-17\sqrt[]{3}i}{2} & \frac{-23+17\sqrt[]{3}i}{2} \end{matrix} \right] \]
+\[ \vec{\mathrm{M}}_{19}^{3}=\left[ \begin{matrix} -7+10\sqrt{3}i & -7-10\sqrt{3}i \end{matrix} \right] \]
+
+\[ \vec{\mathrm{N}}_{19}^{1}=\left[ \begin{matrix} \frac{3-\sqrt{3}i}{2} & \frac{3+\sqrt{3}i}{2} \end{matrix} \right] \]
+\[ \vec{\mathrm{N}}_{19}^{2}=\left[ \begin{matrix} \frac{3+\sqrt{3}i}{2} & \frac{3-\sqrt{3}i}{2} \end{matrix} \right] \]
+
+\[ \vec{\mathrm{N}}_{19}^{3}=\left[ \begin{matrix} -\sqrt{3}i & \sqrt{3}i \end{matrix} \right] \]
+\[ \vec{\mathrm{B}}_{19}^{1}=9\left[ \begin{matrix} \frac{76+\vec{M}_{19}^{1}\cdot\vec{\mathrm{A}}_{19}+3\sqrt{3}\vec{N}_{19}^{1}\cdot\vec{\mathrm{A}}_{19}i}{2} \\ \frac{76+\vec{M}_{19}^{1}\cdot\vec{\mathrm{A}}_{19}-3\sqrt{3}\vec{N}_{19}^{1}\cdot\vec{\mathrm{A}}_{19}i}{2} \end{matrix} \right] \]
+
+\[ \vec{\mathrm{B}}_{19}^{2}=9\left[ \begin{matrix} \frac{76+\vec{M}_{19}^{2}\cdot\vec{\mathrm{A}}_{19}+3\sqrt{3}\vec{N}_{19}^{2}\cdot\vec{\mathrm{A}}_{19}i}{2} \\ \frac{76+\vec{M}_{19}^{2}\cdot\vec{\mathrm{A}}_{19}-3\sqrt{3}\vec{N}_{19}^{2}\cdot\vec{\mathrm{A}}_{19}i}{2} \end{matrix} \right] \]
+\[ \vec{\mathrm{B}}_{19}^{3}=9\left[ \begin{matrix} \frac{76+\vec{M}_{19}^{3}\cdot\vec{\mathrm{A}}_{19}+3\sqrt{3}\vec{N}_{19}^{3}\cdot\vec{\mathrm{A}}_{19}i}{2} \\ \frac{76+\vec{M}_{19}^{3}\cdot\vec{\mathrm{A}}_{19}-3\sqrt{3}\vec{N}_{19}^{3}\cdot\vec{\mathrm{A}}_{19}i}{2} \end{matrix} \right] \]
+
+\[ \omega_{19}^{1}=\frac{-1+\left[ \begin{matrix} \vec{\Omega}_{3}^{2} & \vec{\Omega}_{3}^{0} \end{matrix} \right]\cdot\left[ \begin{matrix} \vec{\mathrm{A}}_{19} \\ \vec{\mathrm{B}}_{19}^{2} \end{matrix} \right]+3\sqrt{19-\left[ \begin{matrix} \vec{\Omega}_{3}^{0} & \vec{\Omega}_{3}^{0} \end{matrix} \right]\cdot\left[ \begin{matrix} \vec{\mathrm{A}}_{19} \\ \vec{\mathrm{B}}_{19}^{3} \end{matrix} \right]}i}{18} \]
+
+\[ \omega_{19}^{2}=\frac{-1+\left[ \begin{matrix} \vec{\Omega}_{3}^{0} & \vec{\Omega}_{3}^{0} \end{matrix} \right]\cdot\left[ \begin{matrix} \vec{\mathrm{A}}_{19} \\ \vec{\mathrm{B}}_{19}^{3} \end{matrix} \right]+3\sqrt{19-\left[ \begin{matrix} \vec{\Omega}_{3}^{1} & \vec{\Omega}_{3}^{0} \end{matrix} \right]\cdot\left[ \begin{matrix} \vec{\mathrm{A}}_{19} \\ \vec{\mathrm{B}}_{19}^{2} \end{matrix} \right]}i}{18} \]
+
+\[ \omega_{19}^{3}=\frac{-1+\left[ \begin{matrix} \vec{\Omega}_{3}^{0} & \vec{\Omega}_{3}^{2} \end{matrix} \right]\cdot\left[ \begin{matrix} \vec{\mathrm{A}}_{19} \\ \vec{\mathrm{B}}_{19}^{3} \end{matrix} \right]+3\sqrt{19-\left[ \begin{matrix} \vec{\Omega}_{3}^{1} & \vec{\Omega}_{3}^{2} \end{matrix} \right]\cdot\left[ \begin{matrix} \vec{\mathrm{A}}_{19} \\ \vec{\mathrm{B}}_{19}^{2} \end{matrix} \right]}i}{18} \]
+
+\[ \omega_{19}^{4}=\frac{-1+\left[ \begin{matrix} \vec{\Omega}_{3}^{2} & \vec{\Omega}_{3}^{0} \end{matrix} \right]\cdot\left[ \begin{matrix} \vec{\mathrm{A}}_{19} \\ \vec{\mathrm{B}}_{19}^{1} \end{matrix} \right]+3\sqrt{19-\left[ \begin{matrix} \vec{\Omega}_{3}^{0} & \vec{\Omega}_{3}^{0} \end{matrix} \right]\cdot\left[ \begin{matrix} \vec{\mathrm{A}}_{19} \\ \vec{\mathrm{B}}_{19}^{3} \end{matrix} \right]}i}{18} \]
+
+\[ \omega_{19}^{5}=\frac{-1+\left[ \begin{matrix} \vec{\Omega}_{3}^{0} & \vec{\Omega}_{3}^{1} \end{matrix} \right]\cdot\left[ \begin{matrix} \vec{\mathrm{A}}_{19} \\ \vec{\mathrm{B}}_{19}^{3} \end{matrix} \right]+3\sqrt{19-\left[ \begin{matrix} \vec{\Omega}_{3}^{1} & \vec{\Omega}_{3}^{1} \end{matrix} \right]\cdot\left[ \begin{matrix} \vec{\mathrm{A}}_{19} \\ \vec{\mathrm{B}}_{19}^{2} \end{matrix} \right]}i}{18} \]
+
+\[ \omega_{19}^{6}=\frac{-1+\left[ \begin{matrix} \vec{\Omega}_{3}^{1} & \vec{\Omega}_{3}^{2} \end{matrix} \right]\cdot\left[ \begin{matrix} \vec{\mathrm{A}}_{19} \\ \vec{\mathrm{B}}_{19}^{2} \end{matrix} \right]+3\sqrt{19-\left[ \begin{matrix} \vec{\Omega}_{3}^{2} & \vec{\Omega}_{3}^{2} \end{matrix} \right]\cdot\left[ \begin{matrix} \vec{\mathrm{A}}_{19} \\ \vec{\mathrm{B}}_{19}^{1} \end{matrix} \right]}i}{18} \]
+
+\[ \omega_{19}^{7}=\frac{-1+\left[ \begin{matrix} \vec{\Omega}_{3}^{2} & \vec{\Omega}_{3}^{2} \end{matrix} \right]\cdot\left[ \begin{matrix} \vec{\mathrm{A}}_{19} \\ \vec{\mathrm{B}}_{19}^{1} \end{matrix} \right]+3\sqrt{19-\left[ \begin{matrix} \vec{\Omega}_{3}^{0} & \vec{\Omega}_{3}^{1} \end{matrix} \right]\cdot\left[ \begin{matrix} \vec{\mathrm{A}}_{19} \\ \vec{\mathrm{B}}_{19}^{3} \end{matrix} \right]}i}{18} \]
+
+\[ \omega_{19}^{8}=\frac{-1+\left[ \begin{matrix} \vec{\Omega}_{3}^{2} & \vec{\Omega}_{3}^{1} \end{matrix} \right]\cdot\left[ \begin{matrix} \vec{\mathrm{A}}_{19} \\ \vec{\mathrm{B}}_{19}^{1} \end{matrix} \right]+3\sqrt{19-\left[ \begin{matrix} \vec{\Omega}_{3}^{0} & \vec{\Omega}_{3}^{2} \end{matrix} \right]\cdot\left[ \begin{matrix} \vec{\mathrm{A}}_{19} \\ \vec{\mathrm{B}}_{19}^{3} \end{matrix} \right]}i}{18} \]
+
+\[ \omega_{19}^{9}=\frac{-1+\left[ \begin{matrix} \vec{\Omega}_{3}^{1} & \vec{\Omega}_{3}^{1} \end{matrix} \right]\cdot\left[ \begin{matrix} \vec{\mathrm{A}}_{19} \\ \vec{\mathrm{B}}_{19}^{2} \end{matrix} \right]+3\sqrt{19-\left[ \begin{matrix} \vec{\Omega}_{3}^{2} & \vec{\Omega}_{3}^{0} \end{matrix} \right]\cdot\left[ \begin{matrix} \vec{\mathrm{A}}_{19} \\ \vec{\mathrm{B}}_{19}^{1} \end{matrix} \right]}i}{18} \]
+
+\[ \omega_{19}^{10}=\frac{-1+\left[ \begin{matrix} \vec{\Omega}_{3}^{1} & \vec{\Omega}_{3}^{1} \end{matrix} \right]\cdot\left[ \begin{matrix} \vec{\mathrm{A}}_{19} \\ \vec{\mathrm{B}}_{19}^{2} \end{matrix} \right]-3\sqrt{19-\left[ \begin{matrix} \vec{\Omega}_{3}^{2} & \vec{\Omega}_{3}^{0} \end{matrix} \right]\cdot\left[ \begin{matrix} \vec{\mathrm{A}}_{19} \\ \vec{\mathrm{B}}_{19}^{1} \end{matrix} \right]}i}{18} \]
+
+\[ \omega_{19}^{11}=\frac{-1+\left[ \begin{matrix} \vec{\Omega}_{3}^{2} & \vec{\Omega}_{3}^{1} \end{matrix} \right]\cdot\left[ \begin{matrix} \vec{\mathrm{A}}_{19} \\ \vec{\mathrm{B}}_{19}^{1} \end{matrix} \right]-3\sqrt{19-\left[ \begin{matrix} \vec{\Omega}_{3}^{0} & \vec{\Omega}_{3}^{2} \end{matrix} \right]\cdot\left[ \begin{matrix} \vec{\mathrm{A}}_{19} \\ \vec{\mathrm{B}}_{19}^{3} \end{matrix} \right]}i}{18} \]
+
+\[ \omega_{19}^{12}=\frac{-1+\left[ \begin{matrix} \vec{\Omega}_{3}^{2} & \vec{\Omega}_{3}^{2} \end{matrix} \right]\cdot\left[ \begin{matrix} \vec{\mathrm{A}}_{19} \\ \vec{\mathrm{B}}_{19}^{1} \end{matrix} \right]-3\sqrt{19-\left[ \begin{matrix} \vec{\Omega}_{3}^{0} & \vec{\Omega}_{3}^{1} \end{matrix} \right]\cdot\left[ \begin{matrix} \vec{\mathrm{A}}_{19} \\ \vec{\mathrm{B}}_{19}^{3} \end{matrix} \right]}i}{18} \]
+
+\[ \omega_{19}^{13}=\frac{-1+\left[ \begin{matrix} \vec{\Omega}_{3}^{1} & \vec{\Omega}_{3}^{2} \end{matrix} \right]\cdot\left[ \begin{matrix} \vec{\mathrm{A}}_{19} \\ \vec{\mathrm{B}}_{19}^{2} \end{matrix} \right]-3\sqrt{19-\left[ \begin{matrix} \vec{\Omega}_{3}^{2} & \vec{\Omega}_{3}^{2} \end{matrix} \right]\cdot\left[ \begin{matrix} \vec{\mathrm{A}}_{19} \\ \vec{\mathrm{B}}_{19}^{1} \end{matrix} \right]}i}{18} \]
+
+\[ \omega_{19}^{14}=\frac{-1+\left[ \begin{matrix} \vec{\Omega}_{3}^{0} & \vec{\Omega}_{3}^{1} \end{matrix} \right]\cdot\left[ \begin{matrix} \vec{\mathrm{A}}_{19} \\ \vec{\mathrm{B}}_{19}^{3} \end{matrix} \right]-3\sqrt{19-\left[ \begin{matrix} \vec{\Omega}_{3}^{1} & \vec{\Omega}_{3}^{1} \end{matrix} \right]\cdot\left[ \begin{matrix} \vec{\mathrm{A}}_{19} \\ \vec{\mathrm{B}}_{19}^{2} \end{matrix} \right]}i}{18} \]
+
+\[ \omega_{19}^{15}=\frac{-1+\left[ \begin{matrix} \vec{\Omega}_{3}^{2} & \vec{\Omega}_{3}^{0} \end{matrix} \right]\cdot\left[ \begin{matrix} \vec{\mathrm{A}}_{19} \\ \vec{\mathrm{B}}_{19}^{1} \end{matrix} \right]-3\sqrt{19-\left[ \begin{matrix} \vec{\Omega}_{3}^{0} & \vec{\Omega}_{3}^{0} \end{matrix} \right]\cdot\left[ \begin{matrix} \vec{\mathrm{A}}_{19} \\ \vec{\mathrm{B}}_{19}^{3} \end{matrix} \right]}i}{18} \]
+
+\[ \omega_{19}^{16}=\frac{-1+\left[ \begin{matrix} \vec{\Omega}_{3}^{0} & \vec{\Omega}_{3}^{2} \end{matrix} \right]\cdot\left[ \begin{matrix} \vec{\mathrm{A}}_{19} \\ \vec{\mathrm{B}}_{19}^{3} \end{matrix} \right]-3\sqrt{19-\left[ \begin{matrix} \vec{\Omega}_{3}^{1} & \vec{\Omega}_{3}^{2} \end{matrix} \right]\cdot\left[ \begin{matrix} \vec{\mathrm{A}}_{19} \\ \vec{\mathrm{B}}_{19}^{2} \end{matrix} \right]}i}{18} \]
+
+\[ \omega_{19}^{17}=\frac{-1+\left[ \begin{matrix} \vec{\Omega}_{3}^{0} & \vec{\Omega}_{3}^{0} \end{matrix} \right]\cdot\left[ \begin{matrix} \vec{\mathrm{A}}_{19} \\ \vec{\mathrm{B}}_{19}^{3} \end{matrix} \right]-3\sqrt{19-\left[ \begin{matrix} \vec{\Omega}_{3}^{1} & \vec{\Omega}_{3}^{0} \end{matrix} \right]\cdot\left[ \begin{matrix} \vec{\mathrm{A}}_{19} \\ \vec{\mathrm{B}}_{19}^{2} \end{matrix} \right]}i}{18} \]
+
+\[ \omega_{19}^{18}=\frac{-1+\left[ \begin{matrix} \vec{\Omega}_{3}^{2} & \vec{\Omega}_{3}^{0} \end{matrix} \right]\cdot\left[ \begin{matrix} \vec{\mathrm{A}}_{19} \\ \vec{\mathrm{B}}_{19}^{2} \end{matrix} \right]-3\sqrt{19-\left[ \begin{matrix} \vec{\Omega}_{3}^{0} & \vec{\Omega}_{3}^{0} \end{matrix} \right]\cdot\left[ \begin{matrix} \vec{\mathrm{A}}_{19} \\ \vec{\mathrm{B}}_{19}^{3} \end{matrix} \right]}i}{18} \]
+
+20.
+\[ \omega_{20}^{1}=\frac{\sqrt{10+2\sqrt{5}}+(-1+\sqrt{5})i}{4} \]
+\[ \omega_{20}^{2}=\omega_{10}^{1} \]
+\[ \omega_{20}^{3}=\frac{\sqrt{10-2\sqrt{5}}+(1+\sqrt{5})i}{4} \]
+
+\[ \omega_{20}^{4}=\omega_{5}^{1} \]
+\[ \omega_{20}^{5}=\omega_{4}^{1} \]
+\[ \omega_{20}^{6}=\omega_{10}^{3} \]
+
+\[ \omega_{20}^{7}=\frac{-\sqrt{10-2\sqrt{5}}+(1+\sqrt{5})i}{4} \]
+\[ \omega_{20}^{8}=\omega_{5}^{2} \]
+\[ \omega_{20}^{9}=\frac{-\sqrt{10+2\sqrt{5}}+(-1+\sqrt{5})i}{4} \]
+
+\[ \omega_{20}^{10}=\omega_{2}^{1} \]
+\[ \omega_{20}^{11}=\frac{-\sqrt{10+2\sqrt{5}}-(-1+\sqrt{5})i}{4} \]
+\[ \omega_{20}^{12}=\omega_{5}^{3} \]
+
+\[ \omega_{20}^{13}=\frac{-\sqrt{10-2\sqrt{5}}-(1+\sqrt{5})i}{4} \]
+\[ \omega_{20}^{14}=\omega_{10}^{7} \]
+\[ \omega_{20}^{15}=\omega_{4}^{3} \]
+
+\[ \omega_{20}^{16}=\omega_{5}^{4} \]
+\[ \omega_{20}^{17}=\frac{\sqrt{10-2\sqrt{5}}-(1+\sqrt{5})i}{4} \]
+\[ \omega_{20}^{18}=\omega_{10}^{9} \]
+
+\[ \omega_{20}^{19}=\frac{\sqrt{10+2\sqrt{5}}-(-1+\sqrt{5})i}{4} \]
+
+\begin{enumerate}
+\item \[ \omega_{21}^{1}=\sqrt[3]{\omega_{7}^{1}} \]
+\[ \omega_{21}^{2}=\sqrt[3]{\omega_{7}^{2}} \]
+\[ \omega_{21}^{3}=\omega_{7}^{1} \]
+\[ \omega_{21}^{4}=\omega_{3}^{1}\omega_{7}^{6} \]
+\[ \omega_{21}^{5}=\omega_{3}^{1}\sqrt[3]{\omega_{7}^{5}} \]
+
+\[ \omega_{21}^{6}=\omega_{7}^{2} \]
+\[ \omega_{21}^{7}=\omega_{3}^{1} \]
+\[ \omega_{21}^{8}=\omega_{3}^{1}\sqrt[3]{\omega_{7}^{1}} \]
+\[ \omega_{21}^{9}=\omega_{7}^{3} \]
+\[ \omega_{21}^{10}=\omega_{3}^{1}\omega_{7}^{1} \]
+
+\[ \omega_{21}^{11}=\omega_{3}^{2}\omega_{7}^{6} \]
+\[ \omega_{21}^{12}=\omega_{7}^{4} \]
+\[ \omega_{21}^{13}=\omega_{3}^{2}\sqrt[3]{\omega_{7}^{6}} \]
+\[ \omega_{21}^{14}=\omega_{3}^{2} \]
+\[ \omega_{21}^{15}=\omega_{7}^{5} \]
+
+\[ \omega_{21}^{16}=\omega_{3}^{2}\sqrt[3]{\omega_{7}^{2}} \]
+\[ \omega_{21}^{17}=\omega_{3}^{2}\omega_{7}^{1} \]
+\[ \omega_{21}^{18}=\omega_{7}^{6} \]
+\[ \omega_{21}^{19}=\sqrt[3]{\omega_{7}^{5}} \]
+\[ \omega_{21}^{20}=\sqrt[3]{\omega_{7}^{6}} \]
+
+\item \[ \omega_{22}^{1}=-\omega_{11}^{6} \]
+\[ \omega_{22}^{2}=\omega_{11}^{1} \]
+\[ \omega_{22}^{3}=-\omega_{11}^{7} \]
+\[ \omega_{22}^{4}=\omega_{11}^{2} \]
+
+\[ \omega_{22}^{5}=-\omega_{11}^{8} \]
+\[ \omega_{22}^{6}=\omega_{11}^{3} \]
+\[ \omega_{22}^{7}=-\omega_{11}^{9} \]
+\[ \omega_{22}^{8}=\omega_{11}^{4} \]
+
+\[ \omega_{22}^{9}=-\omega_{11}^{10} \]
+\[ \omega_{22}^{10}=\omega_{11}^{5} \]
+\[ \omega_{22}^{11}=\omega_{2}^{1} \]
+\[ \omega_{22}^{12}=\omega_{11}^{6} \]
+
+\[ \omega_{22}^{13}=-\omega_{11}^{1} \]
+\[ \omega_{22}^{14}=\omega_{11}^{7} \]
+\[ \omega_{22}^{15}=-\omega_{11}^{2} \]
+\[ \omega_{22}^{16}=\omega_{11}^{8} \]
+
+\[ \omega_{22}^{17}=-\omega_{11}^{3} \]
+\[ \omega_{22}^{18}=\omega_{11}^{9} \]
+\[ \omega_{22}^{19}=-\omega_{11}^{4} \]
+\[ \omega_{22}^{20}=\omega_{11}^{10} \]
+
+\[ \omega_{22}^{21}=-\omega_{11}^{5} \]
+
+\item \[ \mathrm{O}_{23}^{1}=\frac{-40957+1443\sqrt{5}+(8004+2627\sqrt{5})\sqrt{10-2\sqrt{5}}i}{4} \]
+
+\[ \mathrm{O}_{23}^{2}=\frac{-40957-1443\sqrt{5}+(8004-2627\sqrt{5})\sqrt{10+2\sqrt{5}}i}{4} \]
+
+\[ \Pi_{23}^{1}=\frac{750022-112738\sqrt{5}-(57187+9496\sqrt{5})\sqrt{10+2\sqrt{5}}i}{8} \]
+
+\[ \Pi_{23}^{2}=\frac{750022+112738\sqrt{5}+(57187-9496\sqrt{5})\sqrt{10-2\sqrt{5}}i}{8} \]
+
+\[ \mathrm{P}_{23}^{1}=\frac{-6+10\sqrt{5}-(5-\sqrt{5})\sqrt{10+2\sqrt{5}}i}{8} \]
+
+\[ \mathrm{P}_{23}^{2}=\frac{-6-10\sqrt{5}+(5+\sqrt{5})\sqrt{10-2\sqrt{5}}i}{8} \]
+
+\[ \boldsymbol{E}_{23}^{1}=\left[ \begin{matrix} \mathrm{O}_{23}^{1} & 0 & 0 & 0 \\ 0 & \bar{\mathrm{O}}_{23}^{1} & 0 & 0 \\ 0 & 0 & \mathrm{O}_{23}^{2} & 0 \\ 0 & 0 & 0 & \bar{\mathrm{O}}_{23}^{2} \end{matrix} \right] \]
+\[ \boldsymbol{E}_{23}^{2}=\left[ \begin{matrix} \Pi_{23}^{1} & 0 & 0 & 0 \\ 0 & \bar{\Pi}_{23}^{1} & 0 & 0 \\ 0 & 0 & \Pi_{23}^{2} & 0 \\ 0 & 0 & 0 & \bar{\Pi}_{23}^{2} \end{matrix} \right] \]
+
+\[ \boldsymbol{E}_{23}^{3}=\left[ \begin{matrix} \mathrm{P}_{23}^{1} & 0 & 0 & 0 \\ 0 & \bar{\mathrm{P}}_{23}^{1} & 0 & 0 \\ 0 & 0 & \mathrm{P}_{23}^{2} & 0 \\ 0 & 0 & 0 & \bar{\mathrm{P}}_{23}^{2} \end{matrix} \right] \]
+
+\[ X_{23}^{1}=\frac{11503915+605\vec{\Omega}_{5}^{0}\cdot\boldsymbol{E}_{23}^{1}\cdot\vec{\mathrm{A}}_{11}+(9175606+11\vec{\Omega}_{5}^{0}\cdot\boldsymbol{E}_{23}^{2}\cdot\vec{\mathrm{A}}_{11})\sqrt{110+5\vec{\Omega}_{5}^{2}\cdot\boldsymbol{E}_{23}^{3}\cdot\vec{\mathrm{A}}_{11}}i}{20} \]
+\[ X_{23}^{2}=\frac{11503915+605\vec{\Omega}_{5}^{1}\cdot\boldsymbol{E}_{23}^{1}\cdot\vec{\mathrm{A}}_{11}+(9175606+11\vec{\Omega}_{5}^{1}\cdot\boldsymbol{E}_{23}^{2}\cdot\vec{\mathrm{A}}_{11})\sqrt{110+5\vec{\Omega}_{5}^{3}\cdot\boldsymbol{E}_{23}^{3}\cdot\vec{\mathrm{A}}_{11}}i}{20} \]
+\[ X_{23}^{3}=\frac{11503915+605\vec{\Omega}_{5}^{2}\cdot\boldsymbol{E}_{23}^{1}\cdot\vec{\mathrm{A}}_{11}+(9175606+11\vec{\Omega}_{5}^{2}\cdot\boldsymbol{E}_{23}^{2}\cdot\vec{\mathrm{A}}_{11})\sqrt{110+5\vec{\Omega}_{5}^{1}\cdot\boldsymbol{E}_{23}^{3}\cdot\vec{\mathrm{A}}_{11}}i}{20} \]
+\[ X_{23}^{4}=\frac{11503915+605\vec{\Omega}_{5}^{3}\cdot\boldsymbol{E}_{23}^{1}\cdot\vec{\mathrm{A}}_{11}+(9175606+11\vec{\Omega}_{5}^{3}\cdot\boldsymbol{E}_{23}^{2}\cdot\vec{\mathrm{A}}_{11})\sqrt{110+5\vec{\Omega}_{5}^{4}\cdot\boldsymbol{E}_{23}^{3}\cdot\vec{\mathrm{A}}_{11}}i}{20} \]
+\[ X_{23}^{5}=\frac{11503915+605\vec{\Omega}_{5}^{4}\cdot\boldsymbol{E}_{23}^{1}\cdot\vec{\mathrm{A}}_{11}+(9175606+11\vec{\Omega}_{5}^{4}\cdot\boldsymbol{E}_{23}^{2}\cdot\vec{\mathrm{A}}_{11})\sqrt{110+5\vec{\Omega}_{5}^{0}\cdot\boldsymbol{E}_{23}^{3}\cdot\vec{\mathrm{A}}_{11}}i}{20} \]
+\[ \vec{\mathrm{A}}_{23}=\sqrt[11]{23}\left[ \begin{matrix} \sqrt[11]{X_{23}^{1}} \\ \sqrt[11]{\bar{X}_{23}^{1}} \\ \sqrt[11]{X_{23}^{2}} \\ \sqrt[11]{\bar{X}_{23}^{2}} \\ \sqrt[11]{X_{23}^{3}} \\ \sqrt[11]{\bar{X}_{23}^{3}} \\ \sqrt[11]{X_{23}^{4}} \\ \sqrt[11]{\bar{X}_{23}^{4}} \\ \sqrt[11]{X_{23}^{5}} \\ \sqrt[11]{\bar{X}_{23}^{5}} \end{matrix} \right] \]
+\[ \overrightarrow{\Omega}_{11}^{0}=\left[ \begin{matrix} 1 & 1 & \omega_{11}^{10} & \omega_{11}^{1} & \omega_{11}^{1} & \omega_{11}^{10} & \omega_{11}^{7} & \omega_{11}^{4} & \omega_{11}^{3} & \omega_{11}^{8} \end{matrix} \right] \]
+
+\[ \overrightarrow{\Omega}_{11}^{1}=\left[ \begin{matrix} \omega_{11}^{1} & \omega_{11}^{10} & \omega_{11}^{7} & \omega_{11}^{4} & \omega_{11}^{6} & \omega_{11}^{5} & \omega_{11}^{5} & \omega_{11}^{6} & \omega_{11}^{8} & \omega_{11}^{3} \end{matrix} \right] \]
+
+\[ \overrightarrow{\Omega}_{11}^{2}=\left[ \begin{matrix} \omega_{11}^{2} & \omega_{11}^{9} & \omega_{11}^{4} & \omega_{11}^{7} & \omega_{11}^{2} & \omega_{11}^{9} & \omega_{11}^{3} & \omega_{11}^{8} & \omega_{11}^{2} & \omega_{11}^{9} \end{matrix} \right] \]
+
+\[ \overrightarrow{\Omega}_{11}^{3}=\left[ \begin{matrix} \omega_{11}^{3} & \omega_{11}^{8} & \omega_{11}^{1} & \omega_{11}^{10} & \omega_{11}^{9} & \omega_{11}^{2} & \omega_{11}^{1} & \omega_{11}^{10} & \omega_{11}^{7} & \omega_{11}^{4} \end{matrix} \right] \]
+
+\[ \overrightarrow{\Omega}_{11}^{4}=\left[ \begin{matrix} \omega_{11}^{4} & \omega_{11}^{7} & \omega_{11}^{9} & \omega_{11}^{2} & \omega_{11}^{5} & \omega_{11}^{6} & \omega_{11}^{10} & \omega_{11}^{1} & \omega_{11}^{1} & \omega_{11}^{10} \end{matrix} \right] \]
+
+\[ \overrightarrow{\Omega}_{11}^{5}=\left[ \begin{matrix} \omega_{11}^{5} & \omega_{11}^{6} & \omega_{11}^{6} & \omega_{11}^{5} & \omega_{11}^{1} & \omega_{11}^{10} & \omega_{11}^{8} & \omega_{11}^{3} & \omega_{11}^{6} & \omega_{11}^{5} \end{matrix} \right] \]
+
+\[ \overrightarrow{\Omega}_{11}^{6}=\left[ \begin{matrix} \omega_{11}^{6} & \omega_{11}^{5} & \omega_{11}^{3} & \omega_{11}^{8} & \omega_{11}^{8} & \omega_{11}^{3} & \omega_{11}^{6} & \omega_{11}^{5} & 1 & 1 \end{matrix} \right] \]
+
+\[ \overrightarrow{\Omega}_{11}^{7}=\left[ \begin{matrix} \omega_{11}^{7} & \omega_{11}^{4} & 1 & 1 & \omega_{11}^{4} & \omega_{11}^{7} & \omega_{11}^{4} & \omega_{11}^{7} & \omega_{11}^{5} & \omega_{11}^{6} \end{matrix} \right] \]
+
+\[ \overrightarrow{\Omega}_{11}^{8}=\left[ \begin{matrix} \omega_{11}^{8} & \omega_{11}^{3} & \omega_{11}^{8} & \omega_{11}^{3} & 1 & 1 & \omega_{11}^{2} & \omega_{11}^{9} & \omega_{11}^{10} & \omega_{11}^{1} \end{matrix} \right] \]
+
+\[ \overrightarrow{\Omega}_{11}^{9}=\left[ \begin{matrix} \omega_{11}^{9} & \omega_{11}^{2} & \omega_{11}^{5} & \omega_{11}^{6} & \omega_{11}^{7} & \omega_{11}^{4} & 1 & 1 & \omega_{11}^{4} & \omega_{11}^{7} \end{matrix} \right] \]
+
+\[ \overrightarrow{\Omega}_{11}^{10}=\left[ \begin{matrix} \omega_{11}^{10} & \omega_{11}^{1} & \omega_{11}^{2} & \omega_{11}^{9} & \omega_{11}^{3} & \omega_{11}^{8} & \omega_{11}^{9} & \omega_{11}^{2} & \omega_{11}^{9} & \omega_{11}^{2} \end{matrix} \right] \]
+
+\[ \omega_{23}^{1}=\frac{-1+\vec{\Omega}_{11}^{8}\cdot\vec{\mathrm{A}}_{23}+\sqrt{253-11\vec{\Omega}_{11}^{0}\cdot\vec{\mathrm{A}}_{23}}i}{22} \]
+
+\[ \omega_{23}^{2}=\frac{-1+\vec{\Omega}_{11}^{0}\cdot\vec{\mathrm{A}}_{23}+\sqrt{253-11\vec{\Omega}_{11}^{3}\cdot\vec{\mathrm{A}}_{23}}i}{22} \]
+
+\[ \omega_{23}^{3}=\frac{-1+\vec{\Omega}_{11}^{10}\cdot\vec{\mathrm{A}}_{23}+\sqrt{253-11\vec{\Omega}_{11}^{7}\cdot\vec{\mathrm{A}}_{23}}i}{22} \]
+
+\[ \omega_{23}^{4}=\frac{-1+\vec{\Omega}_{11}^{3}\cdot\vec{\mathrm{A}}_{23}+\sqrt{253-11\vec{\Omega}_{11}^{6}\cdot\vec{\mathrm{A}}_{23}}i}{22} \]
+
+\[ \omega_{23}^{5}=\frac{-1+\vec{\Omega}_{11}^{4}\cdot\vec{\mathrm{A}}_{23}+\sqrt{253-11\vec{\Omega}_{11}^{7}\cdot\vec{\mathrm{A}}_{23}}i}{22} \]
+
+\[ \omega_{23}^{6}=\frac{-1+\vec{\Omega}_{11}^{2}\cdot\vec{\mathrm{A}}_{23}+\sqrt{253-11\vec{\Omega}_{11}^{5}\cdot\vec{\mathrm{A}}_{23}}i}{22} \]
+
+\[ \omega_{23}^{7}=\frac{-1+\vec{\Omega}_{11}^{9}\cdot\vec{\mathrm{A}}_{23}+\sqrt{253-11\vec{\Omega}_{11}^{1}\cdot\vec{\mathrm{A}}_{23}}i}{22} \]
+
+\[ \omega_{23}^{8}=\frac{-1+\vec{\Omega}_{11}^{6}\cdot\vec{\mathrm{A}}_{23}+\sqrt{253-11\vec{\Omega}_{11}^{9}\cdot\vec{\mathrm{A}}_{23}}i}{22} \]
+
+\[ \omega_{23}^{9}=\frac{-1+\vec{\Omega}_{11}^{1}\cdot\vec{\mathrm{A}}_{23}+\sqrt{253-11\vec{\Omega}_{11}^{4}\cdot\vec{\mathrm{A}}_{23}}i}{22} \]
+
+\[ \omega_{23}^{10}=\frac{-1+\vec{\Omega}_{11}^{7}\cdot\vec{\mathrm{A}}_{23}+\sqrt{253-11\vec{\Omega}_{11}^{10}\cdot\vec{\mathrm{A}}_{23}}i}{22} \]
+
+\[ \omega_{23}^{11}=\frac{-1+\vec{\Omega}_{11}^{5}\cdot\vec{\mathrm{A}}_{23}+\sqrt{253-11\vec{\Omega}_{11}^{8}\cdot\vec{\mathrm{A}}_{23}}i}{22} \]
+
+\[ \omega_{23}^{12}=\frac{-1+\vec{\Omega}_{11}^{5}\cdot\vec{\mathrm{A}}_{23}-\sqrt{253-11\vec{\Omega}_{11}^{8}\cdot\vec{\mathrm{A}}_{23}}i}{22} \]
+
+\[ \omega_{23}^{13}=\frac{-1+\vec{\Omega}_{11}^{7}\cdot\vec{\mathrm{A}}_{23}-\sqrt{253-11\vec{\Omega}_{11}^{10}\cdot\vec{\mathrm{A}}_{23}}i}{22} \]
+
+\[ \omega_{23}^{14}=\frac{-1+\vec{\Omega}_{11}^{1}\cdot\vec{\mathrm{A}}_{23}-\sqrt{253-11\vec{\Omega}_{11}^{4}\cdot\vec{\mathrm{A}}_{23}}i}{22} \]
+
+\[ \omega_{23}^{15}=\frac{-1+\vec{\Omega}_{11}^{6}\cdot\vec{\mathrm{A}}_{23}-\sqrt{253-11\vec{\Omega}_{11}^{9}\cdot\vec{\mathrm{A}}_{23}}i}{22} \]
+
+\[ \omega_{23}^{16}=\frac{-1+\vec{\Omega}_{11}^{9}\cdot\vec{\mathrm{A}}_{23}-\sqrt{253-11\vec{\Omega}_{11}^{1}\cdot\vec{\mathrm{A}}_{23}}i}{22} \]
+
+\[ \omega_{23}^{17}=\frac{-1+\vec{\Omega}_{11}^{2}\cdot\vec{\mathrm{A}}_{23}-\sqrt{253-11\vec{\Omega}_{11}^{5}\cdot\vec{\mathrm{A}}_{23}}i}{22} \]
+
+\[ \omega_{23}^{18}=\frac{-1+\vec{\Omega}_{11}^{4}\cdot\vec{\mathrm{A}}_{23}-\sqrt{253-11\vec{\Omega}_{11}^{7}\cdot\vec{\mathrm{A}}_{23}}i}{22} \]
+
+\[ \omega_{23}^{19}=\frac{-1+\vec{\Omega}_{11}^{3}\cdot\vec{\mathrm{A}}_{23}-\sqrt{253-11\vec{\Omega}_{11}^{6}\cdot\vec{\mathrm{A}}_{23}}i}{22} \]
+
+\[ \omega_{23}^{20}=\frac{-1+\vec{\Omega}_{11}^{10}\cdot\vec{\mathrm{A}}_{23}-\sqrt{253-11\vec{\Omega}_{11}^{7}\cdot\vec{\mathrm{A}}_{23}}i}{22} \]
+
+\[ \omega_{23}^{21}=\frac{-1+\vec{\Omega}_{11}^{0}\cdot\vec{\mathrm{A}}_{23}-\sqrt{253-11\vec{\Omega}_{11}^{3}\cdot\vec{\mathrm{A}}_{23}}i}{22} \]
+
+\[ \omega_{23}^{22}=\frac{-1+\vec{\Omega}_{11}^{8}\cdot\vec{\mathrm{A}}_{23}-\sqrt{253-11\vec{\Omega}_{11}^{0}\cdot\vec{\mathrm{A}}_{23}}i}{22} \]
+
+\item \[ \omega_{24}^{1}=\frac{\sqrt{6}+\sqrt{2}+\left( \sqrt{6}-\sqrt{2} \right)i}{4} \]
+\[ \omega_{24}^{2}=\omega_{12}^{1} \]
+\[ \omega_{24}^{3}=\omega_{8}^{1} \]
+
+\[ \omega_{24}^{4}=\omega_{6}^{1} \]
+\[ \omega_{24}^{5}=\frac{\sqrt{6}-\sqrt{2}+\left( \sqrt{6}+\sqrt{2} \right)i}{4} \]
+\[ \omega_{24}^{6}=\omega_{4}^{1} \]
+
+\[ \omega_{24}^{7}=\frac{-\sqrt{6}+\sqrt{2}+\left( \sqrt{6}+\sqrt{2} \right)i}{4} \]
+\[ \omega_{24}^{8}=\omega_{3}^{1} \]
+\[ \omega_{24}^{9}=\omega_{8}^{3} \]
+
+\[ \omega_{24}^{10}=\omega_{12}^{5} \]
+\[ \omega_{24}^{11}=\frac{-\sqrt{6}-\sqrt{2}+\left( \sqrt{6}-\sqrt{2} \right)i}{4} \]
+\[ \omega_{24}^{12}=\omega_{2}^{1} \]
+
+\[ \omega_{24}^{13}=\frac{-\sqrt{6}-\sqrt{2}-\left( \sqrt{6}-\sqrt{2} \right)i}{4} \]
+\[ \omega_{24}^{14}=\omega_{12}^{7} \]
+\[ \omega_{24}^{15}=\omega_{8}^{5} \]
+
+\[ \omega_{24}^{16}=\omega_{3}^{2} \]
+\[ \omega_{24}^{17}=\frac{-\sqrt{6}+\sqrt{2}-\left( \sqrt{6}+\sqrt{2} \right)i}{4} \]
+\[ \omega_{24}^{18}=\omega_{4}^{3} \]
+
+\[ \omega_{24}^{19}=\frac{\sqrt{6}-\sqrt{2}-\left( \sqrt{6}+\sqrt{2} \right)i}{4} \]
+\[ \omega_{24}^{20}=\omega_{6}^{5} \]
+\[ \omega_{24}^{21}=\omega_{8}^{7} \]
+
+\[ \omega_{24}^{22}=\omega_{12}^{11} \]
+\[ \omega_{24}^{23}=\frac{\sqrt{6}+\sqrt{2}-\left( \sqrt{6}-\sqrt{2} \right)i}{4} \]
+
+\item \[ \omega_{25}^{1}=\sqrt[5]{\omega_{5}^{1}} \]
+\[ \omega_{25}^{2}=\sqrt[5]{\omega_{5}^{2}} \]
+\[ \omega_{25}^{3}=\omega_{5}^{1}\sqrt[5]{\omega_{5}^{3}} \]
+\[ \omega_{25}^{4}=\omega_{5}^{1}\sqrt[5]{\omega_{5}^{4}} \]
+\[ \omega_{25}^{5}=\omega_{5}^{1} \]
+
+\[ \omega_{25}^{6}=\omega_{5}^{1}\sqrt[5]{\omega_{5}^{1}} \]
+\[ \omega_{25}^{7}=\omega_{5}^{1}\sqrt[5]{\omega_{5}^{2}} \]
+\[ \omega_{25}^{8}=\omega_{5}^{2}\sqrt[5]{\omega_{5}^{3}} \]
+\[ \omega_{25}^{9}=\omega_{5}^{2}\sqrt[5]{\omega_{5}^{4}} \]
+\[ \omega_{25}^{10}=\omega_{5}^{2} \]
+
+\[ \omega_{25}^{11}=\omega_{5}^{2}\sqrt[5]{\omega_{5}^{1}} \]
+\[ \omega_{25}^{12}=\omega_{5}^{2}\sqrt[5]{\omega_{5}^{2}} \]
+\[ \omega_{25}^{13}=\omega_{5}^{3}\sqrt[5]{\omega_{5}^{3}} \]
+\[ \omega_{25}^{14}=\omega_{5}^{3}\sqrt[5]{\omega_{5}^{4}} \]
+\[ \omega_{25}^{15}=\omega_{5}^{3} \]
+
+\[ \omega_{25}^{16}=\omega_{5}^{3}\sqrt[5]{\omega_{5}^{1}} \]
+\[ \omega_{25}^{17}=\omega_{5}^{3}\sqrt[5]{\omega_{5}^{2}} \]
+\[ \omega_{25}^{18}=\omega_{5}^{4}\sqrt[5]{\omega_{5}^{3}} \]
+\[ \omega_{25}^{19}=\omega_{5}^{4}\sqrt[5]{\omega_{5}^{4}} \]
+\[ \omega_{25}^{20}=\omega_{5}^{4} \]
+
+\[ \omega_{25}^{21}=\omega_{5}^{4}\sqrt[5]{\omega_{5}^{1}} \]
+\[ \omega_{25}^{22}=\omega_{5}^{4}\sqrt[5]{\omega_{5}^{2}} \]
+\[ \omega_{25}^{23}=\sqrt[5]{\omega_{5}^{3}} \]
+\[ \omega_{25}^{24}=\sqrt[5]{\omega_{5}^{4}} \]
+
+\item \[ \omega_{26}^{1}=-\omega_{13}^{7} \]
+\[ \omega_{26}^{2}=\omega_{13}^{1} \]
+\[ \omega_{26}^{3}=-\omega_{13}^{8} \]
+\[ \omega_{26}^{4}=\omega_{13}^{2} \]
+\[ \omega_{26}^{5}=-\omega_{13}^{9} \]
+\[ \omega_{26}^{6}=\omega_{13}^{3} \]
+
+\[ \omega_{26}^{7}=-\omega_{13}^{10} \]
+\[ \omega_{26}^{8}=\omega_{13}^{4} \]
+\[ \omega_{26}^{9}=-\omega_{13}^{11} \]
+\[ \omega_{26}^{10}=\omega_{13}^{5} \]
+\[ \omega_{26}^{11}=-\omega_{13}^{12} \]
+\[ \omega_{26}^{12}=\omega_{13}^{6} \]
+
+\[ \omega_{26}^{13}=\omega_{2}^{1} \]
+\[ \omega_{26}^{14}=\omega_{13}^{7} \]
+\[ \omega_{26}^{15}=-\omega_{13}^{1} \]
+\[ \omega_{26}^{16}=\omega_{13}^{8} \]
+\[ \omega_{26}^{17}=-\omega_{13}^{2} \]
+\[ \omega_{26}^{18}=\omega_{13}^{9} \]
+
+\[ \omega_{26}^{19}=-\omega_{13}^{3} \]
+\[ \omega_{26}^{20}=\omega_{13}^{10} \]
+\[ \omega_{26}^{21}=-\omega_{13}^{4} \]
+\[ \omega_{26}^{22}=\omega_{13}^{11} \]
+\[ \omega_{26}^{23}=-\omega_{13}^{5} \]
+\[ \omega_{26}^{24}=\omega_{13}^{12} \]
+
+\[ \omega_{26}^{25}=-\omega_{13}^{6} \]
+
+\item \[ \omega_{27}^{1}=\sqrt[3]{\omega_{9}^{1}} \]
+\[ \omega_{27}^{2}=\sqrt[3]{\omega_{9}^{2}} \]
+\[ \omega_{27}^{3}=\omega_{9}^{1} \]
+\[ \omega_{27}^{4}=\sqrt[3]{\omega_{9}^{4}} \]
+\[ \omega_{27}^{5}=\omega_{3}^{1}\sqrt[3]{\omega_{9}^{5}} \]
+
+\[ \omega_{27}^{6}=\omega_{9}^{2} \]
+\[ \omega_{27}^{7}=\omega_{3}^{1}\sqrt[3]{\omega_{9}^{7}} \]
+\[ \omega_{27}^{8}=\omega_{3}^{1}\sqrt[3]{\omega_{9}^{8}} \]
+\[ \omega_{27}^{9}=\omega_{3}^{1} \]
+\[ \omega_{27}^{10}=\omega_{3}^{1}\sqrt[3]{\omega_{3}^{1}} \]
+
+\[ \omega_{27}^{11}=\omega_{3}^{1}\sqrt[3]{\omega_{9}^{2}} \]
+\[ \omega_{27}^{12}=\omega_{9}^{4} \]
+\[ \omega_{27}^{13}=\omega_{3}^{1}\sqrt[3]{\omega_{9}^{4}} \]
+\[ \omega_{27}^{14}=\omega_{3}^{2}\sqrt[3]{\omega_{9}^{5}} \]
+\[ \omega_{27}^{15}=\omega_{9}^{5} \]
+
+\[ \omega_{27}^{16}=\omega_{3}^{2}\sqrt[3]{\omega_{9}^{7}} \]
+\[ \omega_{27}^{17}=\omega_{3}^{2}\sqrt[3]{\omega_{9}^{8}} \]
+\[ \omega_{27}^{18}=\omega_{3}^{2} \]
+\[ \omega_{27}^{19}=\omega_{3}^{2}\sqrt[3]{\omega_{3}^{1}} \]
+\[ \omega_{27}^{20}=\omega_{3}^{2}\sqrt[3]{\omega_{9}^{2}} \]
+
+\[ \omega_{27}^{21}=\omega_{9}^{7} \]
+\[ \omega_{27}^{22}=\omega_{3}^{2}\sqrt[3]{\omega_{9}^{4}} \]
+\[ \omega_{27}^{23}=\sqrt[3]{\omega_{9}^{5}} \]
+\[ \omega_{27}^{24}=\omega_{9}^{8} \]
+\[ \omega_{27}^{25}=\sqrt[3]{\omega_{9}^{7}} \]
+
+\[ \omega_{27}^{26}=\sqrt[3]{\omega_{9}^{8}} \]
+
+\item \[ \omega_{28}^{1}=\sqrt{\omega_{14}^{1}} \]
+\[ \omega_{28}^{2}=\omega_{14}^{1} \]
+\[ \omega_{28}^{3}=\sqrt{\omega_{14}^{3}} \]
+\[ \omega_{28}^{4}=\omega_{7}^{1} \]
+
+\[ \omega_{28}^{5}=\sqrt{\omega_{14}^{5}} \]
+\[ \omega_{28}^{6}=\omega_{14}^{3} \]
+\[ \omega_{28}^{7}=\omega_{4}^{1} \]
+\[ \omega_{28}^{8}=\omega_{7}^{2} \]
+
+\[ \omega_{28}^{9}=-\sqrt{\omega_{14}^{9}} \]
+\[ \omega_{28}^{10}=\omega_{14}^{5} \]
+\[ \omega_{28}^{11}=-\sqrt{\omega_{14}^{11}} \]
+\[ \omega_{28}^{12}=\omega_{7}^{3} \]
+
+\[ \omega_{28}^{13}=-\sqrt{\omega_{14}^{13}} \]
+\[ \omega_{28}^{14}=\omega_{2}^{1} \]
+\[ \omega_{28}^{15}=-\sqrt{\omega_{14}^{1}} \]
+\[ \omega_{28}^{16}=\omega_{7}^{4} \]
+
+\[ \omega_{28}^{17}=-\sqrt{\omega_{14}^{3}} \]
+\[ \omega_{28}^{18}=\omega_{14}^{9} \]
+\[ \omega_{28}^{19}=-\sqrt{\omega_{14}^{5}} \]
+\[ \omega_{28}^{20}=\omega_{7}^{5} \]
+
+\[ \omega_{28}^{21}=\omega_{4}^{3} \]
+\[ \omega_{28}^{22}=\omega_{14}^{11} \]
+\[ \omega_{28}^{23}=-\sqrt{\omega_{14}^{9}} \]
+\[ \omega_{28}^{24}=\omega_{7}^{6} \]
+
+\[ \omega_{28}^{25}=-\sqrt{\omega_{14}^{11}} \]
+\[ \omega_{28}^{26}=\omega_{14}^{13} \]
+\[ \omega_{28}^{27}=-\sqrt{\omega_{14}^{13}} \]
+
+\item \[ \vec{\Xi}_{29}^{1}=\left[ \begin{matrix} 86-33\sqrt{3}i & 86+33\sqrt{3}i \end{matrix} \right] \]
+\[ \vec{\Xi}_{29}^{2}=\left[ \begin{matrix} \frac{13+119\sqrt{3}i}{2} & \frac{13-119\sqrt{3}i}{2} \end{matrix} \right] \]
+
+\[ \vec{\Xi}_{29}^{3}=\left[ \begin{matrix} \frac{-185-53\sqrt{3}i}{2} & \frac{-185+53\sqrt{3}i}{2} \end{matrix} \right] \]
+
+\[ \vec{\mathrm{H}}_{29}^{1}=\left[ \begin{matrix} \frac{-523-323\sqrt{3}i}{2} & \frac{-523+323\sqrt{3}i}{2} \end{matrix} \right] \]
+\[ \vec{\mathrm{H}}_{29}^{2}=\left[ \begin{matrix} 373-50\sqrt{3}i & 373+50\sqrt{3}i \end{matrix} \right] \]
+
+\[ \vec{\mathrm{H}}_{29}^{3}=\left[ \begin{matrix} \frac{-223+423\sqrt{3}i}{2} & \frac{-223-423\sqrt{3}i}{2} \end{matrix} \right] \]
+
+\[ \vec{\mathrm{Z}}_{29}^{1}=\left[ \begin{matrix} 4-\sqrt{3}i & 4+\sqrt{3}i \end{matrix} \right] \]
+\[ \vec{\mathrm{Z}}_{29}^{2}=\left[ \begin{matrix} \frac{-1+5\sqrt{3}i}{2} & \frac{-1-5\sqrt{3}i}{2} \end{matrix} \right] \]
+
+\[ \vec{\mathrm{Z}}_{29}^{3}=\left[ \begin{matrix} \frac{-7-3\sqrt{3}i}{2} & \frac{-7+3\sqrt{3}i}{2} \end{matrix} \right] \]
+
+\[ X_{29}^{1}=\frac{-32883+147\vec{\Xi}_{29}^{1}\cdot\vec{\mathrm{A}}_{7}+\left( 10409+7\vec{\mathrm{H}}_{29}^{1}\cdot\vec{\mathrm{A}}_{7} \right)\sqrt{42+3\vec{\mathrm{H}}_{29}^{1}\cdot\vec{\mathrm{A}}_{7}}i}{18} \]
+
+\[ X_{29}^{2}=\frac{-32883+147\vec{\Xi}_{29}^{2}\cdot\vec{\mathrm{A}}_{7}+\left( 10409+7\vec{\mathrm{H}}_{29}^{2}\cdot\vec{\mathrm{A}}_{7} \right)\sqrt{42+3\vec{\mathrm{H}}_{29}^{2}\cdot\vec{\mathrm{A}}_{7}}i}{18} \]
+
+\[ X_{29}^{3}=\frac{-32883+147\vec{\Xi}_{29}^{3}\cdot\vec{\mathrm{A}}_{7}+\left( 10409+7\vec{\mathrm{H}}_{29}^{3}\cdot\vec{\mathrm{A}}_{7} \right)\sqrt{42+3\vec{\mathrm{H}}_{29}^{3}\cdot\vec{\mathrm{A}}_{7}}i}{18} \]
+
+\[ \vec{\mathrm{A}}_{29}=\sqrt[7]{29}\left[ \begin{matrix} \sqrt[7]{X_{29}^{1}} \\ \sqrt[7]{\bar{X}_{29}^{1}} \\ \sqrt[7]{X_{29}^{2}} \\ \sqrt[7]{\bar{X}_{29}^{2}} \\ \sqrt[7]{X_{29}^{3}} \\ \sqrt[7]{\bar{X}_{29}^{3}} \end{matrix} \right] \]
+\[ L_{29}^{1}=\frac{3+3\vec{\bar{\Lambda}}_{13}^{1}\cdot\vec{\mathrm{A}}_{7}-\left( 5+\vec{\Omega}_{3}^{1}\cdot\vec{\mathrm{A}}_{7} \right)\sqrt{42+3\vec{\mathrm{Z}}_{29}^{3}\cdot\vec{\mathrm{A}}_{7}}i}{18} \]
+
+\[ L_{29}^{2}=\frac{3+3\vec{\bar{\Lambda}}_{13}^{2}\cdot\vec{\mathrm{A}}_{7}-\left( 5+\vec{\Omega}_{3}^{2}\cdot\vec{\mathrm{A}}_{7} \right)\sqrt{42+3\vec{\mathrm{Z}}_{29}^{1}\cdot\vec{\mathrm{A}}_{7}}i}{18} \]
+
+\[ L_{29}^{3}=\frac{3+3\vec{\bar{\Lambda}}_{13}^{3}\cdot\vec{\mathrm{A}}_{7}-\left( 5+\vec{\Omega}_{3}^{0}\cdot\vec{\mathrm{A}}_{7} \right)\sqrt{42+3\vec{\mathrm{Z}}_{29}^{2}\cdot\vec{\mathrm{A}}_{7}}i}{18} \]
+
+\[ \boldsymbol{\Delta}_{29}=\left[ \begin{matrix} L_{29}^{1} & 0 & 0 & 0 & 0 & 0 \\ 0 & \bar{L}_{29}^{1} & 0 & 0 & 0 & 0 \\ 0 & 0 & L_{29}^{2} & 0 & 0 & 0 \\ 0 & 0 & 0 & \bar{L}_{29}^{2} & 0 & 0 \\ 0 & 0 & 0 & 0 & L_{29}^{3} & 0 \\ 0 & 0 & 0 & 0 & 0 & \bar{L}_{29}^{3} \end{matrix} \right] \]
+
+\[ \vec{\Omega}_{7}^{0}=\left[ \begin{matrix} 1 & 1 & \omega_{7}^{4} & \omega_{7}^{3} & 1 & 1 \end{matrix} \right] \]
+
+\[ \vec{\Omega}_{7}^{1}=\left[ \begin{matrix} \omega_{7}^{1} & \omega_{7}^{6} & \omega_{7}^{1} & \omega_{7}^{6} & \omega_{7}^{2} & \omega_{7}^{5} \end{matrix} \right] \]
+
+\[ \vec{\Omega}_{7}^{2}=\left[ \begin{matrix} \omega_{7}^{2} & \omega_{7}^{5} & \omega_{7}^{5} & \omega_{7}^{2} & \omega_{7}^{4} & \omega_{7}^{3} \end{matrix} \right] \]
+
+\[ \vec{\Omega}_{7}^{3}=\left[ \begin{matrix} \omega_{7}^{3} & \omega_{7}^{4} & \omega_{7}^{2} & \omega_{7}^{5} & \omega_{7}^{6} & \omega_{7}^{1} \end{matrix} \right] \]
+
+\[ \vec{\Omega}_{7}^{4}=\left[ \begin{matrix} \omega_{7}^{4} & \omega_{7}^{3} & \omega_{7}^{6} & \omega_{7}^{1} & \omega_{7}^{1} & \omega_{7}^{6} \end{matrix} \right] \]
+
+\[ \vec{\Omega}_{7}^{5}=\left[ \begin{matrix} \omega_{7}^{5} & \omega_{7}^{2} & \omega_{7}^{3} & \omega_{7}^{4} & \omega_{7}^{3} & \omega_{7}^{4} \end{matrix} \right] \]
+
+\[ \vec{\Omega}_{7}^{6}=\left[ \begin{matrix} \omega_{7}^{6} & \omega_{7}^{1} & 1 & 1 & \omega_{7}^{5} & \omega_{7}^{2} \end{matrix} \right] \]
+
+\end{enumerate}
+
+30.
+\[ \omega_{29}^{1}=\frac{-1+\vec{\Omega}_{7}^{4}\cdot\vec{\mathrm{A}}_{29}+\sqrt{203+7\vec{\Omega}_{7}^{1}\cdot\boldsymbol{\Delta}_{29}\cdot\vec{\mathrm{A}}_{29}}+\sqrt{406-14\vec{\Omega}_{7}^{6}\cdot\vec{\mathrm{A}}_{29}-14\sqrt{203+7\vec{\Omega}_{7}^{3}\cdot\boldsymbol{\Delta}\cdot\vec{\mathrm{A}}_{29}}}i}{28} \]
+\[ \omega_{29}^{2}=\frac{-1+\vec{\Omega}_{7}^{6}\cdot\vec{\mathrm{A}}_{29}+\sqrt{203+7\vec{\Omega}_{7}^{3}\cdot\boldsymbol{\Delta}_{29}\cdot\vec{\mathrm{A}}_{29}}+\sqrt{406-14\vec{\Omega}_{7}^{1}\cdot\vec{\mathrm{A}}_{29}-14\sqrt{203+7\vec{\Omega}_{7}^{5}\cdot\boldsymbol{\Delta}\cdot\vec{\mathrm{A}}_{29}}}i}{28} \]
+\[ \omega_{29}^{3}=\frac{-1+\vec{\Omega}_{7}^{0}\cdot\vec{\mathrm{A}}_{29}+\sqrt{203+7\vec{\Omega}_{7}^{4}\cdot\boldsymbol{\Delta}_{29}\cdot\vec{\mathrm{A}}_{29}}+\sqrt{406-14\vec{\Omega}_{7}^{2}\cdot\vec{\mathrm{A}}_{29}-14\sqrt{203+7\vec{\Omega}_{7}^{6}\cdot\boldsymbol{\Delta}\cdot\vec{\mathrm{A}}_{29}}}i}{28} \]
+\[ \omega_{29}^{4}=\frac{-1+\vec{\Omega}_{7}^{1}\cdot\vec{\mathrm{A}}_{29}+\sqrt{203+7\vec{\Omega}_{7}^{5}\cdot\boldsymbol{\Delta}_{29}\cdot\vec{\mathrm{A}}_{29}}+\sqrt{406-14\vec{\Omega}_{7}^{3}\cdot\vec{\mathrm{A}}_{29}-14\sqrt{203+7\vec{\Omega}_{7}^{0}\cdot\boldsymbol{\Delta}\cdot\vec{\mathrm{A}}_{29}}}i}{28} \]
+\[ \omega_{29}^{5}=\frac{-1+\vec{\Omega}_{7}^{6}\cdot\vec{\mathrm{A}}_{29}-\sqrt{203+7\vec{\Omega}_{7}^{3}\cdot\boldsymbol{\Delta}_{29}\cdot\vec{\mathrm{A}}_{29}}+\sqrt{406-14\vec{\Omega}_{7}^{1}\cdot\vec{\mathrm{A}}_{29}+14\sqrt{203+7\vec{\Omega}_{7}^{5}\cdot\boldsymbol{\Delta}\cdot\vec{\mathrm{A}}_{29}}}i}{28} \]
+\[ \omega_{29}^{6}=\frac{-1+\vec{\Omega}_{7}^{2}\cdot\vec{\mathrm{A}}_{29}+\sqrt{203+7\vec{\Omega}_{7}^{6}\cdot\boldsymbol{\Delta}_{29}\cdot\vec{\mathrm{A}}_{29}}+\sqrt{406-14\vec{\Omega}_{7}^{4}\cdot\vec{\mathrm{A}}_{29}+14\sqrt{203+7\vec{\Omega}_{7}^{1}\cdot\boldsymbol{\Delta}\cdot\vec{\mathrm{A}}_{29}}}i}{28} \]
+\[ \omega_{29}^{7}=\frac{-1+\vec{\Omega}_{7}^{0}\cdot\vec{\mathrm{A}}_{29}-\sqrt{203+7\vec{\Omega}_{7}^{4}\cdot\boldsymbol{\Delta}_{29}\cdot\vec{\mathrm{A}}_{29}}+\sqrt{406-14\vec{\Omega}_{7}^{2}\cdot\vec{\mathrm{A}}_{29}+14\sqrt{203+7\vec{\Omega}_{7}^{6}\cdot\boldsymbol{\Delta}\cdot\vec{\mathrm{A}}_{29}}}i}{28} \]
+\[ \omega_{29}^{8}=\frac{-1+\vec{\Omega}_{7}^{3}\cdot\vec{\mathrm{A}}_{29}+\sqrt{203+7\vec{\Omega}_{7}^{0}\cdot\boldsymbol{\Delta}_{29}\cdot\vec{\mathrm{A}}_{29}}+\sqrt{406-14\vec{\Omega}_{7}^{5}\cdot\vec{\mathrm{A}}_{29}+14\sqrt{203+7\vec{\Omega}_{7}^{4}\cdot\boldsymbol{\Delta}\cdot\vec{\mathrm{A}}_{29}}}i}{28} \]
+\[ \omega_{29}^{9}=\frac{-1+\vec{\Omega}_{7}^{3}\cdot\vec{\mathrm{A}}_{29}-\sqrt{203+7\vec{\Omega}_{7}^{0}\cdot\boldsymbol{\Delta}_{29}\cdot\vec{\mathrm{A}}_{29}}+\sqrt{406-14\vec{\Omega}_{7}^{5}\cdot\vec{\mathrm{A}}_{29}-14\sqrt{203+7\vec{\Omega}_{7}^{4}\cdot\boldsymbol{\Delta}\cdot\vec{\mathrm{A}}_{29}}}i}{28} \]
+\[ \omega_{29}^{10}=\frac{-1+\vec{\Omega}_{7}^{1}\cdot\vec{\mathrm{A}}_{29}-\sqrt{203+7\vec{\Omega}_{7}^{5}\cdot\boldsymbol{\Delta}_{29}\cdot\vec{\mathrm{A}}_{29}}+\sqrt{406-14\vec{\Omega}_{7}^{3}\cdot\vec{\mathrm{A}}_{29}+14\sqrt{203+7\vec{\Omega}_{7}^{0}\cdot\boldsymbol{\Delta}\cdot\vec{\mathrm{A}}_{29}}}i}{28} \]
+\[ \omega_{29}^{11}=\frac{-1+\vec{\Omega}_{7}^{5}\cdot\vec{\mathrm{A}}_{29}+\sqrt{203+7\vec{\Omega}_{7}^{2}\cdot\boldsymbol{\Delta}_{29}\cdot\vec{\mathrm{A}}_{29}}+\sqrt{406-14\vec{\Omega}_{7}^{0}\cdot\vec{\mathrm{A}}_{29}+14\sqrt{203+7\vec{\Omega}_{7}^{4}\cdot\boldsymbol{\Delta}\cdot\vec{\mathrm{A}}_{29}}}i}{28} \]
+\[ \omega_{29}^{12}=\frac{-1+\vec{\Omega}_{7}^{4}\cdot\vec{\mathrm{A}}_{29}-\sqrt{203+7\vec{\Omega}_{7}^{1}\cdot\boldsymbol{\Delta}_{29}\cdot\vec{\mathrm{A}}_{29}}+\sqrt{406-14\vec{\Omega}_{7}^{6}\cdot\vec{\mathrm{A}}_{29}+14\sqrt{203+7\vec{\Omega}_{7}^{3}\cdot\boldsymbol{\Delta}\cdot\vec{\mathrm{A}}_{29}}}i}{28} \]
+\[ \omega_{29}^{13}=\frac{-1+\vec{\Omega}_{7}^{5}\cdot\vec{\mathrm{A}}_{29}-\sqrt{203+7\vec{\Omega}_{7}^{2}\cdot\boldsymbol{\Delta}_{29}\cdot\vec{\mathrm{A}}_{29}}+\sqrt{406-14\vec{\Omega}_{7}^{0}\cdot\vec{\mathrm{A}}_{29}-14\sqrt{203+7\vec{\Omega}_{7}^{4}\cdot\boldsymbol{\Delta}\cdot\vec{\mathrm{A}}_{29}}}i}{28} \]
+\[ \omega_{29}^{14}=\frac{-1+\vec{\Omega}_{7}^{2}\cdot\vec{\mathrm{A}}_{29}-\sqrt{203+7\vec{\Omega}_{7}^{6}\cdot\boldsymbol{\Delta}_{29}\cdot\vec{\mathrm{A}}_{29}}+\sqrt{406-14\vec{\Omega}_{7}^{4}\cdot\vec{\mathrm{A}}_{29}-14\sqrt{203+7\vec{\Omega}_{7}^{1}\cdot\boldsymbol{\Delta}\cdot\vec{\mathrm{A}}_{29}}}i}{28} \]
+\[ \omega_{29}^{15}=\frac{-1+\vec{\Omega}_{7}^{2}\cdot\vec{\mathrm{A}}_{29}-\sqrt{203+7\vec{\Omega}_{7}^{6}\cdot\boldsymbol{\Delta}_{29}\cdot\vec{\mathrm{A}}_{29}}-\sqrt{406-14\vec{\Omega}_{7}^{4}\cdot\vec{\mathrm{A}}_{29}-14\sqrt{203+7\vec{\Omega}_{7}^{1}\cdot\boldsymbol{\Delta}\cdot\vec{\mathrm{A}}_{29}}}i}{28} \]
+\[ \omega_{29}^{16}=\frac{-1+\vec{\Omega}_{7}^{5}\cdot\vec{\mathrm{A}}_{29}-\sqrt{203+7\vec{\Omega}_{7}^{2}\cdot\boldsymbol{\Delta}_{29}\cdot\vec{\mathrm{A}}_{29}}-\sqrt{406-14\vec{\Omega}_{7}^{0}\cdot\vec{\mathrm{A}}_{29}-14\sqrt{203+7\vec{\Omega}_{7}^{4}\cdot\boldsymbol{\Delta}\cdot\vec{\mathrm{A}}_{29}}}i}{28} \]
+\[ \omega_{29}^{17}=\frac{-1+\vec{\Omega}_{7}^{4}\cdot\vec{\mathrm{A}}_{29}-\sqrt{203+7\vec{\Omega}_{7}^{1}\cdot\boldsymbol{\Delta}_{29}\cdot\vec{\mathrm{A}}_{29}}-\sqrt{406-14\vec{\Omega}_{7}^{6}\cdot\vec{\mathrm{A}}_{29}+14\sqrt{203+7\vec{\Omega}_{7}^{3}\cdot\boldsymbol{\Delta}\cdot\vec{\mathrm{A}}_{29}}}i}{28} \]
+\[ \omega_{29}^{18}=\frac{-1+\vec{\Omega}_{7}^{5}\cdot\vec{\mathrm{A}}_{29}+\sqrt{203+7\vec{\Omega}_{7}^{2}\cdot\boldsymbol{\Delta}_{29}\cdot\vec{\mathrm{A}}_{29}}-\sqrt{406-14\vec{\Omega}_{7}^{0}\cdot\vec{\mathrm{A}}_{29}+14\sqrt{203+7\vec{\Omega}_{7}^{4}\cdot\boldsymbol{\Delta}\cdot\vec{\mathrm{A}}_{29}}}i}{28} \]
+\[ \omega_{29}^{19}=\frac{-1+\vec{\Omega}_{7}^{1}\cdot\vec{\mathrm{A}}_{29}-\sqrt{203+7\vec{\Omega}_{7}^{5}\cdot\boldsymbol{\Delta}_{29}\cdot\vec{\mathrm{A}}_{29}}-\sqrt{406-14\vec{\Omega}_{7}^{3}\cdot\vec{\mathrm{A}}_{29}+14\sqrt{203+7\vec{\Omega}_{7}^{0}\cdot\boldsymbol{\Delta}\cdot\vec{\mathrm{A}}_{29}}}i}{28} \]
+\[ \omega_{29}^{20}=\frac{-1+\vec{\Omega}_{7}^{3}\cdot\vec{\mathrm{A}}_{29}-\sqrt{203+7\vec{\Omega}_{7}^{0}\cdot\boldsymbol{\Delta}_{29}\cdot\vec{\mathrm{A}}_{29}}-\sqrt{406-14\vec{\Omega}_{7}^{5}\cdot\vec{\mathrm{A}}_{29}-14\sqrt{203+7\vec{\Omega}_{7}^{4}\cdot\boldsymbol{\Delta}\cdot\vec{\mathrm{A}}_{29}}}i}{28} \]
+\[ \omega_{29}^{21}=\frac{-1+\vec{\Omega}_{7}^{3}\cdot\vec{\mathrm{A}}_{29}+\sqrt{203+7\vec{\Omega}_{7}^{0}\cdot\boldsymbol{\Delta}_{29}\cdot\vec{\mathrm{A}}_{29}}-\sqrt{406-14\vec{\Omega}_{7}^{5}\cdot\vec{\mathrm{A}}_{29}+14\sqrt{203+7\vec{\Omega}_{7}^{4}\cdot\boldsymbol{\Delta}\cdot\vec{\mathrm{A}}_{29}}}i}{28} \]
+\[ \omega_{29}^{22}=\frac{-1+\vec{\Omega}_{7}^{0}\cdot\vec{\mathrm{A}}_{29}-\sqrt{203+7\vec{\Omega}_{7}^{4}\cdot\boldsymbol{\Delta}_{29}\cdot\vec{\mathrm{A}}_{29}}-\sqrt{406-14\vec{\Omega}_{7}^{2}\cdot\vec{\mathrm{A}}_{29}+14\sqrt{203+7\vec{\Omega}_{7}^{6}\cdot\boldsymbol{\Delta}\cdot\vec{\mathrm{A}}_{29}}}i}{28} \]
+\[ \omega_{29}^{23}=\frac{-1+\vec{\Omega}_{7}^{2}\cdot\vec{\mathrm{A}}_{29}+\sqrt{203+7\vec{\Omega}_{7}^{6}\cdot\boldsymbol{\Delta}_{29}\cdot\vec{\mathrm{A}}_{29}}-\sqrt{406-14\vec{\Omega}_{7}^{4}\cdot\vec{\mathrm{A}}_{29}+14\sqrt{203+7\vec{\Omega}_{7}^{1}\cdot\boldsymbol{\Delta}\cdot\vec{\mathrm{A}}_{29}}}i}{28} \]
+\[ \omega_{29}^{24}=\frac{-1+\vec{\Omega}_{7}^{6}\cdot\vec{\mathrm{A}}_{29}-\sqrt{203+7\vec{\Omega}_{7}^{3}\cdot\boldsymbol{\Delta}_{29}\cdot\vec{\mathrm{A}}_{29}}-\sqrt{406-14\vec{\Omega}_{7}^{1}\cdot\vec{\mathrm{A}}_{29}+14\sqrt{203+7\vec{\Omega}_{7}^{5}\cdot\boldsymbol{\Delta}\cdot\vec{\mathrm{A}}_{29}}}i}{28} \]
+\[ \omega_{29}^{25}=\frac{-1+\vec{\Omega}_{7}^{1}\cdot\vec{\mathrm{A}}_{29}+\sqrt{203+7\vec{\Omega}_{7}^{5}\cdot\boldsymbol{\Delta}_{29}\cdot\vec{\mathrm{A}}_{29}}-\sqrt{406-14\vec{\Omega}_{7}^{3}\cdot\vec{\mathrm{A}}_{29}-14\sqrt{203+7\vec{\Omega}_{7}^{0}\cdot\boldsymbol{\Delta}\cdot\vec{\mathrm{A}}_{29}}}i}{28} \]
+\[ \omega_{29}^{26}=\frac{-1+\vec{\Omega}_{7}^{0}\cdot\vec{\mathrm{A}}_{29}+\sqrt{203+7\vec{\Omega}_{7}^{4}\cdot\boldsymbol{\Delta}_{29}\cdot\vec{\mathrm{A}}_{29}}-\sqrt{406-14\vec{\Omega}_{7}^{2}\cdot\vec{\mathrm{A}}_{29}-14\sqrt{203+7\vec{\Omega}_{7}^{6}\cdot\boldsymbol{\Delta}\cdot\vec{\mathrm{A}}_{29}}}i}{28} \]
+\[ \omega_{29}^{27}=\frac{-1+\vec{\Omega}_{7}^{6}\cdot\vec{\mathrm{A}}_{29}+\sqrt{203+7\vec{\Omega}_{7}^{3}\cdot\boldsymbol{\Delta}_{29}\cdot\vec{\mathrm{A}}_{29}}-\sqrt{406-14\vec{\Omega}_{7}^{1}\cdot\vec{\mathrm{A}}_{29}-14\sqrt{203+7\vec{\Omega}_{7}^{5}\cdot\boldsymbol{\Delta}\cdot\vec{\mathrm{A}}_{29}}}i}{28} \]
+\[ \omega_{29}^{28}=\frac{-1+\vec{\Omega}_{7}^{4}\cdot\vec{\mathrm{A}}_{29}+\sqrt{203+7\vec{\Omega}_{7}^{1}\cdot\boldsymbol{\Delta}_{29}\cdot\vec{\mathrm{A}}_{29}}-\sqrt{406-14\vec{\Omega}_{7}^{6}\cdot\vec{\mathrm{A}}_{29}-14\sqrt{203+7\vec{\Omega}_{7}^{3}\cdot\boldsymbol{\Delta}\cdot\vec{\mathrm{A}}_{29}}}i}{28} \]
+\[ \omega_{30}^{1}=-\omega_{15}^{8} \]
+\[ \omega_{30}^{2}=\omega_{15}^{1} \]
+\[ \omega_{30}^{3}=\omega_{10}^{1} \]
+\[ \omega_{30}^{4}=\omega_{15}^{2} \]
+\[ \omega_{30}^{5}=\omega_{6}^{1} \]
+\[ \omega_{30}^{6}=\omega_{5}^{1} \]
+
+\[ \omega_{30}^{7}=-\omega_{15}^{11} \]
+\[ \omega_{30}^{8}=\omega_{15}^{4} \]
+\[ \omega_{30}^{9}=\omega_{10}^{3} \]
+\[ \omega_{30}^{10}=\omega_{3}^{1} \]
+\[ \omega_{30}^{11}=-\omega_{15}^{13} \]
+\[ \omega_{30}^{12}=\omega_{5}^{2} \]
+
+\[ \omega_{30}^{13}=-\omega_{15}^{14} \]
+\[ \omega_{30}^{14}=\omega_{15}^{7} \]
+\[ \omega_{30}^{15}=\omega_{2}^{1} \]
+\[ \omega_{30}^{16}=\omega_{15}^{8} \]
+\[ \omega_{30}^{17}=-\omega_{15}^{1} \]
+\[ \omega_{30}^{18}=\omega_{5}^{3} \]
+
+\[ \omega_{30}^{19}=-\omega_{15}^{2} \]
+\[ \omega_{30}^{20}=\omega_{3}^{2} \]
+\[ \omega_{30}^{21}=\omega_{10}^{7} \]
+\[ \omega_{30}^{22}=\omega_{15}^{11} \]
+\[ \omega_{30}^{23}=-\omega_{15}^{4} \]
+\[ \omega_{30}^{24}=\omega_{5}^{4} \]
+
+\[ \omega_{30}^{25}=\omega_{6}^{5} \]
+\[ \omega_{30}^{26}=\omega_{15}^{13} \]
+\[ \omega_{30}^{27}=\omega_{10}^{9} \]
+\[ \omega_{30}^{28}=\omega_{15}^{14} \]
+\[ \omega_{30}^{29}=-\omega_{15}^{7} \]
+
+\end{document}

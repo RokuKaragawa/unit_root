@@ -1,0 +1,205 @@
+\documentclass[UTF8]{ctexart}
+\usepackage{geometry}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{adjustbox}
+\usepackage{fancyhdr}
+\newcommand{\fitmath}[1]{\begin{center}\adjustbox{max width=\linewidth, max totalheight=0.42\textheight}{$\displaystyle #1$}\end{center}}
+\geometry{a4paper,scale=0.78}
+\setlength{\headheight}{16pt}
+\setlength{\emergencystretch}{3em}
+\allowdisplaybreaks
+\pagestyle{fancy}
+\fancyhead[L]{17 次单位根的根式解}
+\begin{document}
+\rmfamily
+\title{\textbf{\huge 17 次单位根的根式解}}
+\date{}
+\maketitle
+
+\section*{参数与标准素分解}
+$p = 17$，$h = (p-1)/2 = 8$，模 $17$ 的最小原根 $g = 3$。
+
+$h$ 的标准素分解：$h = 2\times2\times2$，子群链共 $3$ 层。
+
+$m_0 = 1$，$m_{1} = 2$，$m_{2} = 4$，$m_{3} = 8$。
+
+各层子群 $H_j = \{\pm g^{m_j t}\}$，其中 $H_0$ 是全部 $16$ 个非零剩余：
+
+\fitmath{H_{1} = \{1,\,2,\,4,\,8,\,9,\,13,\,15,\,16\}}
+
+\fitmath{H_{2} = \{1,\,4,\,13,\,16\}}
+
+\fitmath{H_{3} = \{1,\,16\}}
+
+各层周期 $\eta^{(j)}_{a} = \sum_{b \in H_j}\zeta^{ab}$（$a$ 取陪集代表）。
+
+\section*{各层周期与分解表}
+\subsection*{第 $0$ 层：1 个周期}
+$H_0$ 是全部 $16$ 个非零剩余，故 $\eta^{(0)}_{1} = -1$。
+
+\subsection*{第 $1$ 层：2 个周期}
+\fitmath{\eta^{(1)}_{1} = \zeta^{1}+\zeta^{2}+\zeta^{4}+\zeta^{8}+\zeta^{9}+\zeta^{13}+\zeta^{15}+\zeta^{16}}
+
+\fitmath{\eta^{(1)}_{3} = \zeta^{3}+\zeta^{5}+\zeta^{6}+\zeta^{7}+\zeta^{10}+\zeta^{11}+\zeta^{12}+\zeta^{14}}
+
+\subsection*{第 $2$ 层：4 个周期}
+\fitmath{\eta^{(2)}_{1} = \zeta^{1}+\zeta^{4}+\zeta^{13}+\zeta^{16}}
+
+\fitmath{\eta^{(2)}_{2} = \zeta^{2}+\zeta^{8}+\zeta^{9}+\zeta^{15}}
+
+\fitmath{\eta^{(2)}_{3} = \zeta^{3}+\zeta^{5}+\zeta^{12}+\zeta^{14}}
+
+\fitmath{\eta^{(2)}_{6} = \zeta^{6}+\zeta^{7}+\zeta^{10}+\zeta^{11}}
+
+\subsection*{第 $3$ 层：8 个周期}
+\fitmath{\eta^{(3)}_{1} = \zeta^{1}+\zeta^{16}}
+
+\fitmath{\eta^{(3)}_{2} = \zeta^{2}+\zeta^{15}}
+
+\fitmath{\eta^{(3)}_{3} = \zeta^{3}+\zeta^{14}}
+
+\fitmath{\eta^{(3)}_{4} = \zeta^{4}+\zeta^{13}}
+
+\fitmath{\eta^{(3)}_{5} = \zeta^{5}+\zeta^{12}}
+
+\fitmath{\eta^{(3)}_{6} = \zeta^{6}+\zeta^{11}}
+
+\fitmath{\eta^{(3)}_{7} = \zeta^{7}+\zeta^{10}}
+
+\fitmath{\eta^{(3)}_{8} = \zeta^{8}+\zeta^{9}}
+
+\subsection*{分解表：每个母周期拆成 $\ell_j$ 个子周期}
+\fitmath{\eta^{(0)}_{1} = \eta^{(1)}_{1}+\eta^{(1)}_{3}}
+
+（第 $1$ 层，$\ell = 2$。）
+
+\fitmath{\eta^{(1)}_{1} = \eta^{(2)}_{1}+\eta^{(2)}_{2}}
+
+\fitmath{\eta^{(1)}_{3} = \eta^{(2)}_{3}+\eta^{(2)}_{6}}
+
+（第 $2$ 层，$\ell = 2$。）
+
+\fitmath{\eta^{(2)}_{1} = \eta^{(3)}_{1}+\eta^{(3)}_{4}}
+
+\fitmath{\eta^{(2)}_{2} = \eta^{(3)}_{2}+\eta^{(3)}_{8}}
+
+\fitmath{\eta^{(2)}_{3} = \eta^{(3)}_{3}+\eta^{(3)}_{5}}
+
+\fitmath{\eta^{(2)}_{6} = \eta^{(3)}_{6}+\eta^{(3)}_{7}}
+
+（第 $3$ 层，$\ell = 2$。）
+
+\section*{辅助单位根}
+$\ell = 2$ 时 $\omega_{2}^{1} = -1$。
+
+$\ell \geq 3$ 时按主支：
+
+\fitmath{\omega_{\ell}^{k} = \frac{\Lambda^{(\ell)}_{\bar k}}{2} + \frac{\varepsilon_k}{2}\sqrt{2-\Lambda^{(\ell)}_{\overline{2k}}}\,i}
+
+其中 $\varepsilon_k = \operatorname{sgn}\sin(2\pi k/\ell)$，$\bar k = \min(k,\ell-k)$。
+
+\section*{逐层开方}
+每一步把母周期 $\eta^{(j-1)}_{a}$ 分解成 $\ell$ 个子周期 $\beta^{(a)}_{t}$。
+
+预解式取离散 Fourier 变换：
+
+\fitmath{\theta^{(j)}_{a,k} = \sum_{t=0}^{\ell-1}\omega_{\ell}^{-kt}\beta^{(a)}_{t}}
+
+\fitmath{\left(\theta^{(j)}_{a,k}\right)^{\ell} = u^{(j)}_{a,k} = \tau^{k}\left(u^{(j)}_{a,1}\right)}
+
+\fitmath{\eta^{(j)}_{b(t)} = \frac{1}{\ell}\left(\eta^{(j-1)}_{a} + \sum_{k=1}^{\ell-1}\omega_{\ell}^{kt}\theta^{(j)}_{a,k}\right)}
+
+（$\tau$ 把 $\omega_{\ell}$ 送到 $\omega_{\ell}^{k}$；$b(t)$ 为第 $t$ 个子周期。）
+
+开方一律取正实主支；预解式的分支由因子 $\omega_{\ell}^{s}$ 记录（见报告里的分支表）。
+
+\subsection*{第 $1$ 步（$\ell = 2$，1 个母周期）}
+\fitmath{u^{(1)}_{1,1} = 17}
+
+\fitmath{\theta^{(1)}_{1,1} = \sqrt{17}}
+
+\subsection*{第 $2$ 步（$\ell = 2$，2 个母周期）}
+\fitmath{u^{(2)}_{1,1} = \frac{17 - \sqrt{17}}{2}}
+
+\fitmath{\theta^{(2)}_{1,1} = \frac{\left(5 - \sqrt{17}\right)\sqrt{17 + 4\sqrt{17}}}{2}}
+
+\fitmath{u^{(2)}_{3,1} = \frac{17 + \sqrt{17}}{2}}
+
+\fitmath{\theta^{(2)}_{3,1} = \frac{\left(5 + \sqrt{17}\right)\sqrt{17 - 4\sqrt{17}}}{2}}
+
+\subsection*{第 $3$ 步（$\ell = 2$，4 个母周期）}
+\fitmath{u^{(3)}_{1,1} = \frac{17 + 3\sqrt{17} + \left(-10 - 2\sqrt{17}\right)\sqrt{17 - 4\sqrt{17}} + \left(-5 + \sqrt{17}\right)\sqrt{17 + 4\sqrt{17}}}{4}}
+
+\fitmath{\theta^{(3)}_{1,1} = \frac{\sqrt{17 + 3\sqrt{17} + \left(-10 - 2\sqrt{17}\right)\sqrt{17 - 4\sqrt{17}} + \left(-5 + \sqrt{17}\right)\sqrt{17 + 4\sqrt{17}}}}{2}}
+
+\fitmath{u^{(3)}_{2,1} = \frac{17 + 3\sqrt{17} + \left(10 + 2\sqrt{17}\right)\sqrt{17 - 4\sqrt{17}} + \left(5 - \sqrt{17}\right)\sqrt{17 + 4\sqrt{17}}}{4}}
+
+\fitmath{\theta^{(3)}_{2,1} = \frac{\sqrt{17 + 3\sqrt{17} + \left(10 + 2\sqrt{17}\right)\sqrt{17 - 4\sqrt{17}} + \left(5 - \sqrt{17}\right)\sqrt{17 + 4\sqrt{17}}}}{2}}
+
+\fitmath{u^{(3)}_{3,1} = \frac{17 - 3\sqrt{17} + \left(-5 - \sqrt{17}\right)\sqrt{17 - 4\sqrt{17}} + \left(10 - 2\sqrt{17}\right)\sqrt{17 + 4\sqrt{17}}}{4}}
+
+\fitmath{\theta^{(3)}_{3,1} = \frac{\sqrt{17 - 3\sqrt{17} + \left(-5 - \sqrt{17}\right)\sqrt{17 - 4\sqrt{17}} + \left(10 - 2\sqrt{17}\right)\sqrt{17 + 4\sqrt{17}}}}{2}}
+
+\fitmath{u^{(3)}_{6,1} = \frac{17 - 3\sqrt{17} + \left(-10 + 2\sqrt{17}\right)\sqrt{17 + 4\sqrt{17}} + \left(5 + \sqrt{17}\right)\sqrt{17 - 4\sqrt{17}}}{4}}
+
+\fitmath{\theta^{(3)}_{6,1} = \frac{\sqrt{17 - 3\sqrt{17} + \left(-10 + 2\sqrt{17}\right)\sqrt{17 + 4\sqrt{17}} + \left(5 + \sqrt{17}\right)\sqrt{17 - 4\sqrt{17}}}}{2}}
+
+\section*{实部数值}
+\fitmath{\Lambda_{1} = 2\cos\frac{2\pi\cdot 1}{17} = \frac{-1 + \sqrt{17} + \left(5 - \sqrt{17}\right)\sqrt{17 + 4\sqrt{17}} + 2\sqrt{17 + 3\sqrt{17} + \left(-10 - 2\sqrt{17}\right)\sqrt{17 - 4\sqrt{17}} + \left(-5 + \sqrt{17}\right)\sqrt{17 + 4\sqrt{17}}}}{8}}
+
+\fitmath{\Lambda_{2} = 2\cos\frac{2\pi\cdot 2}{17} = \frac{-1 + \sqrt{17} + \left(-5 + \sqrt{17}\right)\sqrt{17 + 4\sqrt{17}} + 2\sqrt{17 + 3\sqrt{17} + \left(10 + 2\sqrt{17}\right)\sqrt{17 - 4\sqrt{17}} + \left(5 - \sqrt{17}\right)\sqrt{17 + 4\sqrt{17}}}}{8}}
+
+\fitmath{\Lambda_{3} = 2\cos\frac{2\pi\cdot 3}{17} = \frac{-1 - \sqrt{17} + \left(5 + \sqrt{17}\right)\sqrt{17 - 4\sqrt{17}} + 2\sqrt{17 - 3\sqrt{17} + \left(-5 - \sqrt{17}\right)\sqrt{17 - 4\sqrt{17}} + \left(10 - 2\sqrt{17}\right)\sqrt{17 + 4\sqrt{17}}}}{8}}
+
+\fitmath{\Lambda_{4} = 2\cos\frac{2\pi\cdot 4}{17} = \frac{-1 + \sqrt{17} + \left(5 - \sqrt{17}\right)\sqrt{17 + 4\sqrt{17}} - 2\sqrt{17 + 3\sqrt{17} + \left(-10 - 2\sqrt{17}\right)\sqrt{17 - 4\sqrt{17}} + \left(-5 + \sqrt{17}\right)\sqrt{17 + 4\sqrt{17}}}}{8}}
+
+\fitmath{\Lambda_{5} = 2\cos\frac{2\pi\cdot 5}{17} = \frac{-1 - \sqrt{17} + \left(5 + \sqrt{17}\right)\sqrt{17 - 4\sqrt{17}} - 2\sqrt{17 - 3\sqrt{17} + \left(-5 - \sqrt{17}\right)\sqrt{17 - 4\sqrt{17}} + \left(10 - 2\sqrt{17}\right)\sqrt{17 + 4\sqrt{17}}}}{8}}
+
+\fitmath{\Lambda_{6} = 2\cos\frac{2\pi\cdot 6}{17} = \frac{-1 - \sqrt{17} + \left(-5 - \sqrt{17}\right)\sqrt{17 - 4\sqrt{17}} + 2\sqrt{17 - 3\sqrt{17} + \left(-10 + 2\sqrt{17}\right)\sqrt{17 + 4\sqrt{17}} + \left(5 + \sqrt{17}\right)\sqrt{17 - 4\sqrt{17}}}}{8}}
+
+\fitmath{\Lambda_{7} = 2\cos\frac{2\pi\cdot 7}{17} = \frac{-1 - \sqrt{17} + \left(-5 - \sqrt{17}\right)\sqrt{17 - 4\sqrt{17}} - 2\sqrt{17 - 3\sqrt{17} + \left(-10 + 2\sqrt{17}\right)\sqrt{17 + 4\sqrt{17}} + \left(5 + \sqrt{17}\right)\sqrt{17 - 4\sqrt{17}}}}{8}}
+
+\fitmath{\Lambda_{8} = 2\cos\frac{2\pi\cdot 8}{17} = \frac{-1 + \sqrt{17} + \left(-5 + \sqrt{17}\right)\sqrt{17 + 4\sqrt{17}} - 2\sqrt{17 + 3\sqrt{17} + \left(10 + 2\sqrt{17}\right)\sqrt{17 - 4\sqrt{17}} + \left(5 - \sqrt{17}\right)\sqrt{17 + 4\sqrt{17}}}}{8}}
+
+\section*{全部单位根}
+最终形式：
+
+\fitmath{\omega_{n}^{t} = \frac{\Lambda_{\bar t}}{2} + \frac{\varepsilon_t}{2}\sqrt{2-\Lambda_{\overline{2t}}}\,i,\qquad \Lambda_{\bar t} = 2\cos\frac{2\pi\bar t}{n}}
+
+其中 $\bar t = \min(t, n-t)$，$\varepsilon_t = \operatorname{sgn}\sin(2\pi t/n)$。
+
+以下逐一写开（全部为具体根式）：
+
+\fitmath{\omega_{17}^{1} = \frac{-1 + \sqrt{17} + \left(5 - \sqrt{17}\right)\sqrt{17 + 4\sqrt{17}} + 2\sqrt{17 + 3\sqrt{17} + \left(-10 - 2\sqrt{17}\right)\sqrt{17 - 4\sqrt{17}} + \left(-5 + \sqrt{17}\right)\sqrt{17 + 4\sqrt{17}}} + 2\sqrt{34 - 2\sqrt{17} + \left(10 - 2\sqrt{17}\right)\sqrt{17 + 4\sqrt{17}} - 4\sqrt{17 + 3\sqrt{17} + \left(10 + 2\sqrt{17}\right)\sqrt{17 - 4\sqrt{17}} + \left(5 - \sqrt{17}\right)\sqrt{17 + 4\sqrt{17}}}}i}{16}}
+
+\fitmath{\omega_{17}^{2} = \frac{-1 + \sqrt{17} + \left(-5 + \sqrt{17}\right)\sqrt{17 + 4\sqrt{17}} + 2\sqrt{17 + 3\sqrt{17} + \left(10 + 2\sqrt{17}\right)\sqrt{17 - 4\sqrt{17}} + \left(5 - \sqrt{17}\right)\sqrt{17 + 4\sqrt{17}}} + 2\sqrt{34 - 2\sqrt{17} + \left(-10 + 2\sqrt{17}\right)\sqrt{17 + 4\sqrt{17}} + 4\sqrt{17 + 3\sqrt{17} + \left(-10 - 2\sqrt{17}\right)\sqrt{17 - 4\sqrt{17}} + \left(-5 + \sqrt{17}\right)\sqrt{17 + 4\sqrt{17}}}}i}{16}}
+
+\fitmath{\omega_{17}^{3} = \frac{-1 - \sqrt{17} + \left(5 + \sqrt{17}\right)\sqrt{17 - 4\sqrt{17}} + 2\sqrt{17 - 3\sqrt{17} + \left(-5 - \sqrt{17}\right)\sqrt{17 - 4\sqrt{17}} + \left(10 - 2\sqrt{17}\right)\sqrt{17 + 4\sqrt{17}}} + 2\sqrt{34 + 2\sqrt{17} + \left(10 + 2\sqrt{17}\right)\sqrt{17 - 4\sqrt{17}} - 4\sqrt{17 - 3\sqrt{17} + \left(-10 + 2\sqrt{17}\right)\sqrt{17 + 4\sqrt{17}} + \left(5 + \sqrt{17}\right)\sqrt{17 - 4\sqrt{17}}}}i}{16}}
+
+\fitmath{\omega_{17}^{4} = \frac{-1 + \sqrt{17} + \left(5 - \sqrt{17}\right)\sqrt{17 + 4\sqrt{17}} - 2\sqrt{17 + 3\sqrt{17} + \left(-10 - 2\sqrt{17}\right)\sqrt{17 - 4\sqrt{17}} + \left(-5 + \sqrt{17}\right)\sqrt{17 + 4\sqrt{17}}} + 2\sqrt{34 - 2\sqrt{17} + \left(10 - 2\sqrt{17}\right)\sqrt{17 + 4\sqrt{17}} + 4\sqrt{17 + 3\sqrt{17} + \left(10 + 2\sqrt{17}\right)\sqrt{17 - 4\sqrt{17}} + \left(5 - \sqrt{17}\right)\sqrt{17 + 4\sqrt{17}}}}i}{16}}
+
+\fitmath{\omega_{17}^{5} = \frac{-1 - \sqrt{17} + \left(5 + \sqrt{17}\right)\sqrt{17 - 4\sqrt{17}} - 2\sqrt{17 - 3\sqrt{17} + \left(-5 - \sqrt{17}\right)\sqrt{17 - 4\sqrt{17}} + \left(10 - 2\sqrt{17}\right)\sqrt{17 + 4\sqrt{17}}} + 2\sqrt{34 + 2\sqrt{17} + \left(10 + 2\sqrt{17}\right)\sqrt{17 - 4\sqrt{17}} + 4\sqrt{17 - 3\sqrt{17} + \left(-10 + 2\sqrt{17}\right)\sqrt{17 + 4\sqrt{17}} + \left(5 + \sqrt{17}\right)\sqrt{17 - 4\sqrt{17}}}}i}{16}}
+
+\fitmath{\omega_{17}^{6} = \frac{-1 - \sqrt{17} + \left(-5 - \sqrt{17}\right)\sqrt{17 - 4\sqrt{17}} + 2\sqrt{17 - 3\sqrt{17} + \left(-10 + 2\sqrt{17}\right)\sqrt{17 + 4\sqrt{17}} + \left(5 + \sqrt{17}\right)\sqrt{17 - 4\sqrt{17}}} + 2\sqrt{34 + 2\sqrt{17} + \left(-10 - 2\sqrt{17}\right)\sqrt{17 - 4\sqrt{17}} + 4\sqrt{17 - 3\sqrt{17} + \left(-5 - \sqrt{17}\right)\sqrt{17 - 4\sqrt{17}} + \left(10 - 2\sqrt{17}\right)\sqrt{17 + 4\sqrt{17}}}}i}{16}}
+
+\fitmath{\omega_{17}^{7} = \frac{-1 - \sqrt{17} + \left(-5 - \sqrt{17}\right)\sqrt{17 - 4\sqrt{17}} - 2\sqrt{17 - 3\sqrt{17} + \left(-10 + 2\sqrt{17}\right)\sqrt{17 + 4\sqrt{17}} + \left(5 + \sqrt{17}\right)\sqrt{17 - 4\sqrt{17}}} + 2\sqrt{34 + 2\sqrt{17} + \left(-10 - 2\sqrt{17}\right)\sqrt{17 - 4\sqrt{17}} - 4\sqrt{17 - 3\sqrt{17} + \left(-5 - \sqrt{17}\right)\sqrt{17 - 4\sqrt{17}} + \left(10 - 2\sqrt{17}\right)\sqrt{17 + 4\sqrt{17}}}}i}{16}}
+
+\fitmath{\omega_{17}^{8} = \frac{-1 + \sqrt{17} + \left(-5 + \sqrt{17}\right)\sqrt{17 + 4\sqrt{17}} - 2\sqrt{17 + 3\sqrt{17} + \left(10 + 2\sqrt{17}\right)\sqrt{17 - 4\sqrt{17}} + \left(5 - \sqrt{17}\right)\sqrt{17 + 4\sqrt{17}}} + 2\sqrt{34 - 2\sqrt{17} + \left(-10 + 2\sqrt{17}\right)\sqrt{17 + 4\sqrt{17}} - 4\sqrt{17 + 3\sqrt{17} + \left(-10 - 2\sqrt{17}\right)\sqrt{17 - 4\sqrt{17}} + \left(-5 + \sqrt{17}\right)\sqrt{17 + 4\sqrt{17}}}}i}{16}}
+
+\fitmath{\omega_{17}^{9} = \frac{-1 + \sqrt{17} + \left(-5 + \sqrt{17}\right)\sqrt{17 + 4\sqrt{17}} - 2\sqrt{17 + 3\sqrt{17} + \left(10 + 2\sqrt{17}\right)\sqrt{17 - 4\sqrt{17}} + \left(5 - \sqrt{17}\right)\sqrt{17 + 4\sqrt{17}}} - 2\sqrt{34 - 2\sqrt{17} + \left(-10 + 2\sqrt{17}\right)\sqrt{17 + 4\sqrt{17}} - 4\sqrt{17 + 3\sqrt{17} + \left(-10 - 2\sqrt{17}\right)\sqrt{17 - 4\sqrt{17}} + \left(-5 + \sqrt{17}\right)\sqrt{17 + 4\sqrt{17}}}}i}{16}}
+
+\fitmath{\omega_{17}^{10} = \frac{-1 - \sqrt{17} + \left(-5 - \sqrt{17}\right)\sqrt{17 - 4\sqrt{17}} - 2\sqrt{17 - 3\sqrt{17} + \left(-10 + 2\sqrt{17}\right)\sqrt{17 + 4\sqrt{17}} + \left(5 + \sqrt{17}\right)\sqrt{17 - 4\sqrt{17}}} - 2\sqrt{34 + 2\sqrt{17} + \left(-10 - 2\sqrt{17}\right)\sqrt{17 - 4\sqrt{17}} - 4\sqrt{17 - 3\sqrt{17} + \left(-5 - \sqrt{17}\right)\sqrt{17 - 4\sqrt{17}} + \left(10 - 2\sqrt{17}\right)\sqrt{17 + 4\sqrt{17}}}}i}{16}}
+
+\fitmath{\omega_{17}^{11} = \frac{-1 - \sqrt{17} + \left(-5 - \sqrt{17}\right)\sqrt{17 - 4\sqrt{17}} + 2\sqrt{17 - 3\sqrt{17} + \left(-10 + 2\sqrt{17}\right)\sqrt{17 + 4\sqrt{17}} + \left(5 + \sqrt{17}\right)\sqrt{17 - 4\sqrt{17}}} - 2\sqrt{34 + 2\sqrt{17} + \left(-10 - 2\sqrt{17}\right)\sqrt{17 - 4\sqrt{17}} + 4\sqrt{17 - 3\sqrt{17} + \left(-5 - \sqrt{17}\right)\sqrt{17 - 4\sqrt{17}} + \left(10 - 2\sqrt{17}\right)\sqrt{17 + 4\sqrt{17}}}}i}{16}}
+
+\fitmath{\omega_{17}^{12} = \frac{-1 - \sqrt{17} + \left(5 + \sqrt{17}\right)\sqrt{17 - 4\sqrt{17}} - 2\sqrt{17 - 3\sqrt{17} + \left(-5 - \sqrt{17}\right)\sqrt{17 - 4\sqrt{17}} + \left(10 - 2\sqrt{17}\right)\sqrt{17 + 4\sqrt{17}}} - 2\sqrt{34 + 2\sqrt{17} + \left(10 + 2\sqrt{17}\right)\sqrt{17 - 4\sqrt{17}} + 4\sqrt{17 - 3\sqrt{17} + \left(-10 + 2\sqrt{17}\right)\sqrt{17 + 4\sqrt{17}} + \left(5 + \sqrt{17}\right)\sqrt{17 - 4\sqrt{17}}}}i}{16}}
+
+\fitmath{\omega_{17}^{13} = \frac{-1 + \sqrt{17} + \left(5 - \sqrt{17}\right)\sqrt{17 + 4\sqrt{17}} - 2\sqrt{17 + 3\sqrt{17} + \left(-10 - 2\sqrt{17}\right)\sqrt{17 - 4\sqrt{17}} + \left(-5 + \sqrt{17}\right)\sqrt{17 + 4\sqrt{17}}} - 2\sqrt{34 - 2\sqrt{17} + \left(10 - 2\sqrt{17}\right)\sqrt{17 + 4\sqrt{17}} + 4\sqrt{17 + 3\sqrt{17} + \left(10 + 2\sqrt{17}\right)\sqrt{17 - 4\sqrt{17}} + \left(5 - \sqrt{17}\right)\sqrt{17 + 4\sqrt{17}}}}i}{16}}
+
+\fitmath{\omega_{17}^{14} = \frac{-1 - \sqrt{17} + \left(5 + \sqrt{17}\right)\sqrt{17 - 4\sqrt{17}} + 2\sqrt{17 - 3\sqrt{17} + \left(-5 - \sqrt{17}\right)\sqrt{17 - 4\sqrt{17}} + \left(10 - 2\sqrt{17}\right)\sqrt{17 + 4\sqrt{17}}} - 2\sqrt{34 + 2\sqrt{17} + \left(10 + 2\sqrt{17}\right)\sqrt{17 - 4\sqrt{17}} - 4\sqrt{17 - 3\sqrt{17} + \left(-10 + 2\sqrt{17}\right)\sqrt{17 + 4\sqrt{17}} + \left(5 + \sqrt{17}\right)\sqrt{17 - 4\sqrt{17}}}}i}{16}}
+
+\fitmath{\omega_{17}^{15} = \frac{-1 + \sqrt{17} + \left(-5 + \sqrt{17}\right)\sqrt{17 + 4\sqrt{17}} + 2\sqrt{17 + 3\sqrt{17} + \left(10 + 2\sqrt{17}\right)\sqrt{17 - 4\sqrt{17}} + \left(5 - \sqrt{17}\right)\sqrt{17 + 4\sqrt{17}}} - 2\sqrt{34 - 2\sqrt{17} + \left(-10 + 2\sqrt{17}\right)\sqrt{17 + 4\sqrt{17}} + 4\sqrt{17 + 3\sqrt{17} + \left(-10 - 2\sqrt{17}\right)\sqrt{17 - 4\sqrt{17}} + \left(-5 + \sqrt{17}\right)\sqrt{17 + 4\sqrt{17}}}}i}{16}}
+
+\fitmath{\omega_{17}^{16} = \frac{-1 + \sqrt{17} + \left(5 - \sqrt{17}\right)\sqrt{17 + 4\sqrt{17}} + 2\sqrt{17 + 3\sqrt{17} + \left(-10 - 2\sqrt{17}\right)\sqrt{17 - 4\sqrt{17}} + \left(-5 + \sqrt{17}\right)\sqrt{17 + 4\sqrt{17}}} - 2\sqrt{34 - 2\sqrt{17} + \left(10 - 2\sqrt{17}\right)\sqrt{17 + 4\sqrt{17}} - 4\sqrt{17 + 3\sqrt{17} + \left(10 + 2\sqrt{17}\right)\sqrt{17 - 4\sqrt{17}} + \left(5 - \sqrt{17}\right)\sqrt{17 + 4\sqrt{17}}}}i}{16}}
+
+\end{document}

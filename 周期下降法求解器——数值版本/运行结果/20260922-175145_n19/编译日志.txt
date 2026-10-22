@@ -1,0 +1,257 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+(./单位根_n19.tex
+LaTeX2e <2021-11-15> patch level 1
+L3 programming layer <2022-02-24>
+(d:/texlive/2022/texmf-dist/tex/latex/ctex/ctexart.cls
+(d:/texlive/2022/texmf-dist/tex/latex/ctex/config/ctexbackend.cfg)
+(d:/texlive/2022/texmf-dist/tex/latex/l3kernel/expl3.sty
+(d:/texlive/2022/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def))
+Document Class: ctexart 2021/12/12 v2.5.8 Chinese adapter for class article (CT
+EX)
+(d:/texlive/2022/texmf-dist/tex/latex/l3packages/xparse/xparse.sty)
+(d:/texlive/2022/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.sty)
+(d:/texlive/2022/texmf-dist/tex/latex/ctex/ctexhook.sty)
+(d:/texlive/2022/texmf-dist/tex/latex/ctex/ctexpatch.sty)
+(d:/texlive/2022/texmf-dist/tex/latex/base/fix-cm.sty
+(d:/texlive/2022/texmf-dist/tex/latex/base/ts1enc.def))
+(d:/texlive/2022/texmf-dist/tex/latex/ctex/config/ctexopts.cfg)
+(d:/texlive/2022/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2021/10/04 v1.4n Standard LaTeX document class
+(d:/texlive/2022/texmf-dist/tex/latex/base/size10.clo))
+(d:/texlive/2022/texmf-dist/tex/latex/ctex/engine/ctex-engine-pdftex.def
+(d:/texlive/2022/texmf-dist/tex/latex/cjk/texinput/CJKutf8.sty
+(d:/texlive/2022/texmf-dist/tex/generic/iftex/ifpdf.sty
+(d:/texlive/2022/texmf-dist/tex/generic/iftex/iftex.sty))
+(d:/texlive/2022/texmf-dist/tex/latex/base/inputenc.sty)
+(d:/texlive/2022/texmf-dist/tex/latex/cjk/texinput/CJK.sty
+(d:/texlive/2022/texmf-dist/tex/latex/cjk/texinput/mule/MULEenc.sty)
+(d:/texlive/2022/texmf-dist/tex/latex/cjk/texinput/CJK.enc))
+(d:/texlive/2022/texmf-dist/tex/latex/base/fontenc.sty))
+(d:/texlive/2022/texmf-dist/tex/latex/cjkpunct/CJKpunct.sty
+(d:/texlive/2022/texmf-dist/tex/latex/cjkpunct/CJKpunct.spa))
+(d:/texlive/2022/texmf-dist/tex/latex/cjk/texinput/CJKspace.sty)
+(d:/texlive/2022/texmf-dist/tex/latex/ctex/ctexspa.def))
+(d:/texlive/2022/texmf-dist/tex/latex/zhnumber/zhnumber.sty
+(d:/texlive/2022/texmf-dist/tex/latex/zhnumber/zhnumber-utf8.cfg))
+(d:/texlive/2022/texmf-dist/tex/latex/ctex/scheme/ctex-scheme-chinese-article.d
+ef (d:/texlive/2022/texmf-dist/tex/latex/ctex/config/ctex-name-utf8.cfg))
+(d:/texlive/2022/texmf-dist/tex/latex/ctex/ctex-c5size.clo)
+(d:/texlive/2022/texmf-dist/tex/latex/ctex/fontset/ctex-fontset-windows.def))
+(d:/texlive/2022/texmf-dist/tex/latex/ctex/config/ctex.cfg)
+(d:/texlive/2022/texmf-dist/tex/latex/geometry/geometry.sty
+(d:/texlive/2022/texmf-dist/tex/latex/graphics/keyval.sty)
+(d:/texlive/2022/texmf-dist/tex/generic/iftex/ifvtex.sty))
+(d:/texlive/2022/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(d:/texlive/texmf-local/tex/latex/amscd/amstext.sty
+(d:/texlive/texmf-local/tex/latex/amscd/amsgen.sty))
+(d:/texlive/texmf-local/tex/latex/amscd/amsbsy.sty)
+(d:/texlive/texmf-local/tex/latex/amscd/amsopn.sty))
+(d:/texlive/2022/texmf-dist/tex/latex/amsfonts/amssymb.sty
+(d:/texlive/2022/texmf-dist/tex/latex/amsfonts/amsfonts.sty))
+(d:/texlive/2022/texmf-dist/tex/latex/mathtools/mathtools.sty
+(d:/texlive/2022/texmf-dist/tex/latex/tools/calc.sty)
+(d:/texlive/2022/texmf-dist/tex/latex/mathtools/mhsetup.sty))
+(d:/texlive/2022/texmf-dist/tex/latex/adjustbox/adjustbox.sty
+(d:/texlive/2022/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+(d:/texlive/2022/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+(d:/texlive/2022/texmf-dist/tex/generic/xkeyval/xkvutils.tex)))
+(d:/texlive/2022/texmf-dist/tex/latex/adjustbox/adjcalc.sty)
+(d:/texlive/2022/texmf-dist/tex/latex/adjustbox/trimclip.sty
+(d:/texlive/2022/texmf-dist/tex/latex/graphics/graphicx.sty
+(d:/texlive/2022/texmf-dist/tex/latex/graphics/graphics.sty
+(d:/texlive/2022/texmf-dist/tex/latex/graphics/trig.sty)
+(d:/texlive/2022/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)
+(d:/texlive/2022/texmf-dist/tex/latex/graphics-def/pdftex.def)))
+(d:/texlive/2022/texmf-dist/tex/latex/collectbox/collectbox.sty)
+(d:/texlive/2022/texmf-dist/tex/latex/adjustbox/tc-pdftex.def))
+(d:/texlive/2022/texmf-dist/tex/latex/ifoddpage/ifoddpage.sty)
+(d:/texlive/2022/texmf-dist/tex/latex/varwidth/varwidth.sty))
+(d:/texlive/2022/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty)
+(d:/texlive/2022/texmf-dist/tex/latex/cjk/texinput/UTF8/UTF8.bdg)
+(d:/texlive/2022/texmf-dist/tex/latex/cjk/texinput/UTF8/UTF8.enc)
+(d:/texlive/2022/texmf-dist/tex/latex/cjk/texinput/UTF8/UTF8.chr)
+No file 单位根_n19.aux.
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+(d:/texlive/2022/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+) (d:/texlive/2022/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+(d:/texlive/2022/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg))
+(d:/texlive/2022/texmf-dist/tex/latex/ctex/fd/c70rm.fd)
+(d:/texlive/2022/texmf-dist/tex/latex/amsfonts/umsa.fd)
+(d:/texlive/2022/texmf-dist/tex/latex/amsfonts/umsb.fd)
+
+LaTeX Warning: No \author given.
+
+(d:/texlive/2022/texmf-dist/tex/generic/ctex/zhmap/ctex-zhmap-windows.tex{c:/Us
+ers/Rinchi/.texlive2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{UGBK.sfd}
+{Unicode.sfd}) [1] [2] [3] [4] (./单位根_n19.aux) )<c:/Windows/Fonts/simsun.
+ttc><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts
+/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windo
+ws/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><
+c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simh
+ei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fo
+nts/simhei.ttf><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simhei.ttf><c:/Wi
+ndows/Fonts/simhei.ttf><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.tt
+c><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/s
+imhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows
+/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simsun.ttc><c:
+/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun
+.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Font
+s/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Wind
+ows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc>
+<c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/sim
+sun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/F
+onts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/W
+indows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.t
+tc><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/
+simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Window
+s/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c
+:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhe
+i.ttf><c:/Windows/Fonts/simhei.ttf><d:/texlive/2022/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmbx12.pfb><d:/texlive/2022/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmex10.pfb><d:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmm
+i10.pfb><d:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><
+d:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb><d:/texlive
+/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><d:/texlive/2022/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><d:/texlive/2022/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmr10.pfb><d:/texlive/2022/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmr12.pfb><d:/texlive/2022/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmr5.pfb><d:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr
+7.pfb><d:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><d:/t
+exlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><d:/texlive/20
+22/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
+Output written on 单位根_n19.pdf (4 pages, 377707 bytes).
+Transcript written on 单位根_n19.log.
+
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+(./单位根_n19.tex
+LaTeX2e <2021-11-15> patch level 1
+L3 programming layer <2022-02-24>
+(d:/texlive/2022/texmf-dist/tex/latex/ctex/ctexart.cls
+(d:/texlive/2022/texmf-dist/tex/latex/ctex/config/ctexbackend.cfg)
+(d:/texlive/2022/texmf-dist/tex/latex/l3kernel/expl3.sty
+(d:/texlive/2022/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def))
+Document Class: ctexart 2021/12/12 v2.5.8 Chinese adapter for class article (CT
+EX)
+(d:/texlive/2022/texmf-dist/tex/latex/l3packages/xparse/xparse.sty)
+(d:/texlive/2022/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.sty)
+(d:/texlive/2022/texmf-dist/tex/latex/ctex/ctexhook.sty)
+(d:/texlive/2022/texmf-dist/tex/latex/ctex/ctexpatch.sty)
+(d:/texlive/2022/texmf-dist/tex/latex/base/fix-cm.sty
+(d:/texlive/2022/texmf-dist/tex/latex/base/ts1enc.def))
+(d:/texlive/2022/texmf-dist/tex/latex/ctex/config/ctexopts.cfg)
+(d:/texlive/2022/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2021/10/04 v1.4n Standard LaTeX document class
+(d:/texlive/2022/texmf-dist/tex/latex/base/size10.clo))
+(d:/texlive/2022/texmf-dist/tex/latex/ctex/engine/ctex-engine-pdftex.def
+(d:/texlive/2022/texmf-dist/tex/latex/cjk/texinput/CJKutf8.sty
+(d:/texlive/2022/texmf-dist/tex/generic/iftex/ifpdf.sty
+(d:/texlive/2022/texmf-dist/tex/generic/iftex/iftex.sty))
+(d:/texlive/2022/texmf-dist/tex/latex/base/inputenc.sty)
+(d:/texlive/2022/texmf-dist/tex/latex/cjk/texinput/CJK.sty
+(d:/texlive/2022/texmf-dist/tex/latex/cjk/texinput/mule/MULEenc.sty)
+(d:/texlive/2022/texmf-dist/tex/latex/cjk/texinput/CJK.enc))
+(d:/texlive/2022/texmf-dist/tex/latex/base/fontenc.sty))
+(d:/texlive/2022/texmf-dist/tex/latex/cjkpunct/CJKpunct.sty
+(d:/texlive/2022/texmf-dist/tex/latex/cjkpunct/CJKpunct.spa))
+(d:/texlive/2022/texmf-dist/tex/latex/cjk/texinput/CJKspace.sty)
+(d:/texlive/2022/texmf-dist/tex/latex/ctex/ctexspa.def))
+(d:/texlive/2022/texmf-dist/tex/latex/zhnumber/zhnumber.sty
+(d:/texlive/2022/texmf-dist/tex/latex/zhnumber/zhnumber-utf8.cfg))
+(d:/texlive/2022/texmf-dist/tex/latex/ctex/scheme/ctex-scheme-chinese-article.d
+ef (d:/texlive/2022/texmf-dist/tex/latex/ctex/config/ctex-name-utf8.cfg))
+(d:/texlive/2022/texmf-dist/tex/latex/ctex/ctex-c5size.clo)
+(d:/texlive/2022/texmf-dist/tex/latex/ctex/fontset/ctex-fontset-windows.def))
+(d:/texlive/2022/texmf-dist/tex/latex/ctex/config/ctex.cfg)
+(d:/texlive/2022/texmf-dist/tex/latex/geometry/geometry.sty
+(d:/texlive/2022/texmf-dist/tex/latex/graphics/keyval.sty)
+(d:/texlive/2022/texmf-dist/tex/generic/iftex/ifvtex.sty))
+(d:/texlive/2022/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(d:/texlive/texmf-local/tex/latex/amscd/amstext.sty
+(d:/texlive/texmf-local/tex/latex/amscd/amsgen.sty))
+(d:/texlive/texmf-local/tex/latex/amscd/amsbsy.sty)
+(d:/texlive/texmf-local/tex/latex/amscd/amsopn.sty))
+(d:/texlive/2022/texmf-dist/tex/latex/amsfonts/amssymb.sty
+(d:/texlive/2022/texmf-dist/tex/latex/amsfonts/amsfonts.sty))
+(d:/texlive/2022/texmf-dist/tex/latex/mathtools/mathtools.sty
+(d:/texlive/2022/texmf-dist/tex/latex/tools/calc.sty)
+(d:/texlive/2022/texmf-dist/tex/latex/mathtools/mhsetup.sty))
+(d:/texlive/2022/texmf-dist/tex/latex/adjustbox/adjustbox.sty
+(d:/texlive/2022/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+(d:/texlive/2022/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+(d:/texlive/2022/texmf-dist/tex/generic/xkeyval/xkvutils.tex)))
+(d:/texlive/2022/texmf-dist/tex/latex/adjustbox/adjcalc.sty)
+(d:/texlive/2022/texmf-dist/tex/latex/adjustbox/trimclip.sty
+(d:/texlive/2022/texmf-dist/tex/latex/graphics/graphicx.sty
+(d:/texlive/2022/texmf-dist/tex/latex/graphics/graphics.sty
+(d:/texlive/2022/texmf-dist/tex/latex/graphics/trig.sty)
+(d:/texlive/2022/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)
+(d:/texlive/2022/texmf-dist/tex/latex/graphics-def/pdftex.def)))
+(d:/texlive/2022/texmf-dist/tex/latex/collectbox/collectbox.sty)
+(d:/texlive/2022/texmf-dist/tex/latex/adjustbox/tc-pdftex.def))
+(d:/texlive/2022/texmf-dist/tex/latex/ifoddpage/ifoddpage.sty)
+(d:/texlive/2022/texmf-dist/tex/latex/varwidth/varwidth.sty))
+(d:/texlive/2022/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty)
+(d:/texlive/2022/texmf-dist/tex/latex/cjk/texinput/UTF8/UTF8.bdg)
+(d:/texlive/2022/texmf-dist/tex/latex/cjk/texinput/UTF8/UTF8.enc)
+(d:/texlive/2022/texmf-dist/tex/latex/cjk/texinput/UTF8/UTF8.chr)
+(./单位根_n19.aux)
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+(d:/texlive/2022/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+) (d:/texlive/2022/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+(d:/texlive/2022/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg))
+(d:/texlive/2022/texmf-dist/tex/latex/ctex/fd/c70rm.fd)
+(d:/texlive/2022/texmf-dist/tex/latex/amsfonts/umsa.fd)
+(d:/texlive/2022/texmf-dist/tex/latex/amsfonts/umsb.fd)
+
+LaTeX Warning: No \author given.
+
+(d:/texlive/2022/texmf-dist/tex/generic/ctex/zhmap/ctex-zhmap-windows.tex{c:/Us
+ers/Rinchi/.texlive2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{UGBK.sfd}
+{Unicode.sfd}) [1] [2] [3] [4] (./单位根_n19.aux) )<c:/Windows/Fonts/simsun.
+ttc><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts
+/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windo
+ws/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><
+c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simh
+ei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fo
+nts/simhei.ttf><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simhei.ttf><c:/Wi
+ndows/Fonts/simhei.ttf><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.tt
+c><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/s
+imhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows
+/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simsun.ttc><c:
+/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun
+.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Font
+s/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Wind
+ows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc>
+<c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/sim
+sun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/F
+onts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/W
+indows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.ttc><c:/Windows/Fonts/simsun.t
+tc><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/
+simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Window
+s/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c
+:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhei.ttf><c:/Windows/Fonts/simhe
+i.ttf><c:/Windows/Fonts/simhei.ttf><d:/texlive/2022/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmbx12.pfb><d:/texlive/2022/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmex10.pfb><d:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmm
+i10.pfb><d:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><
+d:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb><d:/texlive
+/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><d:/texlive/2022/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><d:/texlive/2022/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmr10.pfb><d:/texlive/2022/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmr12.pfb><d:/texlive/2022/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmr5.pfb><d:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr
+7.pfb><d:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><d:/t
+exlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><d:/texlive/20
+22/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
+Output written on 单位根_n19.pdf (4 pages, 377707 bytes).
+Transcript written on 单位根_n19.log.

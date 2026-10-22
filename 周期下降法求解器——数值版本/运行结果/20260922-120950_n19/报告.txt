@@ -1,0 +1,27 @@
+表达式求值 vs exp(2πit/n) 的最大偏差：4.338e-15
+预解式分支核对的最大残差：5.089e-16
+展开后残留的命名量（应为 0）：0
+分支表 θ^{(j)}_{a,k} = ω_ℓ^{s}·√[ℓ]{u}：
+  (j=1,a=1,k=1):s=2，(j=1,a=1,k=2):s=1，(j=2,a=1,k=1):s=0，(j=2,a=1,k=2):s=0，(j=2,a=2,k=1):s=0，(j=2,a=2,k=2):s=0，(j=2,a=4,k=1):s=0，(j=2,a=4,k=2):s=0
+完全合并自检：共 36 个公式；合并前后数值不一致 0 处；非幂等 0 处；最大相对偏差 6.0e-16
+输出审计（根号内不得再有 \frac）：未合并处 111
+  .tex 第 116 行：\sqrt{2736 - 540\left(-\frac{1}{2} - \frac{1}{2}i\sqrt{3}\right)\sqrt[3]{532...}
+  .tex 第 120 行：\sqrt{2736 - 648\left(-\frac{1}{2} - \frac{1}{2}i\sqrt{3}\right)\sqrt[3]{532...}
+  .tex 第 124 行：\sqrt{2736 - 180\left(-\frac{1}{2} - \frac{1}{2}i\sqrt{3}\right)\sqrt[3]{532...}
+  .tex 第 127 行：\sqrt{2736 - 540\left(-\frac{1}{2} - \frac{1}{2}i\sqrt{3}\right)\sqrt[3]{532...}
+  .tex 第 127 行：\sqrt{2736 - 540\left(-\frac{1}{2} - \frac{1}{2}i\sqrt{3}\right)\sqrt[3]{532...}
+  .tex 第 129 行：\sqrt{2736 - 648\left(-\frac{1}{2} - \frac{1}{2}i\sqrt{3}\right)\sqrt[3]{532...}
+  .tex 第 129 行：\sqrt{2736 - 648\left(-\frac{1}{2} - \frac{1}{2}i\sqrt{3}\right)\sqrt[3]{532...}
+  .tex 第 131 行：\sqrt{2736 - 648\left(-\frac{1}{2} - \frac{1}{2}i\sqrt{3}\right)\sqrt[3]{532...}
+  .tex 第 131 行：\sqrt{2736 - 648\left(-\frac{1}{2} - \frac{1}{2}i\sqrt{3}\right)\sqrt[3]{532...}
+  .tex 第 133 行：\sqrt{2736 - 180\left(-\frac{1}{2} - \frac{1}{2}i\sqrt{3}\right)\sqrt[3]{532...}
+  .tex 第 133 行：\sqrt{2736 - 180\left(-\frac{1}{2} - \frac{1}{2}i\sqrt{3}\right)\sqrt[3]{532...}
+  .tex 第 135 行：\sqrt{2736 - 648\left(-\frac{1}{2} - \frac{1}{2}i\sqrt{3}\right)\sqrt[3]{532...}
+  .tex 第 135 行：\sqrt{2736 - 648\left(-\frac{1}{2} - \frac{1}{2}i\sqrt{3}\right)\sqrt[3]{532...}
+  .tex 第 137 行：\sqrt{2736 - 180\left(-\frac{1}{2} - \frac{1}{2}i\sqrt{3}\right)\sqrt[3]{532...}
+  .tex 第 137 行：\sqrt{2736 - 180\left(-\frac{1}{2} - \frac{1}{2}i\sqrt{3}\right)\sqrt[3]{532...}
+  .tex 第 139 行：\sqrt{2736 - 540\left(-\frac{1}{2} - \frac{1}{2}i\sqrt{3}\right)\sqrt[3]{532...}
+  .tex 第 139 行：\sqrt{2736 - 540\left(-\frac{1}{2} - \frac{1}{2}i\sqrt{3}\right)\sqrt[3]{532...}
+  .tex 第 141 行：\sqrt{2736 - 540\left(-\frac{1}{2} - \frac{1}{2}i\sqrt{3}\right)\sqrt[3]{532...}
+  .tex 第 141 行：\sqrt{2736 - 540\left(-\frac{1}{2} - \frac{1}{2}i\sqrt{3}\right)\sqrt[3]{532...}
+  .tex 第 143 行：\sqrt{2736 - 180\left(-\frac{1}{2} - \frac{1}{2}i\sqrt{3}\right)\sqrt[3]{532...}

@@ -1,0 +1,166 @@
+\documentclass[UTF8]{ctexart}
+\usepackage{geometry}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{adjustbox}
+\usepackage{fancyhdr}
+\newcommand{\fitmath}[1]{\begin{center}\adjustbox{max width=\linewidth, max totalheight=0.42\textheight}{$\displaystyle #1$}\end{center}}
+\geometry{a4paper,scale=0.78}
+\setlength{\headheight}{16pt}
+\setlength{\emergencystretch}{3em}
+\allowdisplaybreaks
+\pagestyle{fancy}
+\fancyhead[L]{13 次单位根的根式解}
+\begin{document}
+\rmfamily
+\title{\textbf{\huge 13 次单位根的根式解}}
+\date{}
+\maketitle
+
+\section*{参数与标准素分解}
+$p = 13$，$h = (p-1)/2 = 6$，模 $13$ 的最小原根 $g = 2$。
+
+$h$ 的标准素分解：$h = 3\times2$，子群链共 $2$ 层。
+
+$m_0 = 1$，$m_{1} = 3$，$m_{2} = 6$。
+
+各层子群 $H_j = \{\pm g^{m_j t}\}$，其中 $H_0$ 是全部 $12$ 个非零剩余：
+
+\fitmath{H_{1} = \{1,\,5,\,8,\,12\}}
+
+\fitmath{H_{2} = \{1,\,12\}}
+
+各层周期 $\eta^{(j)}_{a} = \sum_{b \in H_j}\zeta^{ab}$（$a$ 取陪集代表）。
+
+\section*{各层周期与分解表}
+\subsection*{第 $0$ 层：1 个周期}
+$H_0$ 是全部 $12$ 个非零剩余，故 $\eta^{(0)}_{1} = -1$。
+
+\subsection*{第 $1$ 层：3 个周期}
+\fitmath{\eta^{(1)}_{1} = \zeta^{1}+\zeta^{5}+\zeta^{8}+\zeta^{12}}
+
+\fitmath{\eta^{(1)}_{2} = \zeta^{2}+\zeta^{3}+\zeta^{10}+\zeta^{11}}
+
+\fitmath{\eta^{(1)}_{4} = \zeta^{4}+\zeta^{6}+\zeta^{7}+\zeta^{9}}
+
+\subsection*{第 $2$ 层：6 个周期}
+\fitmath{\eta^{(2)}_{1} = \zeta^{1}+\zeta^{12}}
+
+\fitmath{\eta^{(2)}_{2} = \zeta^{2}+\zeta^{11}}
+
+\fitmath{\eta^{(2)}_{3} = \zeta^{3}+\zeta^{10}}
+
+\fitmath{\eta^{(2)}_{4} = \zeta^{4}+\zeta^{9}}
+
+\fitmath{\eta^{(2)}_{5} = \zeta^{5}+\zeta^{8}}
+
+\fitmath{\eta^{(2)}_{6} = \zeta^{6}+\zeta^{7}}
+
+\subsection*{分解表：每个母周期拆成 $\ell_j$ 个子周期}
+\fitmath{\eta^{(0)}_{1} = \eta^{(1)}_{1}+\eta^{(1)}_{2}+\eta^{(1)}_{4}}
+
+（第 $1$ 层，$\ell = 3$。）
+
+\fitmath{\eta^{(1)}_{1} = \eta^{(2)}_{1}+\eta^{(2)}_{5}}
+
+\fitmath{\eta^{(1)}_{2} = \eta^{(2)}_{2}+\eta^{(2)}_{3}}
+
+\fitmath{\eta^{(1)}_{4} = \eta^{(2)}_{4}+\eta^{(2)}_{6}}
+
+（第 $2$ 层，$\ell = 2$。）
+
+\section*{辅助单位根}
+$\ell = 2$ 时 $\omega_{2}^{1} = -1$。
+
+$\ell \geq 3$ 时按主支：
+
+\fitmath{\omega_{\ell}^{k} = \frac{\Lambda^{(\ell)}_{\bar k}}{2} + \frac{\varepsilon_k}{2}\sqrt{2-\Lambda^{(\ell)}_{\overline{2k}}}\,i}
+
+其中 $\varepsilon_k = \operatorname{sgn}\sin(2\pi k/\ell)$，$\bar k = \min(k,\ell-k)$。
+
+\subsection*{辅助问题 $p = 3$（供 $\omega_{3}^{k}$ 使用）}
+$h = 1$，$g = 2$，层阶 $1$。
+
+\fitmath{\Lambda^{(3)}_{1} = -1}
+
+$\omega_{3}^{k} = \frac{1}{2}\Lambda^{(3)}_{\bar k} + \frac{\varepsilon_k}{2}\sqrt{2-\Lambda^{(3)}_{\overline{2k}}}\,i$。
+
+\section*{逐层开方}
+每一步把母周期 $\eta^{(j-1)}_{a}$ 分解成 $\ell$ 个子周期 $\beta^{(a)}_{t}$。
+
+预解式取离散 Fourier 变换：
+
+\fitmath{\theta^{(j)}_{a,k} = \sum_{t=0}^{\ell-1}\omega_{\ell}^{-kt}\beta^{(a)}_{t}}
+
+\fitmath{\left(\theta^{(j)}_{a,k}\right)^{\ell} = u^{(j)}_{a,k} = \tau^{k}\left(u^{(j)}_{a,1}\right)}
+
+\fitmath{\eta^{(j)}_{b(t)} = \frac{1}{\ell}\left(\eta^{(j-1)}_{a} + \sum_{k=1}^{\ell-1}\omega_{\ell}^{kt}\theta^{(j)}_{a,k}\right)}
+
+（$\tau$ 把 $\omega_{\ell}$ 送到 $\omega_{\ell}^{k}$；$b(t)$ 为第 $t$ 个子周期。）
+
+开方一律取正实主支；预解式的分支由因子 $\omega_{\ell}^{s}$ 记录（见报告里的分支表）。
+
+\subsection*{第 $1$ 步（$\ell = 3$，1 个母周期）}
+\fitmath{u^{(1)}_{1,1} = \frac{-65 + 39i\sqrt{3}}{2}}
+
+\fitmath{\theta^{(1)}_{1,1} = \frac{\left(-1 - i\sqrt{3}\right)\sqrt[3]{-260 + 156i\sqrt{3}}}{4}}
+
+\subsection*{第 $2$ 步（$\ell = 2$，3 个母周期）}
+\fitmath{u^{(2)}_{1,1} = \frac{26 + \left(2 - i\sqrt{3}\right)\sqrt[3]{-260 + 156i\sqrt{3}} + \left(2 + i\sqrt{3}\right)\sqrt[3]{-260 - 156i\sqrt{3}}}{6}}
+
+\fitmath{\theta^{(2)}_{1,1} = \frac{\sqrt{156 + \left(12 - 6i\sqrt{3}\right)\sqrt[3]{-260 + 156i\sqrt{3}} + \left(12 + 6i\sqrt{3}\right)\sqrt[3]{-260 - 156i\sqrt{3}}}}{6}}
+
+\fitmath{u^{(2)}_{2,1} = \frac{52 + \left(1 + 3i\sqrt{3}\right)\sqrt[3]{-260 + 156i\sqrt{3}} + \left(1 - 3i\sqrt{3}\right)\sqrt[3]{-260 - 156i\sqrt{3}}}{12}}
+
+\fitmath{\theta^{(2)}_{2,1} = \frac{\sqrt{156 + \left(3 + 9i\sqrt{3}\right)\sqrt[3]{-260 + 156i\sqrt{3}} + \left(3 - 9i\sqrt{3}\right)\sqrt[3]{-260 - 156i\sqrt{3}}}}{6}}
+
+\fitmath{u^{(2)}_{4,1} = \frac{52 + \left(-5 - i\sqrt{3}\right)\sqrt[3]{-260 + 156i\sqrt{3}} + \left(-5 + i\sqrt{3}\right)\sqrt[3]{-260 - 156i\sqrt{3}}}{12}}
+
+\fitmath{\theta^{(2)}_{4,1} = \frac{\sqrt{156 + \left(-15 - 3i\sqrt{3}\right)\sqrt[3]{-260 + 156i\sqrt{3}} + \left(-15 + 3i\sqrt{3}\right)\sqrt[3]{-260 - 156i\sqrt{3}}}}{6}}
+
+\section*{实部数值}
+\fitmath{\Lambda_{1} = 2\cos\frac{2\pi\cdot 1}{13} = \frac{-4 + \left(-1 - i\sqrt{3}\right)\sqrt[3]{-260 + 156i\sqrt{3}} + \left(-1 + i\sqrt{3}\right)\sqrt[3]{-260 - 156i\sqrt{3}} + 2\sqrt{156 + \left(12 - 6i\sqrt{3}\right)\sqrt[3]{-260 + 156i\sqrt{3}} + \left(12 + 6i\sqrt{3}\right)\sqrt[3]{-260 - 156i\sqrt{3}}}}{24}}
+
+\fitmath{\Lambda_{2} = 2\cos\frac{2\pi\cdot 2}{13} = \frac{-2 + \sqrt[3]{-260 + 156i\sqrt{3}} + \sqrt[3]{-260 - 156i\sqrt{3}} + \sqrt{156 + \left(3 + 9i\sqrt{3}\right)\sqrt[3]{-260 + 156i\sqrt{3}} + \left(3 - 9i\sqrt{3}\right)\sqrt[3]{-260 - 156i\sqrt{3}}}}{12}}
+
+\fitmath{\Lambda_{3} = 2\cos\frac{2\pi\cdot 3}{13} = \frac{-2 + \sqrt[3]{-260 + 156i\sqrt{3}} + \sqrt[3]{-260 - 156i\sqrt{3}} - \sqrt{156 + \left(3 + 9i\sqrt{3}\right)\sqrt[3]{-260 + 156i\sqrt{3}} + \left(3 - 9i\sqrt{3}\right)\sqrt[3]{-260 - 156i\sqrt{3}}}}{12}}
+
+\fitmath{\Lambda_{4} = 2\cos\frac{2\pi\cdot 4}{13} = \frac{-4 + \left(-1 + i\sqrt{3}\right)\sqrt[3]{-260 + 156i\sqrt{3}} + \left(-1 - i\sqrt{3}\right)\sqrt[3]{-260 - 156i\sqrt{3}} + 2\sqrt{156 + \left(-15 - 3i\sqrt{3}\right)\sqrt[3]{-260 + 156i\sqrt{3}} + \left(-15 + 3i\sqrt{3}\right)\sqrt[3]{-260 - 156i\sqrt{3}}}}{24}}
+
+\fitmath{\Lambda_{5} = 2\cos\frac{2\pi\cdot 5}{13} = \frac{-4 + \left(-1 - i\sqrt{3}\right)\sqrt[3]{-260 + 156i\sqrt{3}} + \left(-1 + i\sqrt{3}\right)\sqrt[3]{-260 - 156i\sqrt{3}} - 2\sqrt{156 + \left(12 - 6i\sqrt{3}\right)\sqrt[3]{-260 + 156i\sqrt{3}} + \left(12 + 6i\sqrt{3}\right)\sqrt[3]{-260 - 156i\sqrt{3}}}}{24}}
+
+\fitmath{\Lambda_{6} = 2\cos\frac{2\pi\cdot 6}{13} = \frac{-4 + \left(-1 + i\sqrt{3}\right)\sqrt[3]{-260 + 156i\sqrt{3}} + \left(-1 - i\sqrt{3}\right)\sqrt[3]{-260 - 156i\sqrt{3}} - 2\sqrt{156 + \left(-15 - 3i\sqrt{3}\right)\sqrt[3]{-260 + 156i\sqrt{3}} + \left(-15 + 3i\sqrt{3}\right)\sqrt[3]{-260 - 156i\sqrt{3}}}}{24}}
+
+\section*{全部单位根}
+最终形式：
+
+\fitmath{\omega_{n}^{t} = \frac{\Lambda_{\bar t}}{2} + \frac{\varepsilon_t}{2}\sqrt{2-\Lambda_{\overline{2t}}}\,i,\qquad \Lambda_{\bar t} = 2\cos\frac{2\pi\bar t}{n}}
+
+其中 $\bar t = \min(t, n-t)$，$\varepsilon_t = \operatorname{sgn}\sin(2\pi t/n)$。
+
+以下逐一写开（全部为具体根式）：
+
+\fitmath{\omega_{13}^{1} = \frac{-4 + \left(-1 - i\sqrt{3}\right)\sqrt[3]{-260 + 156i\sqrt{3}} + \left(-1 + i\sqrt{3}\right)\sqrt[3]{-260 - 156i\sqrt{3}} + 2\sqrt{156 + \left(12 - 6i\sqrt{3}\right)\sqrt[3]{-260 + 156i\sqrt{3}} + \left(12 + 6i\sqrt{3}\right)\sqrt[3]{-260 - 156i\sqrt{3}}} + 4i\sqrt{78 - 3\sqrt[3]{-260 + 156i\sqrt{3}} - 3\sqrt[3]{-260 - 156i\sqrt{3}} - 3\sqrt{156 + \left(3 + 9i\sqrt{3}\right)\sqrt[3]{-260 + 156i\sqrt{3}} + \left(3 - 9i\sqrt{3}\right)\sqrt[3]{-260 - 156i\sqrt{3}}}}}{48}}
+
+\fitmath{\omega_{13}^{2} = \frac{-2 + \sqrt[3]{-260 + 156i\sqrt{3}} + \sqrt[3]{-260 - 156i\sqrt{3}} + \sqrt{156 + \left(3 + 9i\sqrt{3}\right)\sqrt[3]{-260 + 156i\sqrt{3}} + \left(3 - 9i\sqrt{3}\right)\sqrt[3]{-260 - 156i\sqrt{3}}} + i\sqrt{312 + \left(6 - 6i\sqrt{3}\right)\sqrt[3]{-260 + 156i\sqrt{3}} + \left(6 + 6i\sqrt{3}\right)\sqrt[3]{-260 - 156i\sqrt{3}} - 12\sqrt{156 + \left(-15 - 3i\sqrt{3}\right)\sqrt[3]{-260 + 156i\sqrt{3}} + \left(-15 + 3i\sqrt{3}\right)\sqrt[3]{-260 - 156i\sqrt{3}}}}}{24}}
+
+\fitmath{\omega_{13}^{3} = \frac{-2 + \sqrt[3]{-260 + 156i\sqrt{3}} + \sqrt[3]{-260 - 156i\sqrt{3}} - \sqrt{156 + \left(3 + 9i\sqrt{3}\right)\sqrt[3]{-260 + 156i\sqrt{3}} + \left(3 - 9i\sqrt{3}\right)\sqrt[3]{-260 - 156i\sqrt{3}}} + i\sqrt{312 + \left(6 - 6i\sqrt{3}\right)\sqrt[3]{-260 + 156i\sqrt{3}} + \left(6 + 6i\sqrt{3}\right)\sqrt[3]{-260 - 156i\sqrt{3}} + 12\sqrt{156 + \left(-15 - 3i\sqrt{3}\right)\sqrt[3]{-260 + 156i\sqrt{3}} + \left(-15 + 3i\sqrt{3}\right)\sqrt[3]{-260 - 156i\sqrt{3}}}}}{24}}
+
+\fitmath{\omega_{13}^{4} = \frac{-4 + \left(-1 + i\sqrt{3}\right)\sqrt[3]{-260 + 156i\sqrt{3}} + \left(-1 - i\sqrt{3}\right)\sqrt[3]{-260 - 156i\sqrt{3}} + 2\sqrt{156 + \left(-15 - 3i\sqrt{3}\right)\sqrt[3]{-260 + 156i\sqrt{3}} + \left(-15 + 3i\sqrt{3}\right)\sqrt[3]{-260 - 156i\sqrt{3}}} + 2i\sqrt{312 + \left(6 + 6i\sqrt{3}\right)\sqrt[3]{-260 + 156i\sqrt{3}} + \left(6 - 6i\sqrt{3}\right)\sqrt[3]{-260 - 156i\sqrt{3}} + 12\sqrt{156 + \left(12 - 6i\sqrt{3}\right)\sqrt[3]{-260 + 156i\sqrt{3}} + \left(12 + 6i\sqrt{3}\right)\sqrt[3]{-260 - 156i\sqrt{3}}}}}{48}}
+
+\fitmath{\omega_{13}^{5} = \frac{-4 + \left(-1 - i\sqrt{3}\right)\sqrt[3]{-260 + 156i\sqrt{3}} + \left(-1 + i\sqrt{3}\right)\sqrt[3]{-260 - 156i\sqrt{3}} - 2\sqrt{156 + \left(12 - 6i\sqrt{3}\right)\sqrt[3]{-260 + 156i\sqrt{3}} + \left(12 + 6i\sqrt{3}\right)\sqrt[3]{-260 - 156i\sqrt{3}}} + 4i\sqrt{78 - 3\sqrt[3]{-260 + 156i\sqrt{3}} - 3\sqrt[3]{-260 - 156i\sqrt{3}} + 3\sqrt{156 + \left(3 + 9i\sqrt{3}\right)\sqrt[3]{-260 + 156i\sqrt{3}} + \left(3 - 9i\sqrt{3}\right)\sqrt[3]{-260 - 156i\sqrt{3}}}}}{48}}
+
+\fitmath{\omega_{13}^{6} = \frac{-4 + \left(-1 + i\sqrt{3}\right)\sqrt[3]{-260 + 156i\sqrt{3}} + \left(-1 - i\sqrt{3}\right)\sqrt[3]{-260 - 156i\sqrt{3}} - 2\sqrt{156 + \left(-15 - 3i\sqrt{3}\right)\sqrt[3]{-260 + 156i\sqrt{3}} + \left(-15 + 3i\sqrt{3}\right)\sqrt[3]{-260 - 156i\sqrt{3}}} + 2i\sqrt{312 + \left(6 + 6i\sqrt{3}\right)\sqrt[3]{-260 + 156i\sqrt{3}} + \left(6 - 6i\sqrt{3}\right)\sqrt[3]{-260 - 156i\sqrt{3}} - 12\sqrt{156 + \left(12 - 6i\sqrt{3}\right)\sqrt[3]{-260 + 156i\sqrt{3}} + \left(12 + 6i\sqrt{3}\right)\sqrt[3]{-260 - 156i\sqrt{3}}}}}{48}}
+
+\fitmath{\omega_{13}^{7} = \frac{-4 + \left(-1 + i\sqrt{3}\right)\sqrt[3]{-260 + 156i\sqrt{3}} + \left(-1 - i\sqrt{3}\right)\sqrt[3]{-260 - 156i\sqrt{3}} - 2\sqrt{156 + \left(-15 - 3i\sqrt{3}\right)\sqrt[3]{-260 + 156i\sqrt{3}} + \left(-15 + 3i\sqrt{3}\right)\sqrt[3]{-260 - 156i\sqrt{3}}} - 2i\sqrt{312 + \left(6 + 6i\sqrt{3}\right)\sqrt[3]{-260 + 156i\sqrt{3}} + \left(6 - 6i\sqrt{3}\right)\sqrt[3]{-260 - 156i\sqrt{3}} - 12\sqrt{156 + \left(12 - 6i\sqrt{3}\right)\sqrt[3]{-260 + 156i\sqrt{3}} + \left(12 + 6i\sqrt{3}\right)\sqrt[3]{-260 - 156i\sqrt{3}}}}}{48}}
+
+\fitmath{\omega_{13}^{8} = \frac{-4 + \left(-1 - i\sqrt{3}\right)\sqrt[3]{-260 + 156i\sqrt{3}} + \left(-1 + i\sqrt{3}\right)\sqrt[3]{-260 - 156i\sqrt{3}} - 2\sqrt{156 + \left(12 - 6i\sqrt{3}\right)\sqrt[3]{-260 + 156i\sqrt{3}} + \left(12 + 6i\sqrt{3}\right)\sqrt[3]{-260 - 156i\sqrt{3}}} - 4i\sqrt{78 - 3\sqrt[3]{-260 + 156i\sqrt{3}} - 3\sqrt[3]{-260 - 156i\sqrt{3}} + 3\sqrt{156 + \left(3 + 9i\sqrt{3}\right)\sqrt[3]{-260 + 156i\sqrt{3}} + \left(3 - 9i\sqrt{3}\right)\sqrt[3]{-260 - 156i\sqrt{3}}}}}{48}}
+
+\fitmath{\omega_{13}^{9} = \frac{-4 + \left(-1 + i\sqrt{3}\right)\sqrt[3]{-260 + 156i\sqrt{3}} + \left(-1 - i\sqrt{3}\right)\sqrt[3]{-260 - 156i\sqrt{3}} + 2\sqrt{156 + \left(-15 - 3i\sqrt{3}\right)\sqrt[3]{-260 + 156i\sqrt{3}} + \left(-15 + 3i\sqrt{3}\right)\sqrt[3]{-260 - 156i\sqrt{3}}} - 2i\sqrt{312 + \left(6 + 6i\sqrt{3}\right)\sqrt[3]{-260 + 156i\sqrt{3}} + \left(6 - 6i\sqrt{3}\right)\sqrt[3]{-260 - 156i\sqrt{3}} + 12\sqrt{156 + \left(12 - 6i\sqrt{3}\right)\sqrt[3]{-260 + 156i\sqrt{3}} + \left(12 + 6i\sqrt{3}\right)\sqrt[3]{-260 - 156i\sqrt{3}}}}}{48}}
+
+\fitmath{\omega_{13}^{10} = \frac{-2 + \sqrt[3]{-260 + 156i\sqrt{3}} + \sqrt[3]{-260 - 156i\sqrt{3}} - \sqrt{156 + \left(3 + 9i\sqrt{3}\right)\sqrt[3]{-260 + 156i\sqrt{3}} + \left(3 - 9i\sqrt{3}\right)\sqrt[3]{-260 - 156i\sqrt{3}}} - i\sqrt{312 + \left(6 - 6i\sqrt{3}\right)\sqrt[3]{-260 + 156i\sqrt{3}} + \left(6 + 6i\sqrt{3}\right)\sqrt[3]{-260 - 156i\sqrt{3}} + 12\sqrt{156 + \left(-15 - 3i\sqrt{3}\right)\sqrt[3]{-260 + 156i\sqrt{3}} + \left(-15 + 3i\sqrt{3}\right)\sqrt[3]{-260 - 156i\sqrt{3}}}}}{24}}
+
+\fitmath{\omega_{13}^{11} = \frac{-2 + \sqrt[3]{-260 + 156i\sqrt{3}} + \sqrt[3]{-260 - 156i\sqrt{3}} + \sqrt{156 + \left(3 + 9i\sqrt{3}\right)\sqrt[3]{-260 + 156i\sqrt{3}} + \left(3 - 9i\sqrt{3}\right)\sqrt[3]{-260 - 156i\sqrt{3}}} - i\sqrt{312 + \left(6 - 6i\sqrt{3}\right)\sqrt[3]{-260 + 156i\sqrt{3}} + \left(6 + 6i\sqrt{3}\right)\sqrt[3]{-260 - 156i\sqrt{3}} - 12\sqrt{156 + \left(-15 - 3i\sqrt{3}\right)\sqrt[3]{-260 + 156i\sqrt{3}} + \left(-15 + 3i\sqrt{3}\right)\sqrt[3]{-260 - 156i\sqrt{3}}}}}{24}}
+
+\fitmath{\omega_{13}^{12} = \frac{-4 + \left(-1 - i\sqrt{3}\right)\sqrt[3]{-260 + 156i\sqrt{3}} + \left(-1 + i\sqrt{3}\right)\sqrt[3]{-260 - 156i\sqrt{3}} + 2\sqrt{156 + \left(12 - 6i\sqrt{3}\right)\sqrt[3]{-260 + 156i\sqrt{3}} + \left(12 + 6i\sqrt{3}\right)\sqrt[3]{-260 - 156i\sqrt{3}}} - 4i\sqrt{78 - 3\sqrt[3]{-260 + 156i\sqrt{3}} - 3\sqrt[3]{-260 - 156i\sqrt{3}} - 3\sqrt{156 + \left(3 + 9i\sqrt{3}\right)\sqrt[3]{-260 + 156i\sqrt{3}} + \left(3 - 9i\sqrt{3}\right)\sqrt[3]{-260 - 156i\sqrt{3}}}}}{48}}
+
+\end{document}
